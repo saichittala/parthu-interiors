@@ -1,0 +1,33 @@
+{
+  "name": "parthu-interiors",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "tsc --noEmit",
+    "build:static": "node scripts/generate-sitemap.js && (if [ -d app/api ]; then mv app/api _api_bak; fi) && NEXT_PUBLIC_STATIC_EXPORT=true next build; (if [ -d _api_bak ]; then mv _api_bak app/api; fi)",
+    "deploy": "npm run build:static && gh-pages -d out"
+  },
+  "dependencies": {
+    "@fontsource/inter-tight": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
+    "@untitledui-icons/react": "^1.0.3",
+    "clsx": "^2.1.1",
+    "framer-motion": "^13.2.0",
+    "lucide-react": "^1.45.0",
+    "motion": "^13.2.0",
+    "next": "^16.2.9",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.30",
+    "@types/react": "19.0.12",
+    "@types/react-dom": "19.0.4",
+    "gh-pages": "^6.3.0",
+    "typescript": "5.8.3"
+  }
+}

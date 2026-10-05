@@ -1,0 +1,216 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Footer from "../components/Footer";
+import ConsultationModal from "../components/ConsultationModal";
+import {
+  FactoryIcon,
+  SettingsIcon,
+  ShieldCheckIcon,
+  DiamondIcon,
+  CheckCircleIcon,
+  SparklesIcon,
+  WhatsAppIcon,
+  PhoneIcon
+} from "../components/Icons";
+
+export default function AboutPage() {
+  const [consultationOpen, setConsultationOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
+
+  return (
+    <>
+      <main style={{ background: "#060606", color: "#FFFFFF", minHeight: "100vh" }}>
+        {/* About Hero (2-Column: Left Content, Right Image) */}
+        <section className="section-py inner-page-hero">
+          <div className="container">
+            <div className="about-hero-grid">
+              {/* Left Column Content */}
+              <div>
+                <h1 className="display-lg" style={{ marginBottom: "20px", textTransform: "none" }}>
+                  Complete End-to-End Responsibility From Design to Handover
+                </h1>
+                <p className="text-xl" style={{ color: "var(--text-dark-secondary)", lineHeight: "1.65", marginBottom: "24px" }}>
+                  <strong>Parthu Interiors</strong> is a dedicated residential interior design and turnkey execution firm in Hyderabad, specializing in 2BHK, 3BHK, Villa, and Independent house interiors.
+                </p>
+                <p className="text-md" style={{ color: "var(--text-dark-secondary)", lineHeight: "1.65", marginBottom: "32px" }}>
+                  While traditional interior design firms make generic promises about quality work, Parthu Interiors delivers structured transparency: advance planning, clear material specifications, transparent stage-wise budgeting, and regular site updates to make your dream home journey completely stress-free.
+                </p>
+                <div className="about-hero-actions">
+                  <button onClick={() => setConsultationOpen(true)} className="btn btn-primary btn-lg">
+                    <span>Get a Free Quote</span>
+                  </button>
+                  <a href="tel:+918790905746" className="btn btn-secondary btn-lg" style={{ gap: "8px" }}>
+                    <PhoneIcon size={16} />
+                    <span>Call +91 87909 05746</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Column Image */}
+              <div className="about-hero-img-box">
+                <img
+                  src="/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp"
+                  alt="Parthu Interiors Residential Project Hyderabad"
+                  className="about-hero-img"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* USP & Philosophy Section */}
+        <section className="section-py" style={{ backgroundColor: "var(--bg-light-secondary)" }}>
+          <div className="container">
+            <div className="about-philosophy-grid">
+              {/* Left Column Image */}
+              <div className="about-philosophy-img-box">
+                <img
+                  src="/assets/main_images/luxury-interior-design-private-apartment-contemporary-dining-room.webp"
+                  alt="Parthu Interiors Custom Interior Design"
+                  className="about-philosophy-img"
+                />
+              </div>
+
+              {/* Right Column Content */}
+              <div>
+                <h2 className="display-md" style={{ marginBottom: "24px", color: "var(--text-dark-primary)" }}>
+                  Clear Planning + Quality Execution + Responsible Communication
+                </h2>
+                <p className="text-md" style={{ marginBottom: "16px", color: "var(--text-dark-secondary)" }}>
+                  Before work begins on site, we provide a complete budget plan, material specifications, and a stage-wise cost breakdown. Every project phase comes with advance timelines and active progress updates.
+                </p>
+                <p className="text-md" style={{ marginBottom: "24px", color: "var(--text-dark-primary)", fontWeight: "600" }}>
+                  “Complete End-to-End Responsibility from Concept to Key Handover.”
+                </p>
+
+                <div className="about-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", marginTop: "24px" }}>
+                  <div style={{ padding: "18px", background: "var(--bg-light)", borderRadius: "var(--radius-brand-18)", border: "1px solid var(--border-light-subtle)" }}>
+                    <div style={{ fontSize: "var(--fs-28)", fontWeight: "800", color: "var(--text-dark-primary)", marginBottom: "4px" }}>8+ Years</div>
+                    <div style={{ fontSize: "var(--fs-14)", fontWeight: "700", color: "var(--text-dark-primary)" }}>Company Experience</div>
+                  </div>
+                  <div style={{ padding: "18px", background: "var(--bg-light)", borderRadius: "var(--radius-brand-18)", border: "1px solid var(--border-light-subtle)" }}>
+                    <div style={{ fontSize: "var(--fs-28)", fontWeight: "800", color: "var(--text-dark-primary)", marginBottom: "4px" }}>Venkatesh</div>
+                    <div style={{ fontSize: "var(--fs-14)", fontWeight: "700", color: "var(--text-dark-primary)" }}>CEO &amp; Founder</div>
+                  </div>
+                  <div style={{ padding: "18px", background: "var(--bg-light)", borderRadius: "var(--radius-brand-18)", border: "1px solid var(--border-light-subtle)" }}>
+                    <div style={{ fontSize: "var(--fs-28)", fontWeight: "800", color: "var(--text-dark-primary)", marginBottom: "4px" }}>100+ Homes</div>
+                    <div style={{ fontSize: "var(--fs-14)", fontWeight: "700", color: "var(--text-dark-primary)" }}>Turnkey Handover</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Parthu Interiors - 4 Pillars Section */}
+        <section className="section-py">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="display-md">Built on Real Trust &amp; Systems</h2>
+            </div>
+
+            <div className="features-grid">
+              <div className="feature-card">
+                <div className="featured-icon featured-icon-brand">
+                  <CheckCircleIcon size={24} color="#000000" />
+                </div>
+                <h3 className="feature-title">1. Clarity</h3>
+                <p className="feature-desc">
+                  Detailed advance project roadmaps explaining what happens when. Zero hidden surprises.
+                </p>
+              </div>
+
+              <div className="feature-card">
+                <div className="featured-icon featured-icon-brand">
+                  <SettingsIcon size={24} color="#000000" />
+                </div>
+                <h3 className="feature-title">2. Trust</h3>
+                <p className="feature-desc">
+                  100% written transparency across budgets, material specifications, and execution timelines.
+                </p>
+              </div>
+
+              <div className="feature-card">
+                <div className="featured-icon featured-icon-brand">
+                  <ShieldCheckIcon size={24} color="#000000" />
+                </div>
+                <h3 className="feature-title">3. Quality</h3>
+                <p className="feature-desc">
+                  Branded materials, clear core board thickness disclosure, and multi-stage quality checklists.
+                </p>
+              </div>
+
+              <div className="feature-card">
+                <div className="featured-icon featured-icon-brand">
+                  <DiamondIcon size={24} color="#000000" />
+                </div>
+                <h3 className="feature-title">4. Responsibility</h3>
+                <p className="feature-desc">
+                  Not just design ideas, a single dedicated team supervising your site right up to final handover.
+                </p>
+              </div>
+
+              <div className="feature-card">
+                <div className="featured-icon featured-icon-brand">
+                  <SparklesIcon size={24} color="#000000" />
+                </div>
+                <h3 className="feature-title">5. Free Planning Session</h3>
+                <p className="feature-desc">
+                  Home requirement reviews, lifestyle design direction, budget analysis &amp; preparation checklists.
+                </p>
+              </div>
+
+              <div className="feature-card">
+                <div className="featured-icon featured-icon-brand">
+                  <FactoryIcon size={24} color="#000000" />
+                </div>
+                <h3 className="feature-title">6. Experienced Leadership</h3>
+                <p className="feature-desc">
+                  Founded and led by CEO Venkatesh with 8 years of dedicated experience in turnkey residential interiors.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Banner */}
+        <section className="cta-dark-section" style={{ padding: "clamp(60px, 8vw, 90px) 0" }}>
+          <div className="container" style={{ textAlign: "center", maxWidth: "720px" }}>
+            <h2 className="cta-dark-title" style={{ fontSize: "24px", fontWeight: "700", lineHeight: "1.25", marginBottom: "16px" }}>
+              Clear Planning, Quality Execution &amp; Responsible Communication.
+            </h2>
+            <p className="cta-dark-desc" style={{ fontSize: "18px", color: "var(--text-light-secondary)", marginBottom: "28px", lineHeight: "1.6" }}>
+              Connect with our design team on WhatsApp or request a complimentary Home Interior Planning Session.
+            </p>
+            <div className="cta-actions" style={{ margin: "0 auto", justifyContent: "center" }}>
+              <button
+                onClick={() => setConsultationOpen(true)}
+                className="btn btn-primary btn-lg"
+              >
+                <span>Get a Free Quote</span>
+              </button>
+              <a
+                href={`https://wa.me/918790905746?text=${encodeURIComponent("Hi Parthu Interiors! 👋 I would like to request a Free Home Interior Planning Session.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp btn-lg"
+                style={{ gap: "8px" }}
+              >
+                <WhatsAppIcon size={18} />
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+      <ConsultationModal isOpen={consultationOpen} onClose={() => setConsultationOpen(false)} />
+    </>
+  );
+}

@@ -1,0 +1,456 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Footer from "../components/Footer";
+import ConsultationModal from "../components/ConsultationModal";
+import ChoiceChips, { ChoiceOption } from "../components/ui/ChoiceChips";
+import { submitLeadToGoogleSheet, openWhatsAppLeadChat } from "../lib/leadSubmission";
+import {
+  MapPinIcon,
+  PhoneIcon,
+  MailIcon,
+  CheckCircleIcon,
+  ArrowRightIcon,
+  BuildingIcon,
+  ClockIcon,
+  LockIcon,
+  WhatsAppIcon
+} from "../components/Icons";
+
+const PROPERTY_OPTIONS: ChoiceOption[] = [
+  { value: "2 BHK Apartment", label: "2 BHK" },
+  { value: "3 BHK Apartment", label: "3 BHK" },
+  { value: "Villa / House", label: "Villa / House" },
+  { value: "Home Renovation", label: "Renovation" },
+];
+
+export default function ContactPage() {
+  const [consultationOpen, setConsultationOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
+
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    projectType: "",
+    location: "",
+    message: "",
+    budget: "",
+    timeToStart: ""
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const cleanPhone = form.phone.trim();
+    const formattedPhone = cleanPhone.startsWith("+91") ? cleanPhone : `+91 ${cleanPhone}`;
+
+    const leadPayload = {
+      name: form.name || "Client",
+      phone: formattedPhone,
+      email: form.email,
+      propertyType: form.projectType,
+      location: form.location || "Hyderabad",
+      budget: form.budget,
+      timeToStart: form.timeToStart,
+      message: form.message,
+      source: "Contact Page Form",
+    };
+
+    await submitLeadToGoogleSheet(leadPayload);
+
+    setIsSubmitting(false);
+    setSubmitted(true);
+
+    setTimeout(() => {
+      openWhatsAppLeadChat(leadPayload);
+    }, 800);
+  };
+
+  return (
+    <>
+      <main style={{ background: "#060606", color: "#FFFFFF", minHeight: "100vh" }}>
+        {/* Contact Hero & Main Details */}
+        <section className="section-py inner-page-hero">
+          <div className="container">
+            <div className="section-header" style={{ marginBottom: "40px" }}>
+              <h1 className="display-lg">
+                Your Dream Space Starts with a Conversation
+              </h1>
+              <p className="text-xl" style={{ marginTop: "16px" }}>
+                Whether you are moving into a new home, building your dream house or renovating an existing space, Parthu Interiors is ready to help bring your vision to life.
+              </p>
+            </div>
+
+            <div className="contact-grid">
+              {/* Left Column: Direct Info */}
+              <div className="contact-info-stack">
+                <div className="contact-info-card">
+                  <div className="icon-wrapper">
+                    <MapPinIcon size={24} color="#000000" />
+                  </div>
+                  <div>
+                    <h3 className="card-title">Location</h3>
+                    <p className="card-desc" style={{ marginTop: "6px", lineHeight: "1.6" }}>
+                      Parthu Interiors<br />
+                      📍 Hyderabad and nearby areas, Telangana, India
+                    </p>
+                  </div>
+                </div>
+
+                <div className="contact-info-card">
+                  <div className="icon-wrapper">
+                    <PhoneIcon size={24} color="#000000" />
+                  </div>
+                  <div>
+                    <h3 className="card-title">Direct Phone &amp; WhatsApp</h3>
+                    <p className="card-desc" style={{ marginTop: "6px" }}>
+                      +91 87909 05746
+                    </p>
+                    <p className="card-desc" style={{ marginTop: "4px", fontSize: "14px" }}>
+                      Monday - Sunday: 9:30 AM to 8:30 PM IST
+                    </p>
+                  </div>
+                </div>
+
+                <div className="contact-info-card">
+                  <div className="icon-wrapper">
+                    <MailIcon size={24} color="#000000" />
+                  </div>
+                  <div>
+                    <h3 className="card-title">Email Inquiries</h3>
+                    <p className="card-desc" style={{ marginTop: "6px" }}>
+                      parthuinteriors.hyderabad@gmail.com
+                    </p>
+                  </div>
+                </div>
+
+                {/* WhatsApp Quick Box */}
+                <div className="contact-whatsapp-box">
+                  <div>
+                    <div className="contact-whatsapp-title">
+                      Instant WhatsApp Consultation
+                    </div>
+                    <div className="contact-whatsapp-sub">
+                      Share your requirements directly with our team.
+                    </div>
+                  </div>
+                  <a
+                    href={`https://wa.me/918790905746?text=${encodeURIComponent("Hi Parthu Interiors! 👋 I would like to request a Free Home Interior Planning Session.")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-whatsapp btn-sm"
+                  >
+                    <WhatsAppIcon size={18} />
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Column: Interactive Contact Form */}
+              <div className="contact-form-card">
+                {submitted ? (
+                  <div className="form-success-state">
+                    <div className="form-success-icon featured-icon featured-icon-brand">
+                      <CheckCircleIcon size={32} color="#C1121F" />
+                    </div>
+                    <h2 className="form-success-title">
+                      Inquiry Submitted!
+                    </h2>
+                    <p className="form-success-desc">
+                      Thank you for reaching out to Parthu Interiors. Opening WhatsApp chat for express communication with our design team...
+                    </p>
+                    <button
+                      className="btn btn-primary btn-md"
+                      onClick={() => setSubmitted(false)}
+                    >
+                      Send Another Message
+                    </button>
+                  </div>
+                ) : (
+                  <div>
+                    <h2 className="contact-form-card-title">
+                      Send Us A Message
+                    </h2>
+                    <p className="contact-form-card-subtitle">
+                      Fill in your details below and our team will prepare a preliminary estimate.
+                    </p>
+
+                    <form onSubmit={handleSubmit}>
+                      <div className="form-group">
+                        <label className="form-label">Full Name</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. Ananya Rao"
+                          className="form-input"
+                          value={form.name}
+                          onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        />
+                      </div>
+
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label className="form-label">WhatsApp Number *</label>
+                          <div className="phone-input-group">
+                            <span className="phone-prefix">+91</span>
+                            <span className="phone-separator" />
+                            <input
+                              type="tel"
+                              required
+                              placeholder="98765 43210"
+                              className="phone-input"
+                              value={form.phone}
+                              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="form-group">
+                          <label className="form-label">Email Address</label>
+                          <input
+                            type="email"
+                            placeholder="e.g. ananya@gmail.com"
+                            className="form-input"
+                            value={form.email}
+                            onChange={(e) => setForm({ ...form, email: e.target.value })}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="form-group">
+                        <label className="form-label">Site / Property Location *</label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="e.g. Magna Solitaire, Kokapet / Narsingi"
+                          className="form-input"
+                          value={form.location}
+                          onChange={(e) => setForm({ ...form, location: e.target.value })}
+                        />
+                      </div>
+
+                      {/* Interactive Choice Chips */}
+                      <ChoiceChips
+                        label="Property / Project Type"
+                        options={PROPERTY_OPTIONS}
+                        selectedValue={form.projectType}
+                        onChange={(val) => setForm({ ...form, projectType: val })}
+                        variant="light"
+                      />
+
+                      <div className="form-group">
+                        <label className="form-label">Your Message or Specific Requirements</label>
+                        <textarea
+                          rows={3}
+                          placeholder="Tell us about your floor plan, preferred style, or required completion timeline..."
+                          className="form-textarea"
+                          value={form.message}
+                          onChange={(e) => setForm({ ...form, message: e.target.value })}
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="btn btn-primary btn-lg w-full"
+                        style={{ width: "100%" }}
+                      >
+                        <span>{isSubmitting ? "Submitting..." : "Submit Inquiry"}</span>
+                      </button>
+
+                      <div className="modal-privacy-note">
+                        <LockIcon size={14} color="#C1121F" />
+                        <span>Strictly confidential. No promotional spam.</span>
+                      </div>
+                    </form>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Map / Location Highlight (2-Column Left & Right Grid Layout) */}
+        <section className="section-py contact-map-section">
+          <div className="container">
+            <div className="contact-map-grid">
+              {/* Left Column: Details & Actions */}
+              <div className="contact-map-info">
+                <h2 className="display-md" style={{ marginBottom: "16px", color: "var(--text-dark-primary)" }}>
+                  Office &amp; Experience Center
+                </h2>
+                <p className="text-lg" style={{ color: "var(--text-dark-secondary)", lineHeight: "1.6", marginBottom: "28px" }}>
+                  Walk through live room setups, inspect German hardware, and consult with our interior design experts.
+                </p>
+
+                {/* Location & Hours Detail Cards */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "32px" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "14px", background: "#FFFFFF", padding: "18px 20px", borderRadius: "var(--radius-brand-18)", border: "1px solid var(--border-light-subtle)", boxShadow: "0 4px 16px rgba(0,0,0,0.02)" }}>
+                    <div className="featured-icon featured-icon-brand" style={{ width: "42px", height: "42px", flexShrink: 0, marginTop: "2px" }}>
+                      <MapPinIcon size={20} color="#000000" />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: "700", fontSize: "15px", color: "var(--text-dark-primary)", marginBottom: "4px" }}>
+                        Office &amp; Experience Center Address
+                      </div>
+                      <div style={{ fontSize: "14px", color: "var(--text-dark-secondary)", lineHeight: "1.5" }}>
+                        Kukatpally, Hyderabad, Telangana 500072
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "14px", background: "#FFFFFF", padding: "18px 20px", borderRadius: "var(--radius-brand-18)", border: "1px solid var(--border-light-subtle)", boxShadow: "0 4px 16px rgba(0,0,0,0.02)" }}>
+                    <div className="featured-icon featured-icon-brand" style={{ width: "42px", height: "42px", flexShrink: 0, marginTop: "2px" }}>
+                      <ClockIcon size={20} color="#000000" />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: "700", fontSize: "15px", color: "var(--text-dark-primary)", marginBottom: "4px" }}>
+                        Visiting Hours &amp; Appointments
+                      </div>
+                      <div style={{ fontSize: "14px", color: "var(--text-dark-secondary)", lineHeight: "1.5" }}>
+                        Monday - Sunday: 10:00 AM - 7:30 PM (Walk-ins &amp; Guided Tours Welcome)
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Direct Action Buttons */}
+                <div className="contact-action-btns">
+                  <a
+                    href="https://maps.google.com/?q=Kukatpally+Hyderabad"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-md"
+                    style={{ gap: "8px", borderRadius: "var(--radius-pill)" }}
+                  >
+                    <MapPinIcon size={16} />
+                    <span>Open in Maps</span>
+                  </a>
+                  <a
+                    href="tel:+918790905746"
+                    className="btn btn-secondary btn-md"
+                    style={{ gap: "8px", borderRadius: "var(--radius-pill)" }}
+                  >
+                    <PhoneIcon size={16} />
+                    <span>Call +91 87909 05746</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Column: Midnight Dark Luxury Map Container */}
+              <div className="contact-map-box">
+                <iframe
+                  title="Parthu Interiors Location Map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.728984021272!2d78.432822!3d17.373441!2m3!1f0f0f0f0!3f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb974712e096db%3A0x6b8f36cb76e27b61!2sAttapur%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="theme-dark"
+                />
+
+                {/* Top-Left "Open in Maps" Pill Button (9999px Radius) */}
+                <a
+                  href="https://maps.google.com/?q=Attapur+Hyderabad"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    position: "absolute",
+                    top: "16px",
+                    left: "16px",
+                    zIndex: 10,
+                    backgroundColor: "#060606",
+                    color: "#C1121F",
+                    fontWeight: "700",
+                    fontSize: "13px",
+                    padding: "10px 20px",
+                    borderRadius: "var(--radius-pill)",
+                    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.25)",
+                    border: "1px solid rgba(255, 99, 100, 0.35)",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <span>Open in Maps</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </a>
+
+                {/* Center Sonar Pulse Location Marker */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -100%)",
+                    zIndex: 9,
+                    pointerEvents: "none",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      background: "rgba(6, 6, 6, 0.9)",
+                      color: "#FFFFFF",
+                      backdropFilter: "blur(8px)",
+                      WebkitBackdropFilter: "blur(8px)",
+                      padding: "6px 14px",
+                      borderRadius: "var(--radius-pill)",
+                      fontSize: "11px",
+                      fontWeight: "700",
+                      letterSpacing: "0.02em",
+                      border: "1px solid rgba(255, 99, 100, 0.4)",
+                      boxShadow: "0 8px 20px rgba(0,0,0,0.4)",
+                      marginBottom: "6px",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    Parthu Interiors Studio &amp; Execution HQ
+                  </div>
+                  <div style={{ position: "relative", width: "24px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span
+                      style={{
+                        position: "absolute",
+                        width: "24px",
+                        height: "24px",
+                        borderRadius: "var(--radius-circle)",
+                        backgroundColor: "rgba(255, 99, 100, 0.35)",
+                        animation: "sonarPulse 2s infinite ease-out",
+                      }}
+                    />
+                    <span
+                      style={{
+                        width: "12px",
+                        height: "12px",
+                        borderRadius: "var(--radius-circle)",
+                        backgroundColor: "#C1121F",
+                        boxShadow: "0 0 12px #C1121F",
+                        border: "2px solid #050505",
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+      <ConsultationModal isOpen={consultationOpen} onClose={() => setConsultationOpen(false)} />
+    </>
+  );
+}
