@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
     };
   }
 
-  const canonicalUrl = `https://parthuinteriors.com/services/${service.id}`;
+  const canonicalUrl = `https://parthuinteriors.in/services/${service.id}`;
 
   return {
     title: service.metaTitle || `${service.title} Interior Design Hyderabad | Parthu Interiors`,
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
       type: "website",
       images: [
         {
-          url: `https://parthuinteriors.com${service.mainImage}`,
+          url: `https://parthuinteriors.in${service.mainImage}`,
           alt: `${service.title} - Parthu Interiors Hyderabad`
         }
       ]
@@ -66,19 +66,19 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.com"
+        "item": "https://parthuinteriors.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://parthuinteriors.com/services"
+        "item": "https://parthuinteriors.in/services"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": service.title,
-        "item": `https://parthuinteriors.com/services/${service.id}`
+        "item": `https://parthuinteriors.in/services/${service.id}`
       }
     ]
   };
@@ -91,7 +91,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
     "provider": {
       "@type": "InteriorDesignStudio",
       "name": "Parthu Interiors",
-      "url": "https://parthuinteriors.com"
+      "url": "https://parthuinteriors.in"
     },
     "areaServed": {
       "@type": "City",

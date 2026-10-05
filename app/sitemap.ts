@@ -5,7 +5,7 @@ import { projectsData } from './lib/projectsData';
 import { getPublishedBlogs } from './lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://parthuinteriors.com';
+  const baseUrl = 'https://parthuinteriors.in';
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {

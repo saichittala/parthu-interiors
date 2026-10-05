@@ -18,13 +18,13 @@ export const defaultOrganizationSchema = {
   "@graph": [
     {
       "@type": ["InteriorDesignStudio", "LocalBusiness", "HomeAndConstructionBusiness"],
-      "@id": "https://parthuinteriors.com/#organization",
+      "@id": "https://parthuinteriors.in/#organization",
       "name": "Parthu Interiors",
       "legalName": "Parthu Interiors",
       "alternateName": ["Parthu Interiors", "Parthu Interiors Interiors"],
-      "url": "https://parthuinteriors.com",
-      "logo": "https://parthuinteriors.com/logo.png",
-      "image": "https://parthuinteriors.com/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
+      "url": "https://parthuinteriors.in",
+      "logo": "https://parthuinteriors.in/logo.png",
+      "image": "https://parthuinteriors.in/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
       "description": "Turnkey residential interior design and execution firm in Hyderabad, Telangana. Specializing in luxury 2BHK/3BHK apartments, villas, modular kitchens & bespoke woodwork.",
       "telephone": "+91-8790905746",
       "email": "parthuinteriors.hyderabad@gmail.com",
@@ -62,22 +62,22 @@ export const defaultOrganizationSchema = {
         "name": "Venkatesh",
         "jobTitle": "CEO & Founder",
         "worksFor": {
-          "@id": "https://parthuinteriors.com/#organization"
+          "@id": "https://parthuinteriors.in/#organization"
         }
       },
       "foundingDate": "2018",
       "knowsAbout": ["Turnkey Residential Interiors", "Modular Kitchen Design", "Luxury Living Suites", "Villa Interiors"],
       "sameAs": [
-        "https://parthuinteriors.com"
+        "https://parthuinteriors.in"
       ]
     },
     {
       "@type": "WebSite",
-      "@id": "https://parthuinteriors.com/#website",
-      "url": "https://parthuinteriors.com",
+      "@id": "https://parthuinteriors.in/#website",
+      "url": "https://parthuinteriors.in",
       "name": "Parthu Interiors",
       "publisher": {
-        "@id": "https://parthuinteriors.com/#organization"
+        "@id": "https://parthuinteriors.in/#organization"
       }
     }
   ]

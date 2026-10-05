@@ -4,7 +4,7 @@ const path = require('path');
 const DB_PATH = path.join(__dirname, '..', 'content', 'blogs.json');
 const SITEMAP_PATH = path.join(__dirname, '..', 'public', 'sitemap.xml');
 
-const BASE_URL = 'https://parthuinteriors.com';
+const BASE_URL = 'https://parthuinteriors.in';
 
 async function syncBlogsFromGAS() {
   const blogsUrl = process.env.GOOGLE_SCRIPT_BLOGS_URL;

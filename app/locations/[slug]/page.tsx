@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
     };
   }
 
-  const canonicalUrl = `https://parthuinteriors.com/locations/${location.slug}`;
+  const canonicalUrl = `https://parthuinteriors.in/locations/${location.slug}`;
 
   return {
     title: location.metaTitle,
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
       type: "website",
       images: [
         {
-          url: `https://parthuinteriors.com${location.featuredImage}`,
+          url: `https://parthuinteriors.in${location.featuredImage}`,
           alt: `${location.name} Interior Design - Parthu Interiors`
         }
       ]
@@ -81,19 +81,19 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.com"
+        "item": "https://parthuinteriors.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Locations",
-        "item": "https://parthuinteriors.com/locations"
+        "item": "https://parthuinteriors.in/locations"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": location.name,
-        "item": `https://parthuinteriors.com/locations/${location.slug}`
+        "item": `https://parthuinteriors.in/locations/${location.slug}`
       }
     ]
   };

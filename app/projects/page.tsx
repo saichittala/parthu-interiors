@@ -11,12 +11,12 @@ export const metadata = {
   title: "Interior Design Portfolio & Projects in Hyderabad | Parthu Interiors",
   description: "Browse real completed residential interior design projects across Kokapet, Financial District, Jubilee Hills, Gachibowli & Madhapur by Parthu Interiors.",
   alternates: {
-    canonical: "https://parthuinteriors.com/projects"
+    canonical: "https://parthuinteriors.in/projects"
   },
   openGraph: {
     title: "Interior Design Portfolio & Projects in Hyderabad | Parthu Interiors",
     description: "Explore real luxury villa and apartment interior projects in Hyderabad.",
-    url: "https://parthuinteriors.com/projects",
+    url: "https://parthuinteriors.in/projects",
     siteName: "Parthu Interiors",
     type: "website"
   }
@@ -31,13 +31,13 @@ export default function ProjectsPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.com"
+        "item": "https://parthuinteriors.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Projects",
-        "item": "https://parthuinteriors.com/projects"
+        "item": "https://parthuinteriors.in/projects"
       }
     ]
   };

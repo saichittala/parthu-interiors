@@ -6,12 +6,12 @@ export const metadata = {
   title: "Residential Interior Design Services in Hyderabad | Parthu Interiors",
   description: "Explore turnkey interior design services in Hyderabad. Modular kitchens, luxury bedrooms, living suites, wardrobes, pooja rooms & office space interiors.",
   alternates: {
-    canonical: "https://parthuinteriors.com/services"
+    canonical: "https://parthuinteriors.in/services"
   },
   openGraph: {
     title: "Residential Interior Design Services in Hyderabad | Parthu Interiors",
     description: "Complete residential interior design & turnkey execution services in Hyderabad.",
-    url: "https://parthuinteriors.com/services",
+    url: "https://parthuinteriors.in/services",
     siteName: "Parthu Interiors",
     type: "website"
   }
@@ -26,13 +26,13 @@ export default function ServicesPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.com"
+        "item": "https://parthuinteriors.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://parthuinteriors.com/services"
+        "item": "https://parthuinteriors.in/services"
       }
     ]
   };

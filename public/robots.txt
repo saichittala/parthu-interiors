@@ -25,4 +25,4 @@ Allow: /
 Disallow: /_next/
 Disallow: /api/
 
-Sitemap: https://parthuinteriors.com/sitemap.xml
+Sitemap: https://parthuinteriors.in/sitemap.xml

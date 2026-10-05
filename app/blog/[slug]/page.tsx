@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
     };
   }
 
-  const canonicalUrl = post.canonicalUrl || `https://parthuinteriors.com/blog/${post.slug}`;
+  const canonicalUrl = post.canonicalUrl || `https://parthuinteriors.in/blog/${post.slug}`;
 
   return {
     title: post.metaTitle || post.title,
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
       authors: [post.author || "Parthu Interiors Team"],
       images: [
         {
-          url: post.ogImage || post.featuredImage || "https://parthuinteriors.com/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
+          url: post.ogImage || post.featuredImage || "https://parthuinteriors.in/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
           alt: post.title
         }
       ]
@@ -79,19 +79,19 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.com"
+        "item": "https://parthuinteriors.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://parthuinteriors.com/blog"
+        "item": "https://parthuinteriors.in/blog"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://parthuinteriors.com/blog/${post.slug}`
+        "item": `https://parthuinteriors.in/blog/${post.slug}`
       }
     ]
   };
@@ -101,7 +101,7 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.description,
-    "image": post.featuredImage || "https://parthuinteriors.com/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
+    "image": post.featuredImage || "https://parthuinteriors.in/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
     "datePublished": post.publishedDate,
     "dateModified": post.updatedDate || post.publishedDate,
     "author": {
@@ -113,10 +113,10 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
       "name": "Parthu Interiors",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://parthuinteriors.com/logo.png"
+        "url": "https://parthuinteriors.in/logo.png"
       }
     },
-    "mainEntityOfPage": `https://parthuinteriors.com/blog/${post.slug}`
+    "mainEntityOfPage": `https://parthuinteriors.in/blog/${post.slug}`
   };
 
   const faqSchema = post.faq && post.faq.length > 0 ? {

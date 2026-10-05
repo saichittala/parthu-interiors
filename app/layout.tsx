@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Parthu Interiors | Premium Interior Design & Turnkey Execution Services",
     description: "Complete end-to-end responsibility from initial design to final handover. Advance planning, transparent budgeting, premium materials & regular site updates to complete your dream home stress-free.",
-    url: "https://parthuinteriors.com",
+    url: "https://parthuinteriors.in",
     siteName: "Parthu Interiors",
     images: [
       {
