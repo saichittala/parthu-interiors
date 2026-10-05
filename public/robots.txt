@@ -22,7 +22,6 @@ User-agent: Bingbot
 Allow: /
 
 # Disallow admin or dynamic internal endpoints if any
-Disallow: /_next/
 Disallow: /api/
 
 Sitemap: https://parthuinteriors.in/sitemap.xml

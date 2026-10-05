@@ -11,6 +11,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://parthuinteriors.in"),
   title: "Parthu Interiors | Premium Interior Design & Turnkey Execution Hyderabad",
   description: "Complete end-to-end responsibility from initial design to final handover. Advance planning, transparent budgeting, premium materials & regular site updates to make your dream home interior journey stress-free - Parthu Interiors.",
   keywords: [
