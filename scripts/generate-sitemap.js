@@ -52,6 +52,8 @@ function generate() {
     { url: '/projects', priority: '0.8', changefreq: 'weekly' },
     { url: '/blog', priority: '0.8', changefreq: 'daily' },
     { url: '/contact', priority: '0.8', changefreq: 'monthly' },
+    { url: '/terms', priority: '0.5', changefreq: 'monthly' },
+    { url: '/privacy', priority: '0.5', changefreq: 'monthly' },
   ];
 
   const services = [
