@@ -756,7 +756,7 @@ textarea:disabled,
 
 /* Section header bottom spacing utility */
 .section-header--mb {
-  margin-bottom: clamp(48px, 5vw, 64px);
+  margin-bottom: clamp(24px, 3.5vw, 36px) !important;
 }
 
 /* Projects CTA row (View All / Show Less button row) */

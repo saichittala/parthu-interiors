@@ -814,26 +814,16 @@ export default function HomePage() {
           <div className="container">
             <ScrollBlurFadeIn>
               <div
-                className="section-header section-header--left section-header--mb"
+                className="section-header section-header--left"
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "flex-end",
-                  gap: "40px",
-                  flexWrap: "wrap",
-                  marginBottom: "48px"
+                  marginBottom: "28px",
+                  maxWidth: "900px"
                 }}
               >
-                <div style={{ flex: "1 1 450px", minWidth: "280px" }}>
-
-                  <h2 className="display-md" style={{ margin: 0 }}>Our Approach &amp; 4-Step Process</h2>
-                </div>
-                <div style={{ flex: "1 1 480px", minWidth: "280px" }}>
-                  <p style={{ margin: 0, color: "rgba(255, 255, 255, 0.75)", fontSize: "1.05rem", lineHeight: "1.6" }}>
-                    We don’t believe in a one-size-fits-all approach. Every project begins with understanding your requirements and vision. We carefully analyse the available space and develop customised solutions that balance aesthetics, functionality and budget.
-                  </p>
-                </div>
+                <h2 className="display-md" style={{ margin: "0 0 12px 0" }}>Our Approach &amp; 4-Step Process</h2>
+                <p style={{ margin: 0, color: "rgba(255, 255, 255, 0.75)", fontSize: "1.02rem", lineHeight: "1.6" }}>
+                  We don’t believe in a one-size-fits-all approach. Every project begins with understanding your requirements and vision. We carefully analyse the available space and develop customised solutions that balance aesthetics, functionality and budget.
+                </p>
               </div>
 
               <div className="process-steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "24px" }}>
