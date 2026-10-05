@@ -1044,7 +1044,7 @@ export default function HomePage() {
           <div className="container">
             <div className="cta-dark-grid">
               <div>
-                <h2 className="cta-hero-title">
+                <h2 className="cta-hero-title" style={{ lineHeight: "1.35", marginBottom: "20px" }}>
                   Your Dream Space Starts<br />
                   <span className="cta-hero-title-accent">with a Conversation</span>
                 </h2>

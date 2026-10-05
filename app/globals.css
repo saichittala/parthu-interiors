@@ -3453,10 +3453,10 @@ main {
 .cta-hero-title {
   font-family: var(--font-heading) !important;
   font-size: clamp(var(--fs-34), 4.2vw, var(--fs-52));
-  line-height: 1.1;
+  line-height: 1.35 !important;
   font-weight: var(--fw-bold) !important;
   color: var(--text-light-primary) !important;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   letter-spacing: var(--letter-spacing);
 }
 
