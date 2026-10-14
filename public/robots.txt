@@ -1,8 +1,16 @@
 # Parthu Interiors Robots.txt
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /private/
 
-# Explicit AI Search Engine Crawler Directives (ChatGPT Search, Perplexity, Claude)
+# Explicit Search Engine and AI Crawler Directives
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: OAI-SearchBot
 Allow: /
 
@@ -15,13 +23,5 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-# Disallow admin or dynamic internal endpoints if any
-Disallow: /api/
-
 Sitemap: https://parthuinteriors.in/sitemap.xml
+Host: https://parthuinteriors.in

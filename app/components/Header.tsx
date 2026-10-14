@@ -112,6 +112,8 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
+    { name: "Locations", href: "/locations" },
+    { name: "Blog", href: "/blog" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
@@ -121,6 +123,8 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
     if (link.href === "/contact") return pathname === "/contact";
     if (link.href === "/services") return pathname.startsWith("/services");
     if (link.href === "/projects") return pathname.startsWith("/projects");
+    if (link.href === "/locations") return pathname.startsWith("/locations");
+    if (link.href === "/blog") return pathname.startsWith("/blog");
     if (link.href === "/") return pathname === "/" && (activeSection === "home" || !activeSection);
     return pathname === link.href;
   };
@@ -470,7 +474,7 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
                 </a>
 
                 <a
-                  href="https://wa.me/918790905746?text=Hi%20DV%20HOMES!%20I%20would%20like%20to%20request%20a%20Free%20Home%20Interior%20Planning%20Session."
+                  href="https://wa.me/918790905746?text=Hi%20Parthu%20Interiors!%20I%20would%20like%20to%20request%20a%20Free%20Home%20Interior%20Planning%20Session."
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{

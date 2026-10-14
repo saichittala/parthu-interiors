@@ -12,6 +12,20 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://parthuinteriors.in"),
+  alternates: {
+    canonical: "https://parthuinteriors.in",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   title: "Parthu Interiors | Premium Interior Design & Turnkey Execution Hyderabad",
   description: "Complete end-to-end responsibility from initial design to final handover. Advance planning, transparent budgeting, premium materials & regular site updates to make your dream home interior journey stress-free - Parthu Interiors.",
   keywords: [
@@ -42,11 +56,22 @@ export const metadata: Metadata = {
     locale: "en_IN",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Parthu Interiors | Premium Interior Design & Turnkey Execution Hyderabad",
+    description: "Complete end-to-end responsibility from initial design to final handover. Transparent budgeting & 10-year warranty.",
+    images: ["/assets/logoo.png"],
+  },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
       { url: "/assets/favicon.png", type: "image/png" }
     ],
-    apple: "/assets/favicon.png"
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+    ],
+    shortcut: "/favicon.ico"
   }
 };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Logo from "./Logo";
+import { locationsData } from "../lib/locationsData";
 import {
   MapPinIcon,
   PhoneIcon,
@@ -125,28 +126,7 @@ export default function Footer() {
                 alignItems: "center"
               }}
             >
-              {[
-                { name: "Kukatpally", slug: "kukatpally" },
-                { name: "KPHB", slug: "kphb" },
-                { name: "Madhapur", slug: "madhapur" },
-                { name: "Gachibowli", slug: "gachibowli" },
-                { name: "Kondapur", slug: "kondapur" },
-                { name: "HITEC City", slug: "hitec-city" },
-                { name: "Jubilee Hills", slug: "jubilee-hills" },
-                { name: "Banjara Hills", slug: "banjara-hills" },
-                { name: "Kokapet", slug: "kokapet" },
-                { name: "Kompally", slug: "kompally" },
-                { name: "Tellapur", slug: "tellapur" },
-                { name: "Narsingi", slug: "narsingi" },
-                { name: "Puppalguda", slug: "puppalguda" },
-                { name: "Financial District", slug: "financial-district" },
-                { name: "Manikonda", slug: "manikonda" },
-                { name: "Miyapur", slug: "miyapur" },
-                { name: "Bachupally", slug: "bachupally" },
-                { name: "Mokila", slug: "mokila" },
-                { name: "Kollur", slug: "kollur" },
-                { name: "Ameenpur", slug: "ameenpur" }
-              ].map((area) => (
+              {locationsData.map((area) => (
                 <Link
                   key={area.slug}
                   href={`/locations/${area.slug}`}

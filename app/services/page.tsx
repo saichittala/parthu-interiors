@@ -13,7 +13,15 @@ export const metadata = {
     description: "Complete residential interior design & turnkey execution services in Hyderabad.",
     url: "https://parthuinteriors.in/services",
     siteName: "Parthu Interiors",
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: "/assets/logoo.png",
+        width: 1024,
+        height: 360,
+        alt: "Parthu Interiors Residential Interior Services Hyderabad",
+      },
+    ],
   }
 };
 

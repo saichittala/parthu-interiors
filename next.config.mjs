@@ -27,6 +27,36 @@ const nextConfig = {
   },
   transpilePackages: [],
   ...(!isStaticExport && {
+    async redirects() {
+      return [
+        {
+          source: '/:path*',
+          has: [
+            {
+              type: 'host',
+              value: 'www.parthuinteriors.in',
+            },
+          ],
+          destination: 'https://parthuinteriors.in/:path*',
+          permanent: true,
+        },
+        {
+          source: '/home',
+          destination: '/',
+          permanent: true,
+        },
+        {
+          source: '/index',
+          destination: '/',
+          permanent: true,
+        },
+        {
+          source: '/index.html',
+          destination: '/',
+          permanent: true,
+        },
+      ];
+    },
     async headers() {
       return [
         {

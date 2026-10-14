@@ -31,6 +31,9 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
   const canonicalUrl = post.canonicalUrl || `https://parthuinteriors.in/blog/${post.slug}`;
 
+  const ogImg = post.ogImage || post.featuredImage || "/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp";
+  const absoluteOgImg = ogImg.startsWith("http") ? ogImg : `https://parthuinteriors.in${ogImg}`;
+
   return {
     title: post.metaTitle || post.title,
     description: post.metaDescription || post.description,
@@ -49,7 +52,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
       authors: [post.author || "Parthu Interiors Team"],
       images: [
         {
-          url: post.ogImage || post.featuredImage || "https://parthuinteriors.in/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
+          url: absoluteOgImg,
           alt: post.title
         }
       ]
@@ -96,12 +99,15 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
     ]
   };
 
+  const postImage = post.featuredImage || "/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp";
+  const absolutePostImage = postImage.startsWith("http") ? postImage : `https://parthuinteriors.in${postImage}`;
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.description,
-    "image": post.featuredImage || "https://parthuinteriors.in/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
+    "image": absolutePostImage,
     "datePublished": post.publishedDate,
     "dateModified": post.updatedDate || post.publishedDate,
     "author": {

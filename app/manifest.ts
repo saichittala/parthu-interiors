@@ -14,12 +14,17 @@ export default function manifest(): MetadataRoute.Manifest {
     icons: [
       {
         src: "/assets/favicon.png",
-        sizes: "16x16",
+        sizes: "32x32",
         type: "image/png",
       },
       {
-        src: "/assets/apple-touch-icon.png",
+        src: "/apple-touch-icon.png",
         sizes: "180x180",
+        type: "image/png",
+      },
+      {
+        src: "/assets/logoo.png",
+        sizes: "512x512",
         type: "image/png",
       },
     ],

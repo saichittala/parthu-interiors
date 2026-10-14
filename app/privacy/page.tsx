@@ -1,11 +1,21 @@
 import React from "react";
+import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy | Parthu Interiors Hyderabad",
   description: "Privacy policy detailing data collection, lead processing, customer privacy, and protection standards at Parthu Interiors Hyderabad.",
-  canonical: "https://parthuinteriors.in/privacy",
+  alternates: {
+    canonical: "https://parthuinteriors.in/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | Parthu Interiors Hyderabad",
+    description: "Privacy policy detailing data collection and customer privacy standards at Parthu Interiors.",
+    url: "https://parthuinteriors.in/privacy",
+    siteName: "Parthu Interiors",
+    type: "website",
+  },
 };
 
 export default function PrivacyPage() {

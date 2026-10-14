@@ -1,12 +1,21 @@
 import React from "react";
-import Metadata from "next";
+import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Terms & Conditions | Parthu Interiors Hyderabad",
   description: "Terms and conditions governing turnkey residential interior design, execution contracts, payment schedules, and structural warranties with Parthu Interiors in Hyderabad.",
-  canonical: "https://parthuinteriors.in/terms",
+  alternates: {
+    canonical: "https://parthuinteriors.in/terms",
+  },
+  openGraph: {
+    title: "Terms & Conditions | Parthu Interiors Hyderabad",
+    description: "Terms and conditions governing turnkey residential interior design & execution contracts.",
+    url: "https://parthuinteriors.in/terms",
+    siteName: "Parthu Interiors",
+    type: "website",
+  },
 };
 
 export default function TermsPage() {

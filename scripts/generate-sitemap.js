@@ -3,6 +3,9 @@ const path = require('path');
 
 const DB_PATH = path.join(__dirname, '..', 'content', 'blogs.json');
 const SITEMAP_PATH = path.join(__dirname, '..', 'public', 'sitemap.xml');
+const LOCATIONS_PATH = path.join(__dirname, '..', 'app', 'lib', 'locationsData.ts');
+const SERVICES_PATH = path.join(__dirname, '..', 'app', 'lib', 'servicesData.ts');
+const PROJECTS_PATH = path.join(__dirname, '..', 'app', 'lib', 'projectsData.ts');
 
 const BASE_URL = 'https://parthuinteriors.in';
 
@@ -31,6 +34,20 @@ async function syncBlogsFromGAS() {
   }
 }
 
+function extractIdsOrSlugs(filePath, keyName) {
+  if (!fs.existsSync(filePath)) return [];
+  const text = fs.readFileSync(filePath, 'utf8');
+  const regex = new RegExp(keyName + '\\s*:\\s*["\']([^"\']+)["\']', 'g');
+  const results = [];
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    if (!results.includes(match[1])) {
+      results.push(match[1]);
+    }
+  }
+  return results;
+}
+
 function generate() {
   let blogs = [];
   if (fs.existsSync(DB_PATH)) {
@@ -45,7 +62,7 @@ function generate() {
   const dateStr = new Date().toISOString().split('T')[0];
 
   const staticPages = [
-    { url: '/', priority: '1.0', changefreq: 'weekly' },
+    { url: '', priority: '1.0', changefreq: 'weekly' },
     { url: '/about', priority: '0.8', changefreq: 'monthly' },
     { url: '/services', priority: '0.9', changefreq: 'weekly' },
     { url: '/locations', priority: '0.9', changefreq: 'weekly' },
@@ -56,49 +73,9 @@ function generate() {
     { url: '/privacy', priority: '0.5', changefreq: 'monthly' },
   ];
 
-  const services = [
-    "home-interior-design",
-    "luxury-interior-design",
-    "apartment-interiors",
-    "villa-interiors",
-    "modular-kitchens",
-    "wardrobe-design",
-    "turnkey-interiors",
-    "bedrooms",
-    "kitchens",
-    "living-rooms",
-    "dining-rooms",
-    "puja",
-    "partitions",
-    "study-rooms",
-    "office-spaces"
-  ];
-
-  const locations = [
-    "madhapur",
-    "gachibowli",
-    "kondapur",
-    "jubilee-hills",
-    "banjara-hills",
-    "kokapet",
-    "nanakramguda",
-    "manikonda",
-    "financial-district",
-    "hitec-city",
-    "narsingi",
-    "secunderabad",
-    "kompally",
-    "attapur",
-    "mehdipatnam"
-  ];
-
-  const projects = [
-    "kokapet-gated-villa-interior",
-    "financial-district-3bhk-apartment",
-    "jubilee-hills-luxury-residence",
-    "gachibowli-modular-kitchen-suite",
-    "madhapur-minimalist-master-suite"
-  ];
+  const services = extractIdsOrSlugs(SERVICES_PATH, 'id');
+  const locations = extractIdsOrSlugs(LOCATIONS_PATH, 'slug');
+  const projects = extractIdsOrSlugs(PROJECTS_PATH, 'id');
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;

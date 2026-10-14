@@ -21,7 +21,7 @@ export const defaultOrganizationSchema = {
       "@id": "https://parthuinteriors.in/#organization",
       "name": "Parthu Interiors",
       "legalName": "Parthu Interiors",
-      "alternateName": ["Parthu Interiors", "Parthu Interiors Interiors"],
+      "alternateName": ["Parthu Interiors", "Parthu Interiors Hyderabad"],
       "url": "https://parthuinteriors.in",
       "logo": "https://parthuinteriors.in/logo.png",
       "image": "https://parthuinteriors.in/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",

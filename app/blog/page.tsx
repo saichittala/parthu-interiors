@@ -17,7 +17,15 @@ export const metadata = {
     description: "In-depth interior design guides, cost breakdowns and material checklists for Hyderabad homeowners.",
     url: "https://parthuinteriors.in/blog",
     siteName: "Parthu Interiors",
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: "/assets/logoo.png",
+        width: 1024,
+        height: 360,
+        alt: "Parthu Interiors Hyderabad Guides and Articles",
+      },
+    ],
   }
 };
 

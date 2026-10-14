@@ -18,7 +18,15 @@ export const metadata = {
     description: "Architectural luxury home interior design & turnkey execution across major Hyderabad neighborhoods.",
     url: "https://parthuinteriors.in/locations",
     siteName: "Parthu Interiors",
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: "/assets/logoo.png",
+        width: 1024,
+        height: 360,
+        alt: "Parthu Interiors Hyderabad Locations",
+      },
+    ],
   }
 };
 

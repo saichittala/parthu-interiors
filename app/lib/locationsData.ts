@@ -670,5 +670,39 @@ export const locationsData: LocationDetail[] = [
     ],
     featuredImage: "/assets/main_images/luxury-modern-european-design-cafe-interior-downtown-with-colorful-furniture-3d-rendering.webp",
     nearbyAreas: ["Miyapur", "Chanda Nagar", "Beeramguda", "Patancheru", "Kukatpally"]
+  },
+  {
+    slug: "mehdipatnam",
+    name: "Mehdipatnam",
+    zone: "Central Hyderabad",
+    metaTitle: "Interior Designers in Mehdipatnam Hyderabad | Parthu Interiors",
+    metaDescription: "Expert residential interior design & turnkey execution in Mehdipatnam, Hyderabad. Modular kitchens, wardrobes & luxury living interiors with 10-year warranty.",
+    heroHeadline: "Elegant Residential Interiors in Mehdipatnam.",
+    heroSubheadline: "Turnkey home interiors crafted with factory precision for Mehdipatnam homeowners.",
+    intro: "Mehdipatnam is a prominent residential and commercial hub connecting Central and South-West Hyderabad. Parthu Interiors delivers bespoke interior design and turnkey execution for apartments, builder floors, and independent houses in Mehdipatnam with premium BWP marine plywood, Hafele hardware, and 10-year warranty.",
+    propertyTypes: ["2BHK & 3BHK Apartments", "Independent Residences", "Builder Floors"],
+    keyHighlights: [
+      "Factory-finished modular woodwork from our Kokapet facility",
+      "100% BWP Marine Plywood with 10-year structural warranty",
+      "45-Day handover with transparent itemized pricing",
+      "Branded hardware from Blum and Hafele"
+    ],
+    localDesignConsiderations: [
+      "Acoustic insulation and dust-resistant cabinetry finishes suited for central urban living.",
+      "Optimizing vertical wall space to maximize storage capacity in family apartments."
+    ],
+    faqs: [
+      {
+        question: "Do you undertake turnkey interior work in Mehdipatnam?",
+        answer: "Yes, Parthu Interiors provides complete turnkey interior execution in Mehdipatnam, handling modular woodwork, false ceilings, electrical track lighting, modular kitchens, quartz countertops, and deep cleaning before final handover."
+      },
+      {
+        question: "What is the typical completion timeline for an apartment in Mehdipatnam?",
+        answer: "We manufacture all woodwork at our Kokapet factory and assemble on-site within 40 to 45 days from 3D design freeze."
+      }
+    ],
+    featuredImage: "/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
+    nearbyAreas: ["Attapur", "Tolichowki", "Masab Tank", "Banjara Hills", "Gudimalkapur"]
   }
 ];
+

@@ -18,7 +18,15 @@ export const metadata = {
     description: "Explore real luxury villa and apartment interior projects in Hyderabad.",
     url: "https://parthuinteriors.in/projects",
     siteName: "Parthu Interiors",
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: "/assets/logoo.png",
+        width: 1024,
+        height: 360,
+        alt: "Parthu Interiors Completed Residential Projects Hyderabad",
+      },
+    ],
   }
 };
 
