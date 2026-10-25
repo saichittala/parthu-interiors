@@ -2,10 +2,14 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import { SITE_URL } from "../lib/siteConfig";
+
 export const metadata = {
   title: "Privacy Policy | Parthu Interiors Hyderabad",
   description: "Privacy policy detailing data collection, lead processing, customer privacy, and protection standards at Parthu Interiors Hyderabad.",
-  canonical: "https://parthuinteriors.in/privacy",
+  alternates: {
+    canonical: `${SITE_URL}/privacy`,
+  },
 };
 
 export default function PrivacyPage() {

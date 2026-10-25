@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ServiceDetailClient from "./ServiceDetailClient";
 import JsonLd, { defaultOrganizationSchema } from "../../components/JsonLd";
 import { servicesData } from "../../lib/servicesData";
+import { SITE_URL, SITE_NAME } from "../../lib/siteConfig";
 
 interface ServiceDetailPageProps {
   params: Promise<{ id: string }>;
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
     };
   }
 
-  const canonicalUrl = `https://parthuinteriors.in/services/${service.id}`;
+  const canonicalUrl = `${SITE_URL}/services/${service.id}`;
 
   return {
     title: service.metaTitle || `${service.title} Interior Design Hyderabad | Parthu Interiors`,
@@ -37,12 +38,12 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
       title: service.metaTitle || `${service.title} Interior Design Hyderabad | Parthu Interiors`,
       description: service.metaDescription || service.description.slice(0, 160),
       url: canonicalUrl,
-      siteName: "Parthu Interiors",
+      siteName: SITE_NAME,
       locale: "en_IN",
       type: "website",
       images: [
         {
-          url: `https://parthuinteriors.in${service.mainImage}`,
+          url: `${SITE_URL}${service.mainImage}`,
           alt: `${service.title} - Parthu Interiors Hyderabad`
         }
       ]
@@ -66,19 +67,19 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.in"
+        "item": SITE_URL
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://parthuinteriors.in/services"
+        "item": `${SITE_URL}/services`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": service.title,
-        "item": `https://parthuinteriors.in/services/${service.id}`
+        "item": `${SITE_URL}/services/${service.id}`
       }
     ]
   };
@@ -90,8 +91,8 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
     "description": service.description,
     "provider": {
       "@type": "InteriorDesignStudio",
-      "name": "Parthu Interiors",
-      "url": "https://parthuinteriors.in"
+      "name": SITE_NAME,
+      "url": SITE_URL
     },
     "areaServed": {
       "@type": "City",

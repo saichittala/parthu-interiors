@@ -33,3 +33,7 @@ next-env.d.ts
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# dynamic routes served via App Router
+public/robots.txt
+public/sitemap.xml

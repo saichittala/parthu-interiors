@@ -8,6 +8,7 @@ import { projectsData } from "../../lib/projectsData";
 import { MapPinIcon } from "../../components/Icons";
 import ImageWithSkeleton from "../../components/ImageWithSkeleton";
 import ProjectDetailClient from "../../components/ProjectDetailClient";
+import { SITE_URL, SITE_NAME } from "../../lib/siteConfig";
 
 interface ProjectPageProps {
   params: Promise<{ id: string }>;
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     };
   }
 
-  const canonicalUrl = `https://parthuinteriors.in/projects/${project.id}`;
+  const canonicalUrl = `${SITE_URL}/projects/${project.id}`;
 
   return {
     title: project.metaTitle,
@@ -41,12 +42,12 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title: project.metaTitle,
       description: project.metaDescription,
       url: canonicalUrl,
-      siteName: "Parthu Interiors",
+      siteName: SITE_NAME,
       locale: "en_IN",
       type: "article",
       images: [
         {
-          url: `https://parthuinteriors.in${project.mainImage}`,
+          url: `${SITE_URL}${project.mainImage}`,
           alt: `${project.title} - ${project.location} Interior Design by Parthu Interiors`
         }
       ]
@@ -73,19 +74,19 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.in"
+        "item": SITE_URL
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Projects",
-        "item": "https://parthuinteriors.in/projects"
+        "item": `${SITE_URL}/projects`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": project.title,
-        "item": `https://parthuinteriors.in/projects/${project.id}`
+        "item": `${SITE_URL}/projects/${project.id}`
       }
     ]
   };

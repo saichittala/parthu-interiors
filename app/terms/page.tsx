@@ -3,10 +3,14 @@ import Metadata from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import { SITE_URL } from "../lib/siteConfig";
+
 export const metadata = {
   title: "Terms & Conditions | Parthu Interiors Hyderabad",
   description: "Terms and conditions governing turnkey residential interior design, execution contracts, payment schedules, and structural warranties with Parthu Interiors in Hyderabad.",
-  canonical: "https://parthuinteriors.in/terms",
+  alternates: {
+    canonical: `${SITE_URL}/terms`,
+  },
 };
 
 export default function TermsPage() {

@@ -5,18 +5,19 @@ import Footer from "../components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "../components/JsonLd";
 import { getPublishedBlogs, getReadingTime } from "../lib/blog";
 import { ChevronRightIcon, SparklesIcon } from "../components/Icons";
+import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
 
 export const metadata = {
   title: "Hyderabad Interior Design Guides & Articles | Parthu Interiors",
   description: "Expert interior design guides for Hyderabad homeowners. Cost breakdowns, modular kitchen guides, material selection tips, space planning & villa design trends.",
   alternates: {
-    canonical: "https://parthuinteriors.in/blog"
+    canonical: `${SITE_URL}/blog`
   },
   openGraph: {
     title: "Hyderabad Interior Design Guides & Articles | Parthu Interiors",
     description: "In-depth interior design guides, cost breakdowns and material checklists for Hyderabad homeowners.",
-    url: "https://parthuinteriors.in/blog",
-    siteName: "Parthu Interiors",
+    url: `${SITE_URL}/blog`,
+    siteName: SITE_NAME,
     type: "website"
   }
 };
@@ -32,13 +33,13 @@ export default function BlogListingPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.in"
+        "item": SITE_URL
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://parthuinteriors.in/blog"
+        "item": `${SITE_URL}/blog`
       }
     ]
   };

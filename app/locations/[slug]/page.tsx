@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "../../components/JsonLd";
 import { locationsData, LocationDetail } from "../../lib/locationsData";
 import { servicesData } from "../../lib/servicesData";
+import { SITE_URL, SITE_NAME } from "../../lib/siteConfig";
 import {
   MapPinIcon,
   ChevronRightIcon,
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
     };
   }
 
-  const canonicalUrl = `https://parthuinteriors.in/locations/${location.slug}`;
+  const canonicalUrl = `${SITE_URL}/locations/${location.slug}`;
 
   return {
     title: location.metaTitle,
@@ -48,12 +49,12 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
       title: location.metaTitle,
       description: location.metaDescription,
       url: canonicalUrl,
-      siteName: "Parthu Interiors",
+      siteName: SITE_NAME,
       locale: "en_IN",
       type: "website",
       images: [
         {
-          url: `https://parthuinteriors.in${location.featuredImage}`,
+          url: `${SITE_URL}${location.featuredImage}`,
           alt: `${location.name} Interior Design - Parthu Interiors`
         }
       ]
@@ -81,19 +82,19 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.in"
+        "item": SITE_URL
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Locations",
-        "item": "https://parthuinteriors.in/locations"
+        "item": `${SITE_URL}/locations`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": location.name,
-        "item": `https://parthuinteriors.in/locations/${location.slug}`
+        "item": `${SITE_URL}/locations/${location.slug}`
       }
     ]
   };

@@ -6,18 +6,19 @@ import Footer from "../components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "../components/JsonLd";
 import { locationsData } from "../lib/locationsData";
 import { ChevronRightIcon, MapPinIcon, ShieldCheckIcon } from "../components/Icons";
+import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
 
 export const metadata = {
   title: "Interior Designers in Hyderabad Locations | Parthu Interiors",
   description: "Explore turnkey interior design & execution across Madhapur, Gachibowli, Kondapur, Jubilee Hills, Banjara Hills, Kokapet, Financial District & all Hyderabad locations.",
   alternates: {
-    canonical: "https://parthuinteriors.in/locations"
+    canonical: `${SITE_URL}/locations`
   },
   openGraph: {
     title: "Interior Designers in Hyderabad Locations | Parthu Interiors",
     description: "Architectural luxury home interior design & turnkey execution across major Hyderabad neighborhoods.",
-    url: "https://parthuinteriors.in/locations",
-    siteName: "Parthu Interiors",
+    url: `${SITE_URL}/locations`,
+    siteName: SITE_NAME,
     type: "website"
   }
 };
@@ -33,13 +34,13 @@ export default function LocationsHubPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.in"
+        "item": SITE_URL
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Locations",
-        "item": "https://parthuinteriors.in/locations"
+        "item": `${SITE_URL}/locations`
       }
     ]
   };
