@@ -7,7 +7,7 @@ const LOCATIONS_PATH = path.join(__dirname, '..', 'app', 'lib', 'locationsData.t
 const SERVICES_PATH = path.join(__dirname, '..', 'app', 'lib', 'servicesData.ts');
 const PROJECTS_PATH = path.join(__dirname, '..', 'app', 'lib', 'projectsData.ts');
 
-const BASE_URL = 'https://parthuinteriors.in';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.parthuinteriors.in';
 
 async function syncBlogsFromGAS() {
   const blogsUrl = process.env.GOOGLE_SCRIPT_BLOGS_URL;
@@ -137,8 +137,19 @@ function generate() {
 
   xml += '\n</urlset>';
 
-  fs.writeFileSync(SITEMAP_PATH, xml, 'utf8');
-  console.log(`Generated sitemap with ${staticPages.length + services.length + locations.length + projects.length + published.length} URLs at ${SITEMAP_PATH}`);
+  const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === 'true';
+
+  if (isStaticExport) {
+    fs.writeFileSync(SITEMAP_PATH, xml, 'utf8');
+    console.log(`Generated static sitemap with ${staticPages.length + services.length + locations.length + projects.length + published.length} URLs at ${SITEMAP_PATH}`);
+  } else {
+    // In Next.js App Router, app/sitemap.ts dynamically serves /sitemap.xml.
+    // Having public/sitemap.xml causes a fatal 500 collision error in Next.js.
+    if (fs.existsSync(SITEMAP_PATH)) {
+      fs.unlinkSync(SITEMAP_PATH);
+      console.log(`Cleaned up conflicting ${SITEMAP_PATH} (served dynamically via app/sitemap.ts)`);
+    }
+  }
 
   const PUBLIC_BLOGS_PATH = path.join(__dirname, '..', 'public', 'blogs.json');
   if (fs.existsSync(DB_PATH)) {

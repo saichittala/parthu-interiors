@@ -449,7 +449,7 @@ export const locationsData: LocationDetail[] = [
     faqs: [
       {
         question: "Where is Parthu Interiors located in Kukatpally?",
-        answer: "Our main office and client design studio is situated in Kukatpally, Hyderabad, Telangana 500072. Contact us at +91 87909 05746 to schedule a consultation."
+        answer: "Our main office and client design studio is situated near Rainbow Hospital, Hyder Nagar, Kukatpally, Hyderabad, Telangana 500072. Contact us at +91 87909 05746 to schedule a consultation."
       }
     ],
     featuredImage: "/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",

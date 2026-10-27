@@ -1,22 +1,23 @@
 import React from "react";
 import JsonLd, { defaultOrganizationSchema } from "../components/JsonLd";
 import ServicesClient from "./ServicesClient";
+import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
 
 export const metadata = {
   title: "Residential Interior Design Services in Hyderabad | Parthu Interiors",
   description: "Explore turnkey interior design services in Hyderabad. Modular kitchens, luxury bedrooms, living suites, wardrobes, pooja rooms & office space interiors.",
   alternates: {
-    canonical: "https://parthuinteriors.in/services"
+    canonical: `${SITE_URL}/services`
   },
   openGraph: {
     title: "Residential Interior Design Services in Hyderabad | Parthu Interiors",
     description: "Complete residential interior design & turnkey execution services in Hyderabad.",
-    url: "https://parthuinteriors.in/services",
-    siteName: "Parthu Interiors",
+    url: `${SITE_URL}/services`,
+    siteName: SITE_NAME,
     type: "website",
     images: [
       {
-        url: "/assets/logoo.png",
+        url: `${SITE_URL}/assets/logoo.png`,
         width: 1024,
         height: 360,
         alt: "Parthu Interiors Residential Interior Services Hyderabad",
@@ -34,13 +35,13 @@ export default function ServicesPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://parthuinteriors.in"
+        "item": SITE_URL
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://parthuinteriors.in/services"
+        "item": `${SITE_URL}/services`
       }
     ]
   };

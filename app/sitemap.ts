@@ -3,9 +3,10 @@ import { locationsData } from './lib/locationsData';
 import { servicesData } from './lib/servicesData';
 import { projectsData } from './lib/projectsData';
 import { getPublishedBlogs } from './lib/blog';
+import { SITE_URL } from './lib/siteConfig';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://parthuinteriors.in';
+  const baseUrl = SITE_URL;
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {

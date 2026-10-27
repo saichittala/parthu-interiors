@@ -3,17 +3,19 @@ import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
+
 export const metadata: Metadata = {
   title: "Terms & Conditions | Parthu Interiors Hyderabad",
   description: "Terms and conditions governing turnkey residential interior design, execution contracts, payment schedules, and structural warranties with Parthu Interiors in Hyderabad.",
   alternates: {
-    canonical: "https://parthuinteriors.in/terms",
+    canonical: `${SITE_URL}/terms`,
   },
   openGraph: {
     title: "Terms & Conditions | Parthu Interiors Hyderabad",
     description: "Terms and conditions governing turnkey residential interior design & execution contracts.",
-    url: "https://parthuinteriors.in/terms",
-    siteName: "Parthu Interiors",
+    url: `${SITE_URL}/terms`,
+    siteName: SITE_NAME,
     type: "website",
   },
 };

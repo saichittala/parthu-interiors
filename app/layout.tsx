@@ -3,6 +3,8 @@ import dynamic from "next/dynamic";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "./lib/siteConfig";
+
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -11,40 +13,57 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://parthuinteriors.in"),
-  alternates: {
-    canonical: "https://parthuinteriors.in",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  title: "Parthu Interiors | Premium Interior Design & Turnkey Execution Hyderabad",
-  description: "Complete end-to-end responsibility from initial design to final handover. Advance planning, transparent budgeting, premium materials & regular site updates to make your dream home interior journey stress-free - Parthu Interiors.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "Parthu Interiors",
     "Parthu Interiors Hyderabad",
     "Parthu Interiors interior design",
     "interior design Hyderabad",
+    "best interior designers in Hyderabad",
     "Hyderabad 2BHK 3BHK villa interiors",
     "modular kitchen Hyderabad",
     "turnkey execution Hyderabad",
     "transparent interior budget Hyderabad",
-    "complete home interiors Hyderabad"
+    "complete home interiors Hyderabad",
+    "interior designers in Kukatpally",
+    "interior designers in Madhapur",
+    "interior designers in Gachibowli",
+    "interior designers in Kondapur"
   ],
-  authors: [{ name: "Parthu Interiors Team" }],
+  authors: [{ name: "Parthu Interiors Team", url: SITE_URL }],
+  creator: "Parthu Interiors",
+  publisher: "Parthu Interiors",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "./",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Parthu Interiors | Premium Interior Design & Turnkey Execution Services",
-    description: "Complete end-to-end responsibility from initial design to final handover. Advance planning, transparent budgeting, premium materials & regular site updates to complete your dream home stress-free.",
-    url: "https://parthuinteriors.in",
-    siteName: "Parthu Interiors",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     images: [
       {
         url: "/assets/logoo.png",
@@ -58,8 +77,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Parthu Interiors | Premium Interior Design & Turnkey Execution Hyderabad",
-    description: "Complete end-to-end responsibility from initial design to final handover. Transparent budgeting & 10-year warranty.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ["/assets/logoo.png"],
   },
   icons: {
@@ -72,7 +91,10 @@ export const metadata: Metadata = {
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
     ],
     shortcut: "/favicon.ico"
-  }
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+  },
 };
 
 import ScrollRevealProvider from "./components/ScrollRevealProvider";

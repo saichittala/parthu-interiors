@@ -301,7 +301,7 @@ export default function ContactClient() {
                         Office &amp; Experience Center Address
                       </div>
                       <div style={{ fontSize: "14px", color: "var(--text-dark-secondary)", lineHeight: "1.5" }}>
-                        Kukatpally, Hyderabad, Telangana 500072
+                        Near Rainbow Hospital, Hyder Nagar, Kukatpally, Hyderabad, Telangana 500072
                       </div>
                     </div>
                   </div>
@@ -324,7 +324,7 @@ export default function ContactClient() {
                 {/* Direct Action Buttons */}
                 <div className="contact-action-btns">
                   <a
-                    href="https://maps.google.com/?q=Kukatpally+Hyderabad"
+                    href="https://maps.google.com/?q=Near+Rainbow+Hospital+Hyder+Nagar+Kukatpally+Hyderabad"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary btn-md"

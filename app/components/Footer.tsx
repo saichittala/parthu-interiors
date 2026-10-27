@@ -66,8 +66,8 @@ export default function Footer() {
                   <MapPinIcon size={18} color="var(--brand-primary)" />
                 </div>
                 <span>
-                  <strong style={{ color: "var(--text-light-primary)" }}>Location:</strong><br />
-                  Kukatpally, Hyderabad, Telangana 500072
+                  <strong style={{ color: "var(--text-light-primary)" }}>Experience Center:</strong><br />
+                  Near Rainbow Hospital, Hyder Nagar, Kukatpally, Hyderabad 500072
                 </span>
               </div>
 

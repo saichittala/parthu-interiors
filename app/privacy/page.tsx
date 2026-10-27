@@ -3,17 +3,19 @@ import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
+
 export const metadata: Metadata = {
   title: "Privacy Policy | Parthu Interiors Hyderabad",
   description: "Privacy policy detailing data collection, lead processing, customer privacy, and protection standards at Parthu Interiors Hyderabad.",
   alternates: {
-    canonical: "https://parthuinteriors.in/privacy",
+    canonical: `${SITE_URL}/privacy`,
   },
   openGraph: {
     title: "Privacy Policy | Parthu Interiors Hyderabad",
     description: "Privacy policy detailing data collection and customer privacy standards at Parthu Interiors.",
-    url: "https://parthuinteriors.in/privacy",
-    siteName: "Parthu Interiors",
+    url: `${SITE_URL}/privacy`,
+    siteName: SITE_NAME,
     type: "website",
   },
 };
