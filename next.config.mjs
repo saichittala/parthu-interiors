@@ -34,10 +34,10 @@ const nextConfig = {
           has: [
             {
               type: 'host',
-              value: 'www.parthuinteriors.in',
+              value: 'parthuinteriors.in',
             },
           ],
-          destination: 'https://parthuinteriors.in/:path*',
+          destination: 'https://www.parthuinteriors.in/:path*',
           permanent: true,
         },
         {

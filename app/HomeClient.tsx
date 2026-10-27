@@ -66,20 +66,20 @@ const heroSlides = [
   {
     id: 0,
     image: "/assets/main_images/hero-section.webp",
-    title: "Designing Spaces. Creating Homes.",
-    alt: "Premium Interior Design & Execution Services - Parthu Interiors"
+    title: "Designing Spaces. Creating Dream Homes in Hyderabad.",
+    alt: "Premium Interior Design & Turnkey Execution Services Hyderabad - Parthu Interiors"
   },
   {
     id: 1,
     image: "/assets/main_images/interior-design-luxury-living-room.webp",
-    title: "Turnkey Residential Interior Execution.",
-    alt: "Luxury Master Bedroom - Parthu Interiors Hyderabad"
+    title: "Turnkey Residential Interior Execution in Hyderabad.",
+    alt: "Luxury Master Bedroom & Living Spaces - Parthu Interiors Hyderabad"
   },
   {
     id: 2,
     image: "/assets/main_images/luxury-interior-design-private-apartment-contemporary-dining-room.webp",
-    title: "Custom Luxury Home Interiors.",
-    alt: "Modular Kitchen & Dining Design - Parthu Interiors"
+    title: "Custom Luxury Home Interiors Hyderabad.",
+    alt: "Modular Kitchen & Dining Design - Parthu Interiors Hyderabad"
   }
 ];
 

@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "./",
+    canonical: SITE_URL,
   },
   robots: {
     index: true,
