@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "tsc --noEmit",
     "build:static": "node scripts/build-static.js",
-    "deploy": "npm run build:static && gh-pages -d out"
+    "deploy": "npm run build:static && gh-pages -d out --add --nojekyll"
   },
   "dependencies": {
     "@fontsource/inter-tight": "^5.3.0",
