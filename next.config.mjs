@@ -30,17 +30,6 @@ const nextConfig = {
     async redirects() {
       return [
         {
-          source: '/:path*',
-          has: [
-            {
-              type: 'host',
-              value: 'parthuinteriors.in',
-            },
-          ],
-          destination: 'https://www.parthuinteriors.in/:path*',
-          permanent: true,
-        },
-        {
           source: '/home',
           destination: '/',
           permanent: true,

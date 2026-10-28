@@ -6,7 +6,7 @@
  */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
-  'https://www.parthuinteriors.in';
+  'https://parthuinteriors.in';
 
 export const SITE_NAME = 'Parthu Interiors';
 

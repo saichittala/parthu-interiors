@@ -7,7 +7,7 @@ const LOCATIONS_PATH = path.join(__dirname, '..', 'app', 'lib', 'locationsData.t
 const SERVICES_PATH = path.join(__dirname, '..', 'app', 'lib', 'servicesData.ts');
 const PROJECTS_PATH = path.join(__dirname, '..', 'app', 'lib', 'projectsData.ts');
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.parthuinteriors.in';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://parthuinteriors.in';
 
 async function syncBlogsFromGAS() {
   const blogsUrl = process.env.GOOGLE_SCRIPT_BLOGS_URL;
