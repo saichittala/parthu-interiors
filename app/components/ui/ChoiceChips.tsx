@@ -17,6 +17,8 @@ interface ChoiceChipsProps {
   required?: boolean;
   variant?: "light" | "dark";
   compact?: boolean;
+  columns?: number;
+  style?: React.CSSProperties;
 }
 
 export default function ChoiceChips({
@@ -27,19 +29,27 @@ export default function ChoiceChips({
   required = false,
   variant = "light",
   compact = false,
+  columns,
+  style,
 }: ChoiceChipsProps) {
   const isDark = variant === "dark";
 
   return (
-    <div style={{ marginBottom: compact ? "10px" : "18px", width: "100%" }}>
+    <div
+      style={{
+        width: "100%",
+        marginBottom: compact ? "10px" : "14px",
+        ...style,
+      }}
+    >
       {label && (
         <label
           style={{
             display: "block",
-            fontSize: compact ? "12px" : "14px",
+            fontSize: compact ? "12px" : "13px",
             fontWeight: "600",
-            color: isDark ? "rgba(255, 255, 255, 0.85)" : "#374151",
-            marginBottom: compact ? "6px" : "10px",
+            color: isDark ? "rgba(255, 255, 255, 0.9)" : "#374151",
+            marginBottom: "6px",
             letterSpacing: "normal",
           }}
         >
@@ -49,12 +59,21 @@ export default function ChoiceChips({
 
       <motion.div
         layout
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "8px",
-          alignItems: "center",
-        }}
+        style={
+          columns
+            ? {
+                display: "grid",
+                gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+                gap: "8px",
+                width: "100%",
+              }
+            : {
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "8px",
+                alignItems: "center",
+              }
+        }
       >
         {options.map((option) => {
           const isActive = option.value === selectedValue;
@@ -98,10 +117,11 @@ export default function ChoiceChips({
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
-                height: compact ? "32px" : "40px",
-                padding: compact ? "0 12px" : "0 16px",
+                width: columns ? "100%" : "auto",
+                height: compact ? "32px" : "38px",
+                padding: compact ? "0 8px" : "0 12px",
                 borderRadius: "var(--radius-pill)",
-                fontSize: compact ? "12px" : "14px",
+                fontSize: compact ? "12px" : "13px",
                 fontWeight: "500",
                 cursor: "pointer",
                 border: `1px solid ${borderNormal}`,
@@ -112,6 +132,7 @@ export default function ChoiceChips({
                 lineHeight: "1",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
             >
               <motion.span

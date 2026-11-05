@@ -14,7 +14,12 @@ import FaqAccordion from "./components/FaqAccordion";
 import ImageWithSkeleton from "./components/ImageWithSkeleton";
 import ChoiceChips, { ChoiceOption } from "./components/ui/ChoiceChips";
 import ScrollBlurFadeIn from "./components/ui/ScrollBlurFadeIn";
-import { submitLeadToGoogleSheet, openWhatsAppLeadChat } from "./lib/leadSubmission";
+import {
+  submitLeadToGoogleSheet,
+  openWhatsAppLeadChat,
+  formatWhatsAppNumber,
+  getLeadWhatsAppMessage,
+} from "./lib/leadSubmission";
 import { projectsData } from "./lib/projectsData";
 import { locationsData } from "./lib/locationsData";
 import { ParallaxScroll, ParallaxImage } from "./components/ui/parallax-scroll";
@@ -1273,24 +1278,34 @@ export default function HomeClient() {
               {/* Instant Booking Form Card */}
               <div className="cta-form-card">
                 <h3 className="cta-form-card-title">
-                  Book a Free Consultation
+                  Book a Planning Consultation
                 </h3>
                 <p className="cta-form-card-subtitle">
-                  Get a personalized 3D design concept and exact factory-direct estimate.
+                  Get a personalized space planning layout and exact factory-direct estimate.
                 </p>
 
                 {homeFormSubmitted ? (
                   <div className="form-success-state">
-                    <div className="form-success-icon featured-icon featured-icon-brand">
-                      <CheckCircleIcon size={28} color="#000000" />
+                    <div className="form-success-icon featured-icon featured-icon-brand" style={{ background: "rgba(37, 211, 102, 0.12)", border: "1px solid rgba(37, 211, 102, 0.25)" }}>
+                      <CheckCircleIcon size={28} color="#25D366" />
                     </div>
                     <h4 className="form-success-title">
                       Consultation Requested!
                     </h4>
                     <p className="form-success-desc">
-                      Our interior architect will get in touch shortly. Opening WhatsApp chat...
+                      Opening WhatsApp chat to share details with {homeForm.phone || "the client"}...
                     </p>
-                    <button className="btn btn-secondary btn-sm" onClick={() => setHomeFormSubmitted(false)}>
+                    <a
+                      href={`https://wa.me/${formatWhatsAppNumber(homeForm.phone)}?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...homeForm, phone: homeForm.phone.startsWith("+91") ? homeForm.phone : `+91 ${homeForm.phone}`, source: "Homepage Inline Consultation Form" }))}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-whatsapp btn-sm"
+                      style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px", width: "100%", marginBottom: "10px" }}
+                    >
+                      <WhatsAppIcon size={16} />
+                      <span>Share to {homeForm.phone || "Client"} on WhatsApp</span>
+                    </a>
+                    <button className="btn btn-secondary btn-sm" style={{ width: "100%" }} onClick={() => setHomeFormSubmitted(false)}>
                       Book Another
                     </button>
                   </div>

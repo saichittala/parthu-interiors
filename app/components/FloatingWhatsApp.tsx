@@ -5,7 +5,7 @@ import { WhatsAppIcon } from "./Icons";
 
 export default function FloatingWhatsApp() {
   const waMsg = encodeURIComponent(
-    "Hi Parthu Interiors! 👋 I am interested in interior design & turnkey execution for my home in Hyderabad. Please share your free planning session & 3D estimate."
+    "Hi Parthu Interiors! 👋 I am interested in interior design & turnkey execution for my home in Hyderabad. Please share your consultation & estimate details."
   );
   return (
     <div

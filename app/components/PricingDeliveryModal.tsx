@@ -370,7 +370,7 @@ export default function PricingDeliveryModal({
                   </button>
 
                   <a
-                    href={`https://wa.me/918790905746?text=${encodeURIComponent("Hi Parthu Interiors! 👋 I would like to request a Free Home Interior Planning Session & 3D Estimate.")}`}
+                    href={`https://wa.me/918790905746?text=${encodeURIComponent("Hi Parthu Interiors! 👋 I would like to request a Free Home Interior Planning Session & Estimate.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-whatsapp btn-lg"

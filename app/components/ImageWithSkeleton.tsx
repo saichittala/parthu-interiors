@@ -18,7 +18,7 @@ export default function ImageWithSkeleton({
   className = "",
   style,
   parallaxSpeed = 0.25,
-  enableParallax = true,
+  enableParallax = false,
   priority = false,
   ...props
 }: ImageWithSkeletonProps) {
@@ -34,7 +34,7 @@ export default function ImageWithSkeleton({
   // Smooth vertical parallax translation
   const travel = 30 * parallaxSpeed;
   const y = useTransform(scrollYProgress, [0, 1], [travel, -travel]);
-  const baseScale = enableParallax ? 1.2 : 1.0;
+  const baseScale = 1.0;
 
   // Compute webp src path if possible
   const webpSrc = src && (src.endsWith(".jpg") || src.endsWith(".png") || src.endsWith(".jpeg"))
@@ -61,31 +61,51 @@ export default function ImageWithSkeleton({
     >
       <picture style={{ display: "block", width: "100%", height: "100%" }}>
         {webpSrc && <source srcSet={webpSrc} type="image/webp" />}
-        <motion.img
-          ref={imgRef as any}
-          src={src}
-          alt={alt}
-          loading={priority ? "eager" : "lazy"}
-          decoding="async"
-          onLoad={() => setLoaded(true)}
-          onError={() => setLoaded(true)}
-          initial={{ scale: baseScale }}
-          whileHover={{ scale: baseScale * 1.025 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            y: enableParallax ? y : 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-            display: "block",
-            transformOrigin: "center center",
-            willChange: "transform",
-            ...style,
-          }}
-          className={`${className} ${loaded ? "is-loaded image-reveal-active" : "is-loaded image-reveal-active"}`}
-          {...(props as any)}
-        />
+        {enableParallax ? (
+          <motion.img
+            ref={imgRef as any}
+            src={src}
+            alt={alt}
+            loading={priority ? "eager" : "lazy"}
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            onError={() => setLoaded(true)}
+            style={{
+              y,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center",
+              display: "block",
+              transformOrigin: "center center",
+              willChange: "transform",
+              ...style,
+            }}
+            className={`${className} ${loaded ? "is-loaded image-reveal-active" : "is-loaded image-reveal-active"}`}
+            {...(props as any)}
+          />
+        ) : (
+          <img
+            ref={imgRef}
+            src={src}
+            alt={alt}
+            loading={priority ? "eager" : "lazy"}
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            onError={() => setLoaded(true)}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center",
+              display: "block",
+              transformOrigin: "center center",
+              ...style,
+            }}
+            className={`${className} ${loaded ? "is-loaded image-reveal-active" : "is-loaded image-reveal-active"}`}
+            {...props}
+          />
+        )}
       </picture>
     </div>
   );

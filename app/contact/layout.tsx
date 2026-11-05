@@ -4,7 +4,7 @@ import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
 export const metadata: Metadata = {
   title: "Contact Us & Book Free Design Consultation | Parthu Interiors Hyderabad",
   description:
-    "Get in touch with Parthu Interiors. Visit our Kukatpally Experience Center, call +91 87909 05746 or book a free 3D design consultation for your 2BHK, 3BHK or villa in Hyderabad.",
+    "Get in touch with Parthu Interiors. Visit our Kukatpally Experience Center, call +91 87909 05746 or book a free design consultation for your 2BHK, 3BHK or villa in Hyderabad.",
   alternates: {
     canonical: `${SITE_URL}/contact`,
   },

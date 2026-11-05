@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ChoiceChips, { ChoiceOption } from "./ui/ChoiceChips";
-import { XCloseIcon, CheckCircleIcon, LockIcon } from "./Icons";
-import { submitLeadToGoogleSheet, openWhatsAppLeadChat } from "../lib/leadSubmission";
+import { XCloseIcon, CheckCircleIcon, LockIcon, WhatsAppIcon } from "./Icons";
+import { submitLeadToGoogleSheet, openWhatsAppLeadChat, formatWhatsAppNumber, getLeadWhatsAppMessage } from "../lib/leadSubmission";
 
 const PROPERTY_OPTIONS: ChoiceOption[] = [
   { value: "2 BHK Apartment", label: "2 BHK" },
@@ -134,25 +134,37 @@ export default function TimedLeadModal() {
                 width: "48px",
                 height: "48px",
                 borderRadius: "var(--radius-circle)",
-                background: "rgba(0, 0, 0, 0.05)",
-                border: "1px solid rgba(0, 0, 0, 0.08)",
+                background: "rgba(37, 211, 102, 0.12)",
+                border: "1px solid rgba(37, 211, 102, 0.25)",
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
                 marginBottom: "12px",
               }}
             >
-              <CheckCircleIcon size={26} color="#000000" />
+              <CheckCircleIcon size={26} color="#25D366" />
             </div>
             <h3 className="modal-title" style={{ fontSize: "19px", marginBottom: "6px" }}>
               Request Received!
             </h3>
-            <p className="modal-body-text" style={{ fontSize: "13px", marginBottom: "16px" }}>
-              Opening WhatsApp chat with our interior team for instant 3D layout &amp; estimate...
+            <p className="modal-body-text" style={{ fontSize: "13px", marginBottom: "16px", color: "rgba(255, 255, 255, 0.75)" }}>
+              Data saved. Opening WhatsApp chat to share directly with {formData.phone || "the client"}...
             </p>
+
+            <a
+              href={`https://wa.me/${formatWhatsAppNumber(formData.phone)}?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...formData, source: "Timed Planning Session Modal" }))}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-whatsapp btn-md"
+              style={{ width: "100%", marginBottom: "10px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px" }}
+            >
+              <WhatsAppIcon size={18} />
+              <span>Share to {formData.phone || "Client"} on WhatsApp</span>
+            </a>
+
             <button
-              className="btn btn-primary btn-md"
-              style={{ width: "100%", background: "#C1121F", color: "#FFFFFF", fontWeight: 700 }}
+              className="btn btn-secondary btn-md"
+              style={{ width: "100%" }}
               onClick={handleClose}
             >
               Done
@@ -160,14 +172,14 @@ export default function TimedLeadModal() {
           </div>
         ) : (
           <div>
-            <h3 className="modal-title" style={{ fontSize: "22px", marginBottom: "20px", fontWeight: "700" }}>
+            <h3 className="modal-title" style={{ fontSize: "21px", marginBottom: "16px", fontWeight: "700", paddingRight: "32px" }}>
               Parthu Interiors Planning Session
             </h3>
 
             <form onSubmit={handleSubmit}>
-              <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "18px" }}>
+              <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "12px" }}>
                 <div className="form-group" style={{ marginBottom: 0 }}>
-                  <label className="form-label" style={{ fontSize: "13px", marginBottom: "8px", fontWeight: 600, color: "rgba(255, 255, 255, 0.9)" }}>
+                  <label className="form-label" style={{ fontSize: "13px", marginBottom: "6px", fontWeight: 600, color: "rgba(255, 255, 255, 0.9)" }}>
                     Full Name
                   </label>
                   <input
@@ -180,7 +192,7 @@ export default function TimedLeadModal() {
                 </div>
 
                 <div className="form-group" style={{ marginBottom: 0 }}>
-                  <label className="form-label" style={{ fontSize: "13px", marginBottom: "8px", fontWeight: 600, color: "rgba(255, 255, 255, 0.9)" }}>
+                  <label className="form-label" style={{ fontSize: "13px", marginBottom: "6px", fontWeight: 600, color: "rgba(255, 255, 255, 0.9)" }}>
                     WhatsApp Phone *
                   </label>
                   <div className="phone-input-group">
@@ -198,8 +210,8 @@ export default function TimedLeadModal() {
                 </div>
               </div>
 
-              <div className="form-group" style={{ marginBottom: "20px" }}>
-                <label className="form-label" style={{ fontSize: "13px", marginBottom: "8px", fontWeight: 600, color: "rgba(255, 255, 255, 0.9)" }}>
+              <div className="form-group" style={{ marginBottom: "12px" }}>
+                <label className="form-label" style={{ fontSize: "13px", marginBottom: "6px", fontWeight: 600, color: "rgba(255, 255, 255, 0.9)" }}>
                   Project Location / Apartment *
                 </label>
                 <input
@@ -212,16 +224,15 @@ export default function TimedLeadModal() {
                 />
               </div>
 
-              <div style={{ marginBottom: "18px" }}>
-                <ChoiceChips
-                  label="Property Type"
-                  options={PROPERTY_OPTIONS}
-                  selectedValue={formData.propertyType}
-                  onChange={(val) => setFormData({ ...formData, propertyType: val })}
-                  variant="dark"
-                  compact={false}
-                />
-              </div>
+              <ChoiceChips
+                label="Property Type"
+                options={PROPERTY_OPTIONS}
+                selectedValue={formData.propertyType}
+                onChange={(val) => setFormData({ ...formData, propertyType: val })}
+                variant="dark"
+                columns={4}
+                style={{ marginBottom: "12px" }}
+              />
 
               {!showOptionalDetails ? (
                 <button
@@ -230,29 +241,31 @@ export default function TimedLeadModal() {
                   style={{
                     background: "none",
                     border: "none",
-                    color: "rgba(255, 255, 255, 0.60)",
+                    color: "rgba(255, 255, 255, 0.65)",
                     fontSize: "13px",
                     cursor: "pointer",
-                    padding: "8px 0 16px 0",
+                    padding: "4px 0",
+                    marginBottom: "16px",
                     display: "flex",
                     alignItems: "center",
                     gap: "6px",
                     transition: "color 0.2s ease",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#C1121F")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255, 255, 255, 0.60)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255, 255, 255, 0.65)")}
                 >
                   <span>+ Add Budget &amp; Timeline (Optional)</span>
                 </button>
               ) : (
-                <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "18px" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "16px" }}>
                   <ChoiceChips
                     label="Budget Range"
                     options={BUDGET_OPTIONS}
                     selectedValue={formData.budget}
                     onChange={(val) => setFormData({ ...formData, budget: val })}
                     variant="dark"
-                    compact={false}
+                    columns={2}
+                    style={{ marginBottom: 0 }}
                   />
 
                   <ChoiceChips
@@ -261,7 +274,8 @@ export default function TimedLeadModal() {
                     selectedValue={formData.timeToStart}
                     onChange={(val) => setFormData({ ...formData, timeToStart: val })}
                     variant="dark"
-                    compact={false}
+                    columns={2}
+                    style={{ marginBottom: 0 }}
                   />
                 </div>
               )}
@@ -271,7 +285,7 @@ export default function TimedLeadModal() {
                 disabled={isSubmitting}
                 style={{
                   width: "100%",
-                  height: "52px",
+                  height: "50px",
                   borderRadius: "var(--radius-pill)",
                   background: "linear-gradient(135deg, #C1121F 0%, #e55556 100%)",
                   color: "#FFFFFF",
@@ -279,7 +293,7 @@ export default function TimedLeadModal() {
                   fontSize: "15.5px",
                   border: "none",
                   cursor: "pointer",
-                  marginTop: "16px",
+                  marginTop: "0px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -288,12 +302,12 @@ export default function TimedLeadModal() {
                   transition: "all 0.2s ease",
                 }}
               >
-                <span>{isSubmitting ? "Submitting Request..." : "Get Free Estimate on WhatsApp"}</span>
+                <span>{isSubmitting ? "Submitting Request..." : "Get Estimate on WhatsApp"}</span>
               </button>
 
-              <div className="modal-privacy-note" style={{ marginTop: "16px", fontSize: "12.5px", color: "rgba(255, 255, 255, 0.65)" }}>
+              <div className="modal-privacy-note" style={{ marginTop: "12px", fontSize: "12.5px", color: "rgba(255, 255, 255, 0.65)" }}>
                 <LockIcon size={14} color="#C1121F" />
-                <span>Zero Spam Guarantee • Free 3D Plan &amp; Site Assessment</span>
+                <span>Zero Spam Guarantee • Expert Consultation &amp; Site Assessment</span>
               </div>
             </form>
           </div>

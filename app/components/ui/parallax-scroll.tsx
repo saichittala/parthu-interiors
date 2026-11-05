@@ -37,7 +37,7 @@ export const ParallaxImage = ({
     [0, 1],
     direction === "up" ? [travel, -travel] : [-travel, travel]
   );
-  const baseScale = 1.05;
+  const baseScale = 1.0;
 
   const webpSrc = src && (src.endsWith(".jpg") || src.endsWith(".png") || src.endsWith(".jpeg"))
     ? src.replace(/\.(jpg|jpeg|png)$/, ".webp")
@@ -55,7 +55,7 @@ export const ParallaxImage = ({
           src={src}
           alt={alt}
           initial={{ scale: baseScale }}
-          whileHover={{ scale: 1.07 }}
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           style={{
             y,

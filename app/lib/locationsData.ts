@@ -172,7 +172,7 @@ export const locationsData: LocationDetail[] = [
     faqs: [
       {
         question: "How do I schedule an interior consultation for my home in Banjara Hills?",
-        answer: "You can book a direct consultation with our lead designer by calling +91 87909 05746 or via WhatsApp. We conduct on-site floorplan reviews and present initial 3D concepts."
+        answer: "You can book a direct consultation with our lead designer by calling +91 87909 05746 or via WhatsApp. We conduct on-site floorplan reviews and present initial space planning concepts."
       }
     ],
     featuredImage: "/assets/main_images/luxury-interior-design-private-apartment-contemporary-dining-room.webp",

@@ -80,8 +80,8 @@ export default function BlogListingPage() {
               const readingTime = getReadingTime(post.content || "");
               return (
                 <Link key={post.id} href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
-                  <article style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "var(--radius-brand-20)", overflow: "hidden", height: "100%", display: "flex", flexDirection: "column", transition: "all 0.3s ease" }}>
-                    <div style={{ position: "relative", height: "220px", overflow: "hidden" }}>
+                  <article className="blog-card" style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "var(--radius-brand-20)", overflow: "hidden", height: "100%", display: "flex", flexDirection: "column", transition: "all 0.3s ease" }}>
+                    <div className="blog-card-img-box" style={{ position: "relative", height: "220px", overflow: "hidden" }}>
                       <img
                         src={post.featuredImage || "/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp"}
                         alt={post.title}

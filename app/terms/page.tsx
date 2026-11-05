@@ -90,7 +90,7 @@ export default function TermsPage() {
                 2. Design Phase &amp; 3D Visualizations
               </h2>
               <p style={{ fontSize: "1.02rem", color: "rgba(255, 255, 255, 0.78)", lineHeight: "1.8", margin: 0 }}>
-                Initial design consultations include 2D layout planning and photorealistic 3D renders. Up to two (2) iterations per room are provided free of cost during the design phase. Additional revisions requested after 3D sign-off will incur separate design modification fees.
+                Initial design consultations include 2D layout and space planning. Detailed photorealistic 3D renders are initiated upon confirmation of the booking deposit, with up to two (2) design iterations per room included during the design phase. Additional revisions requested after 3D sign-off will incur separate design modification fees.
               </p>
               <p style={{ fontSize: "1.02rem", color: "rgba(255, 255, 255, 0.78)", lineHeight: "1.8", margin: 0 }}>
                 Material colors, wood grain textures, and lighting shown in 3D renders are high-fidelity representations; actual physical samples verified by the Client in person shall be final.

@@ -1,7 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
 import HomeClient from "./HomeClient";
-
 import { SITE_URL, SITE_NAME } from "./lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -11,20 +10,19 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: "Parthu Interiors | Premium Interior Design & Turnkey Execution Services Hyderabad",
-    description: "Complete end-to-end responsibility from initial design to final handover. Advance planning, transparent budgeting, premium materials & regular site updates to complete your dream home stress-free.",
+    title: "Parthu Interiors | Premium Interior Design & Turnkey Execution Hyderabad",
+    description: "Complete end-to-end responsibility from initial design to final handover - Parthu Interiors.",
     url: SITE_URL,
     siteName: SITE_NAME,
+    type: "website",
     images: [
       {
-        url: `${SITE_URL}/assets/logoo.png`,
-        width: 1024,
-        height: 360,
-        alt: "Parthu Interiors - Premium Interior Design & Turnkey Execution Hyderabad",
+        url: "/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
+        width: 1200,
+        height: 630,
+        alt: "Parthu Interiors Hyderabad",
       },
     ],
-    locale: "en_IN",
-    type: "website",
   },
 };
 

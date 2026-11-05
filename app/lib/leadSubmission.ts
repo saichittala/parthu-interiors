@@ -50,9 +50,36 @@ export async function submitLeadToGoogleSheet(payload: LeadPayload): Promise<boo
   }
 }
 
-export function openWhatsAppLeadChat(payload: LeadPayload) {
-  const text = encodeURIComponent(
-    `Hi Parthu Interiors! 👋\nI would like to request a Free Home Interior Planning Session & 3D Estimate.\n\n*Name:* ${payload.name}\n*Phone:* ${payload.phone}\n*Location:* ${payload.location}\n*Property Type:* ${payload.propertyType}\n*Budget Range:* ${payload.budget}\n*Timeline:* ${payload.timeToStart}${payload.message ? `\n*Message:* ${payload.message}` : ""}`
-  );
-  window.open(`https://wa.me/918790905746?text=${text}`, "_blank");
+export function formatWhatsAppNumber(phone?: string): string {
+  if (!phone) return "918790905746";
+  const digits = phone.replace(/\D/g, "");
+  if (digits.length === 10) return `91${digits}`;
+  if (digits.length === 11 && digits.startsWith("0")) return `91${digits.slice(1)}`;
+  if (digits.length >= 11) return digits;
+  return digits || "918790905746";
+}
+
+export function getLeadWhatsAppMessage(payload: Partial<LeadPayload>): string {
+  const greeting = payload.name && payload.name !== "Client" && payload.name !== "Valued Client"
+    ? `Hi ${payload.name}! 👋`
+    : `Hi! 👋`;
+
+  const details = [
+    payload.name ? `*Name:* ${payload.name}` : null,
+    payload.phone ? `*Phone:* ${payload.phone}` : null,
+    payload.location ? `*Location:* ${payload.location}` : null,
+    payload.propertyType ? `*Property Type:* ${payload.propertyType}` : null,
+    payload.budget ? `*Budget Range:* ${payload.budget}` : null,
+    payload.scope ? `*Design Scope:* ${payload.scope}` : null,
+    payload.timeToStart ? `*Timeline:* ${payload.timeToStart}` : null,
+    payload.message ? `*Notes:* ${payload.message}` : null,
+  ].filter(Boolean).join("\n");
+
+  return `${greeting}\nThank you for choosing *Parthu Interiors*! Here are the details of your home interior planning consultation:\n\n${details}\n\nOur senior interior designer will connect with you to review your floorplan and schedule your site visit.\n\n*Parthu Interiors Hyderabad*\n📞 +91 87909 05746\n🌐 https://www.parthuinteriors.in`;
+}
+
+export function openWhatsAppLeadChat(payload: LeadPayload, targetPhone?: string) {
+  const targetNumber = formatWhatsAppNumber(targetPhone || payload.phone);
+  const text = encodeURIComponent(getLeadWhatsAppMessage(payload));
+  window.open(`https://wa.me/${targetNumber}?text=${text}`, "_blank");
 }

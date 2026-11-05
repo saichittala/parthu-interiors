@@ -5,7 +5,12 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import ConsultationModal from "../components/ConsultationModal";
 import ChoiceChips, { ChoiceOption } from "../components/ui/ChoiceChips";
-import { submitLeadToGoogleSheet, openWhatsAppLeadChat } from "../lib/leadSubmission";
+import {
+  submitLeadToGoogleSheet,
+  openWhatsAppLeadChat,
+  formatWhatsAppNumber,
+  getLeadWhatsAppMessage,
+} from "../lib/leadSubmission";
 import {
   MapPinIcon,
   PhoneIcon,
@@ -158,17 +163,28 @@ export default function ContactClient() {
               <div className="contact-form-card">
                 {submitted ? (
                   <div className="form-success-state">
-                    <div className="form-success-icon featured-icon featured-icon-brand">
-                      <CheckCircleIcon size={32} color="#C1121F" />
+                    <div className="form-success-icon featured-icon featured-icon-brand" style={{ background: "rgba(37, 211, 102, 0.12)", border: "1px solid rgba(37, 211, 102, 0.25)" }}>
+                      <CheckCircleIcon size={32} color="#25D366" />
                     </div>
                     <h2 className="form-success-title">
                       Inquiry Submitted!
                     </h2>
                     <p className="form-success-desc">
-                      Thank you for reaching out to Parthu Interiors. Opening WhatsApp chat for express communication with our design team...
+                      Details saved. Opening WhatsApp chat to share directly with {form.phone || "the client"}...
                     </p>
+                    <a
+                      href={`https://wa.me/${formatWhatsAppNumber(form.phone)}?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...form, phone: form.phone.startsWith("+91") ? form.phone : `+91 ${form.phone}`, propertyType: form.projectType, source: "Contact Page Form" }))}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-whatsapp btn-md"
+                      style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", width: "100%", marginBottom: "12px" }}
+                    >
+                      <WhatsAppIcon size={18} />
+                      <span>Share to {form.phone || "Client"} on WhatsApp</span>
+                    </a>
                     <button
-                      className="btn btn-primary btn-md"
+                      className="btn btn-secondary btn-md"
+                      style={{ width: "100%" }}
                       onClick={() => setSubmitted(false)}
                     >
                       Send Another Message
