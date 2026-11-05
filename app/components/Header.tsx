@@ -112,8 +112,6 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
-    { name: "Locations", href: "/locations" },
-    { name: "Blog", href: "/blog" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
@@ -123,8 +121,6 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
     if (link.href === "/contact") return pathname === "/contact";
     if (link.href === "/services") return pathname.startsWith("/services");
     if (link.href === "/projects") return pathname.startsWith("/projects");
-    if (link.href === "/locations") return pathname.startsWith("/locations");
-    if (link.href === "/blog") return pathname.startsWith("/blog");
     if (link.href === "/") return pathname === "/" && (activeSection === "home" || !activeSection);
     return pathname === link.href;
   };

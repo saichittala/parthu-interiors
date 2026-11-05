@@ -1395,7 +1395,7 @@ export default function HomeClient() {
                       className="btn btn-primary btn-lg"
                       style={{ width: "100%", marginTop: "8px" }}
                     >
-                      <span>{homeFormSubmitting ? "Submitting..." : "Get a Free Quote"}</span>
+                      <span>{homeFormSubmitting ? "Submitting..." : "Get Consultation on WhatsApp"}</span>
                     </button>
                   </form>
                 )}
