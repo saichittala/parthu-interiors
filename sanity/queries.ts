@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity';
 
 export const allProjectsQuery = groq`
-  *[_type == "project"] | order(featured desc, completionYear desc, _createdAt desc) {
+  *[_type == "project" && !(_id in path("drafts.**"))] | order(featured desc, completionYear desc, _createdAt desc) {
     _id,
     title,
     "id": slug.current,
@@ -39,6 +39,8 @@ export const allProjectsQuery = groq`
       "afterImage": afterImage.asset->url,
       note
     },
+    "metaTitle": coalesce(seo.metaTitle, title + " | Parthu Interiors Project Showcase"),
+    "metaDescription": coalesce(seo.metaDescription, concept, "Interior design project by Parthu Interiors in Hyderabad."),
     seo {
       metaTitle,
       metaDescription,
@@ -52,7 +54,7 @@ export const allProjectsQuery = groq`
 `;
 
 export const projectBySlugQuery = groq`
-  *[_type == "project" && (slug.current == $slug || _id == $slug)][0] {
+  *[_type == "project" && !(_id in path("drafts.**")) && (slug.current == $slug || _id == $slug)][0] {
     _id,
     title,
     "id": slug.current,
@@ -90,6 +92,8 @@ export const projectBySlugQuery = groq`
       "afterImage": afterImage.asset->url,
       note
     },
+    "metaTitle": coalesce(seo.metaTitle, title + " | Parthu Interiors Project Showcase"),
+    "metaDescription": coalesce(seo.metaDescription, concept, "Interior design project by Parthu Interiors in Hyderabad."),
     seo {
       metaTitle,
       metaDescription,
@@ -103,7 +107,7 @@ export const projectBySlugQuery = groq`
 `;
 
 export const allServicesQuery = groq`
-  *[_type == "service"] | order(_createdAt asc) {
+  *[_type == "service" && !(_id in path("drafts.**"))] | order(_createdAt asc) {
     _id,
     title,
     "id": slug.current,
@@ -116,6 +120,8 @@ export const allServicesQuery = groq`
     features,
     specs,
     "faqs": coalesce(faqs[] { question, answer }, []),
+    "metaTitle": coalesce(seo.metaTitle, title + " Interior Design Hyderabad | Parthu Interiors"),
+    "metaDescription": coalesce(seo.metaDescription, tagline, description, ""),
     seo {
       metaTitle,
       metaDescription,
@@ -129,7 +135,7 @@ export const allServicesQuery = groq`
 `;
 
 export const serviceBySlugQuery = groq`
-  *[_type == "service" && (slug.current == $slug || _id == $slug)][0] {
+  *[_type == "service" && !(_id in path("drafts.**")) && (slug.current == $slug || _id == $slug)][0] {
     _id,
     title,
     "id": slug.current,
@@ -142,6 +148,8 @@ export const serviceBySlugQuery = groq`
     features,
     specs,
     "faqs": coalesce(faqs[] { question, answer }, []),
+    "metaTitle": coalesce(seo.metaTitle, title + " Interior Design Hyderabad | Parthu Interiors"),
+    "metaDescription": coalesce(seo.metaDescription, tagline, description, ""),
     seo {
       metaTitle,
       metaDescription,
@@ -155,7 +163,7 @@ export const serviceBySlugQuery = groq`
 `;
 
 export const allLocationsQuery = groq`
-  *[_type == "location"] | order(priorityTier asc, name asc) {
+  *[_type == "location" && !(_id in path("drafts.**"))] | order(priorityTier asc, name asc) {
     _id,
     name,
     "slug": slug.current,
@@ -170,6 +178,8 @@ export const allLocationsQuery = groq`
     nearbyAreas,
     "featuredImage": coalesce(featuredImage.asset->url, ""),
     "faqs": coalesce(faqs[] { question, answer }, []),
+    "metaTitle": coalesce(seo.metaTitle, name + " Interior Design | Parthu Interiors"),
+    "metaDescription": coalesce(seo.metaDescription, heroSubheadline, intro, ""),
     seo {
       metaTitle,
       metaDescription,
@@ -183,7 +193,7 @@ export const allLocationsQuery = groq`
 `;
 
 export const locationBySlugQuery = groq`
-  *[_type == "location" && (slug.current == $slug || _id == $slug)][0] {
+  *[_type == "location" && !(_id in path("drafts.**")) && (slug.current == $slug || _id == $slug)][0] {
     _id,
     name,
     "slug": slug.current,
@@ -198,6 +208,8 @@ export const locationBySlugQuery = groq`
     nearbyAreas,
     "featuredImage": coalesce(featuredImage.asset->url, ""),
     "faqs": coalesce(faqs[] { question, answer }, []),
+    "metaTitle": coalesce(seo.metaTitle, name + " Interior Design | Parthu Interiors"),
+    "metaDescription": coalesce(seo.metaDescription, heroSubheadline, intro, ""),
     seo {
       metaTitle,
       metaDescription,
@@ -211,7 +223,7 @@ export const locationBySlugQuery = groq`
 `;
 
 export const allPostsQuery = groq`
-  *[_type == "post" && status == "Published"] | order(publishedDate desc) {
+  *[_type == "post" && status == "Published" && !(_id in path("drafts.**"))] | order(publishedDate desc) {
     _id,
     title,
     "id": slug.current,
@@ -224,9 +236,13 @@ export const allPostsQuery = groq`
     publishedDate,
     updatedDate,
     status,
-    content,
+    "content": coalesce(markdownContent, content, description, ""),
     markdownContent,
     "faq": coalesce(faq[] { question, answer }, []),
+    "metaTitle": coalesce(seo.metaTitle, title + " | Parthu Interiors Blog"),
+    "metaDescription": coalesce(seo.metaDescription, description, ""),
+    "canonicalUrl": coalesce(seo.canonicalUrl, ""),
+    "ogImage": coalesce(seo.ogImage.asset->url, featuredImage.asset->url, ""),
     seo {
       metaTitle,
       metaDescription,
@@ -240,7 +256,7 @@ export const allPostsQuery = groq`
 `;
 
 export const postBySlugQuery = groq`
-  *[_type == "post" && slug.current == $slug][0] {
+  *[_type == "post" && !(_id in path("drafts.**")) && (slug.current == $slug || _id == $slug)][0] {
     _id,
     title,
     "id": slug.current,
@@ -253,9 +269,13 @@ export const postBySlugQuery = groq`
     publishedDate,
     updatedDate,
     status,
-    content,
+    "content": coalesce(markdownContent, content, description, ""),
     markdownContent,
     "faq": coalesce(faq[] { question, answer }, []),
+    "metaTitle": coalesce(seo.metaTitle, title + " | Parthu Interiors Blog"),
+    "metaDescription": coalesce(seo.metaDescription, description, ""),
+    "canonicalUrl": coalesce(seo.canonicalUrl, ""),
+    "ogImage": coalesce(seo.ogImage.asset->url, featuredImage.asset->url, ""),
     seo {
       metaTitle,
       metaDescription,
@@ -269,7 +289,7 @@ export const postBySlugQuery = groq`
 `;
 
 export const allTestimonialsQuery = groq`
-  *[_type == "testimonial"] | order(_createdAt desc) {
+  *[_type == "testimonial" && !(_id in path("drafts.**"))] | order(_createdAt desc) {
     _id,
     clientName,
     propertyLocation,
@@ -281,7 +301,7 @@ export const allTestimonialsQuery = groq`
 `;
 
 export const siteSettingsQuery = groq`
-  *[_type == "siteSettings"][0] {
+  *[_type == "siteSettings" && !(_id in path("drafts.**"))][0] {
     brandName,
     legalName,
     tagline,
@@ -303,4 +323,3 @@ export const siteSettingsQuery = groq`
     }
   }
 `;
-

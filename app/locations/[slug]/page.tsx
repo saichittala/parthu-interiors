@@ -5,8 +5,11 @@ import Link from "next/link";
 import Footer from "../../components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "../../components/JsonLd";
 import { locationsData, LocationDetail } from "../../lib/locationsData";
+import { getLocations, getLocationBySlug } from "@/sanity/client";
 import { servicesData } from "../../lib/servicesData";
 import { SITE_URL, SITE_NAME } from "../../lib/siteConfig";
+
+export const revalidate = 10;
 import {
   MapPinIcon,
   ChevronRightIcon,
@@ -22,14 +25,16 @@ interface LocationPageProps {
 }
 
 export async function generateStaticParams() {
-  return locationsData.map((loc) => ({
+  const sanityLocations = await getLocations();
+  const allLocations = sanityLocations && sanityLocations.length > 0 ? sanityLocations : locationsData;
+  return allLocations.map((loc) => ({
     slug: loc.slug
   }));
 }
 
 export async function generateMetadata({ params }: LocationPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const location = locationsData.find((l) => l.slug === slug);
+  const location = await getLocationBySlug(slug);
 
   if (!location) {
     return {
@@ -54,7 +59,7 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
       type: "website",
       images: [
         {
-          url: `${SITE_URL}${location.featuredImage}`,
+          url: location.featuredImage.startsWith("http") ? location.featuredImage : `${SITE_URL}${location.featuredImage}`,
           alt: `${location.name} Interior Design - Parthu Interiors`
         }
       ]
@@ -64,14 +69,14 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
 
 export default async function LocationDetailPage({ params }: LocationPageProps) {
   const { slug } = await params;
-  const location = locationsData.find((l) => l.slug === slug);
+  const location = await getLocationBySlug(slug);
 
   if (!location) {
     notFound();
   }
 
   const nearbyLocations = locationsData.filter((l) =>
-    location.nearbyAreas.some(area => area.toLowerCase() === l.name.toLowerCase()) || l.zone === location.zone
+    (location.nearbyAreas || []).some(area => area.toLowerCase() === l.name.toLowerCase()) || l.zone === location.zone
   ).filter((l) => l.slug !== location.slug).slice(0, 5);
 
   const breadcrumbSchema = {

@@ -5,24 +5,29 @@ import Link from "next/link";
 import Footer from "../../components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "../../components/JsonLd";
 import { projectsData } from "../../lib/projectsData";
+import { getProjects, getProjectBySlug } from "@/sanity/client";
 import { MapPinIcon } from "../../components/Icons";
 import ImageWithSkeleton from "../../components/ImageWithSkeleton";
 import ProjectDetailClient from "../../components/ProjectDetailClient";
 import { SITE_URL, SITE_NAME } from "../../lib/siteConfig";
+
+export const revalidate = 10;
 
 interface ProjectPageProps {
   params: Promise<{ id: string }>;
 }
 
 export async function generateStaticParams() {
-  return projectsData.map((proj) => ({
+  const sanityProjects = await getProjects();
+  const allProjects = sanityProjects && sanityProjects.length > 0 ? sanityProjects : projectsData;
+  return allProjects.map((proj) => ({
     id: proj.id
   }));
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { id } = await params;
-  const project = projectsData.find((p) => p.id === id);
+  const project = await getProjectBySlug(id);
 
   if (!project) {
     return {
@@ -47,7 +52,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       type: "article",
       images: [
         {
-          url: `${SITE_URL}${project.mainImage}`,
+          url: project.mainImage.startsWith("http") ? project.mainImage : `${SITE_URL}${project.mainImage}`,
           alt: `${project.title} - ${project.location} Interior Design by Parthu Interiors`
         }
       ]
@@ -57,7 +62,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const { id } = await params;
-  const project = projectsData.find((p) => p.id === id);
+  const project = await getProjectBySlug(id);
 
   if (!project) {
     notFound();

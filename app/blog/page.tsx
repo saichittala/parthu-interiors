@@ -4,8 +4,11 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "../components/JsonLd";
 import { getPublishedBlogs, getReadingTime } from "../lib/blog";
+import { getBlogPosts } from "@/sanity/client";
 import { ChevronRightIcon, SparklesIcon } from "../components/Icons";
 import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
+
+export const revalidate = 10;
 
 export const metadata: Metadata = {
   title: "Hyderabad Interior Design Guides & Articles | Parthu Interiors",
@@ -22,8 +25,8 @@ export const metadata: Metadata = {
   }
 };
 
-export default function BlogListingPage() {
-  const blogs = getPublishedBlogs();
+export default async function BlogListingPage() {
+  const blogs = await getBlogPosts();
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",

@@ -48,6 +48,35 @@ export function StudioNavbar(props: any) {
             <span>Back to Live Website</span>
           </a>
 
+          <a
+            href="/dashboard"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              color: '#FFFFFF',
+              textDecoration: 'none',
+              fontWeight: '600',
+              fontSize: '12px',
+              padding: '4px 10px',
+              borderRadius: '6px',
+              background: 'rgba(193, 18, 31, 0.18)',
+              border: '1px solid rgba(193, 18, 31, 0.5)',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#C1121F';
+              e.currentTarget.style.color = '#FFFFFF';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(193, 18, 31, 0.18)';
+              e.currentTarget.style.color = '#FFFFFF';
+            }}
+          >
+            <span>📊</span>
+            <span>Executive CRM Dashboard</span>
+          </a>
+
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span
               style={{

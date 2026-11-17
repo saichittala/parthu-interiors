@@ -2,6 +2,9 @@ import React from "react";
 import type { Metadata } from "next";
 import HomeClient from "./HomeClient";
 import { SITE_URL, SITE_NAME } from "./lib/siteConfig";
+import { getProjects } from "@/sanity/client";
+
+export const revalidate = 10;
 
 export const metadata: Metadata = {
   title: "Parthu Interiors | Premium Interior Design & Turnkey Execution Hyderabad",
@@ -26,6 +29,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
-  return <HomeClient />;
+export default async function HomePage() {
+  const projects = await getProjects();
+  return <HomeClient initialProjects={projects} />;
 }

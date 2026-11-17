@@ -36,8 +36,9 @@ export default function ImageWithSkeleton({
   const y = useTransform(scrollYProgress, [0, 1], [travel, -travel]);
   const baseScale = 1.0;
 
-  // Compute webp src path if possible
-  const webpSrc = src && (src.endsWith(".jpg") || src.endsWith(".png") || src.endsWith(".jpeg"))
+  // Compute webp src path if possible (do not replace extension on Sanity CDN URLs)
+  const isSanityUrl = Boolean(src && src.includes("cdn.sanity.io"));
+  const webpSrc = !isSanityUrl && src && (src.endsWith(".jpg") || src.endsWith(".png") || src.endsWith(".jpeg"))
     ? src.replace(/\.(jpg|jpeg|png)$/, ".webp")
     : null;
 

@@ -4,21 +4,26 @@ import { notFound } from "next/navigation";
 import ServiceDetailClient from "./ServiceDetailClient";
 import JsonLd, { defaultOrganizationSchema } from "../../components/JsonLd";
 import { servicesData } from "../../lib/servicesData";
+import { getServices, getServiceBySlug } from "@/sanity/client";
 import { SITE_URL, SITE_NAME } from "../../lib/siteConfig";
+
+export const revalidate = 10;
 
 interface ServiceDetailPageProps {
   params: Promise<{ id: string }>;
 }
 
-export function generateStaticParams() {
-  return servicesData.map((s) => ({
+export async function generateStaticParams() {
+  const sanityServices = await getServices();
+  const allServices = sanityServices && sanityServices.length > 0 ? sanityServices : servicesData;
+  return allServices.map((s) => ({
     id: s.id,
   }));
 }
 
 export async function generateMetadata({ params }: ServiceDetailPageProps): Promise<Metadata> {
   const { id } = await params;
-  const service = servicesData.find((s) => s.id === id);
+  const service = await getServiceBySlug(id);
 
   if (!service) {
     return {
@@ -43,7 +48,7 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
       type: "website",
       images: [
         {
-          url: `${SITE_URL}${service.mainImage}`,
+          url: service.mainImage.startsWith("http") ? service.mainImage : `${SITE_URL}${service.mainImage}`,
           alt: `${service.title} - Parthu Interiors Hyderabad`
         }
       ]
@@ -53,7 +58,7 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
 
 export default async function ServiceDetailPage({ params }: ServiceDetailPageProps) {
   const { id } = await params;
-  const service = servicesData.find((s) => s.id === id);
+  const service = await getServiceBySlug(id);
 
   if (!service) {
     notFound();

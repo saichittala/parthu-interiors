@@ -5,16 +5,20 @@ import Link from "next/link";
 import Footer from "../../components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "../../components/JsonLd";
 import { getPublishedBlogs, getReadingTime, getRelatedPosts, parseMarkdown, generateTableOfContents } from "../../lib/blog";
+import { getBlogPosts, getBlogPostBySlug } from "@/sanity/client";
 import { ChevronRightIcon, SparklesIcon, PhoneIcon } from "../../components/Icons";
 import { SITE_URL, SITE_NAME } from "../../lib/siteConfig";
 import { Button } from "../../components/arc/button/button";
+
+export const revalidate = 10;
 
 interface BlogPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const blogs = getPublishedBlogs();
+  const sanityBlogs = await getBlogPosts();
+  const blogs = sanityBlogs && sanityBlogs.length > 0 ? sanityBlogs : getPublishedBlogs();
   return blogs.map((post) => ({
     slug: post.slug
   }));
@@ -22,8 +26,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const blogs = getPublishedBlogs();
-  const post = blogs.find((p) => p.slug === slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -64,8 +67,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
 export default async function BlogDetailPage({ params }: BlogPageProps) {
   const { slug } = await params;
-  const blogs = getPublishedBlogs();
-  const post = blogs.find((p) => p.slug === slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();

@@ -4,10 +4,13 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "../components/JsonLd";
 import { projectsData } from "../lib/projectsData";
+import { getProjects } from "@/sanity/client";
 import { ChevronRightIcon, MapPinIcon } from "../components/Icons";
 import ImageWithSkeleton from "../components/ImageWithSkeleton";
 import ProjectsList from "./ProjectsList";
 import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
+
+export const revalidate = 10;
 
 export const metadata = {
   title: "Interior Design Portfolio & Projects in Hyderabad | Parthu Interiors",
@@ -32,7 +35,10 @@ export const metadata = {
   }
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const sanityProjects = await getProjects();
+  const projects = sanityProjects && sanityProjects.length > 0 ? sanityProjects : projectsData;
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -71,7 +77,7 @@ export default function ProjectsPage() {
       {/* Projects Grid */}
       <section style={{ padding: "20px 32px 100px 32px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <ProjectsList fallbackProjects={projectsData} />
+          <ProjectsList fallbackProjects={projects} />
         </div>
       </section>
 

@@ -6,3 +6,4 @@ import config from '../../../sanity.config';
 export function Studio() {
   return <NextStudio config={config} />;
 }
+

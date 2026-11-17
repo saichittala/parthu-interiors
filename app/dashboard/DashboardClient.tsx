@@ -444,6 +444,37 @@ export default function DashboardClient() {
               <span>Live Website</span>
             </Link>
 
+            {/* Sanity Studio CMS Access */}
+            <Link
+              href="/studio"
+              target="_blank"
+              title="Open Sanity Content Studio to manage website content, projects, services and blogs"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "9px 16px",
+                background: "rgba(193, 18, 31, 0.14)",
+                border: "1px solid rgba(193, 18, 31, 0.45)",
+                borderRadius: "8px",
+                color: "#FECACA",
+                fontSize: "13.5px",
+                fontWeight: "600",
+                textDecoration: "none",
+                transition: "all 0.2s"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#C1121F";
+                e.currentTarget.style.color = "#FFFFFF";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(193, 18, 31, 0.14)";
+                e.currentTarget.style.color = "#FECACA";
+              }}
+            >
+              <span>Sanity Studio CMS ↗</span>
+            </Link>
+
             {/* Download Content Backup Button */}
             <button
               onClick={exportAllContentBackup}

@@ -21,7 +21,7 @@ import {
   formatWhatsAppNumber,
   getLeadWhatsAppMessage,
 } from "./lib/leadSubmission";
-import { projectsData } from "./lib/projectsData";
+import { projectsData, type ProjectDetail } from "./lib/projectsData";
 import { useLiveContent } from "./lib/useLiveContent";
 import { locationsData } from "./lib/locationsData";
 import { ParallaxScroll, ParallaxImage } from "./components/ui/parallax-scroll";
@@ -139,8 +139,13 @@ const COMMUNITY_PROJECTS = [
   { name: "Rajapushpa Atria", logo: "/assets/companies_trusted/rajpushpa.svg" },
 ];
 
-export default function HomeClient() {
+interface HomeClientProps {
+  initialProjects?: ProjectDetail[];
+}
+
+export default function HomeClient({ initialProjects = [] }: HomeClientProps = {}) {
   const { projects: liveProjects, testimonials: liveTestimonials } = useLiveContent();
+  const effectiveProjects = initialProjects.length > 0 ? initialProjects : (liveProjects.length > 0 ? liveProjects : projectsData);
   const [consultationOpen, setConsultationOpen] = useState(false);
   const [pricingModalOpen, setPricingModalOpen] = useState(false);
   const [servicesScrollProgress, setServicesScrollProgress] = useState(25);
@@ -785,8 +790,8 @@ export default function HomeClient() {
               {/* Projects Grid */}
               <div className="projects-cards-grid">
                 {((showAllProjects
-                  ? (liveProjects.length > 0 ? liveProjects : projectsData)
-                  : (liveProjects.length > 0 ? liveProjects : projectsData).slice(0, 4)
+                  ? effectiveProjects
+                  : effectiveProjects.slice(0, 4)
                 )).map((project) => (
                   <Link
                     key={project.id}
@@ -806,7 +811,7 @@ export default function HomeClient() {
               </div>
 
               {/* View All Projects / Show Less Button */}
-              {(liveProjects.length > 0 ? liveProjects : projectsData).length > 4 && (
+              {effectiveProjects.length > 4 && (
                 <div className="projects-cta-wrap">
                   <Button
                     type="button"

@@ -7,7 +7,8 @@ export const dataset =
 export const projectId =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'o2o9ouqt';
 
-export const useCdn = process.env.NODE_ENV === 'production';
+// Set useCdn to false so published updates in Sanity reflect immediately on the live server
+export const useCdn = false;
 
 export const token = process.env.SANITY_API_READ_TOKEN || '';
 

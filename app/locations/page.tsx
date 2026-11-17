@@ -5,8 +5,11 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "../components/JsonLd";
 import { locationsData } from "../lib/locationsData";
+import { getLocations } from "@/sanity/client";
 import { ChevronRightIcon, MapPinIcon, ShieldCheckIcon } from "../components/Icons";
 import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
+
+export const revalidate = 10;
 
 export const metadata = {
   title: "Interior Designers in Hyderabad Locations | Parthu Interiors",
@@ -31,7 +34,9 @@ export const metadata = {
   }
 };
 
-export default function LocationsHubPage() {
+export default async function LocationsHubPage() {
+  const sanityLocations = await getLocations();
+  const locations = sanityLocations && sanityLocations.length > 0 ? sanityLocations : locationsData;
   const zones = ["West Hyderabad", "Central Hyderabad", "North Hyderabad", "South Hyderabad"] as const;
 
   const breadcrumbSchema = {
@@ -73,7 +78,7 @@ export default function LocationsHubPage() {
       <section style={{ padding: "60px 32px 100px 32px" }}>
         <div className="container" style={{ maxWidth: "1200px", margin: "0 auto" }}>
           {zones.map((zone) => {
-            const locationsInZone = locationsData.filter((loc) => loc.zone === zone);
+            const locationsInZone = locations.filter((loc) => loc.zone === zone);
             if (locationsInZone.length === 0) return null;
 
             return (

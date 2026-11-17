@@ -42,7 +42,8 @@ export default function Footer() {
               <li><Link href="/contact">Contact Us</Link></li>
               <li><Link href="/terms">Terms &amp; Conditions</Link></li>
               <li><Link href="/privacy">Privacy Policy</Link></li>
-              <li><Link href="/studio">Admin Login</Link></li>
+              <li><Link href="/dashboard" style={{ color: "var(--brand-primary)", fontWeight: "600" }}>Executive Dashboard</Link></li>
+              <li><Link href="/studio">Sanity Studio CMS</Link></li>
             </ul>
           </div>
 
@@ -151,24 +152,46 @@ export default function Footer() {
         <div className="footer-divider" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", paddingTop: "24px", borderTop: "none" }}>
           <p style={{ margin: 0 }}>© 2026 Parthu Interiors. All Rights Reserved.</p>
 
-          <Button
-            href="/studio"
-            variant="secondary"
-            size="sm"
-            aria-label="Staff and Admin Login"
-            style={{
-              padding: "6px 14px",
-              fontSize: "0.82rem",
-              background: "rgba(255, 255, 255, 0.05)",
-              color: "rgba(255, 255, 255, 0.85)",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "7px"
-            }}
-          >
-            <LockIcon size={13} color="var(--brand-primary)" />
-            <span>Admin Login</span>
-          </Button>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+            <Button
+              href="/dashboard"
+              variant="secondary"
+              size="sm"
+              aria-label="Executive CRM Dashboard Login"
+              style={{
+                padding: "6px 14px",
+                fontSize: "0.82rem",
+                background: "rgba(193, 18, 31, 0.16)",
+                border: "1px solid rgba(193, 18, 31, 0.5)",
+                color: "#FFFFFF",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "7px"
+              }}
+            >
+              <LockIcon size={13} color="var(--brand-primary)" />
+              <span>Executive CRM Dashboard</span>
+            </Button>
+
+            <Button
+              href="/studio"
+              variant="secondary"
+              size="sm"
+              aria-label="Sanity Studio CMS"
+              style={{
+                padding: "6px 14px",
+                fontSize: "0.82rem",
+                background: "rgba(255, 255, 255, 0.05)",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
+                color: "rgba(255, 255, 255, 0.85)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "7px"
+              }}
+            >
+              <span>Sanity Studio ↗</span>
+            </Button>
+          </div>
 
           <p style={{ fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.85)", margin: 0 }}>
             Made by{" "}

@@ -7,8 +7,8 @@ import { ProjectDetail } from "../lib/projectsData";
 import { useLiveContent } from "../lib/useLiveContent";
 
 export default function ProjectsList({ fallbackProjects }: { fallbackProjects: ProjectDetail[] }) {
-  const { projects: liveProjects } = useLiveContent();
-  const displayProjects = liveProjects.length > 0 ? liveProjects : fallbackProjects;
+  // If server passed projects from Sanity, use them directly as the authoritative live source.
+  const displayProjects = fallbackProjects && fallbackProjects.length > 0 ? fallbackProjects : [];
 
   return (
     <div className="projects-cards-grid">

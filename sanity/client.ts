@@ -35,7 +35,7 @@ export async function getProjects(): Promise<ProjectDetail[]> {
   }
   try {
     const data = await client.fetch<ProjectDetail[]>(allProjectsQuery, {}, {
-      next: { revalidate: 60, tags: ['projects'] },
+      next: { revalidate: 10, tags: ['projects'] },
     });
     if (data && data.length > 0) {
       return data;
@@ -54,7 +54,7 @@ export async function getProjectBySlug(slug: string): Promise<ProjectDetail | nu
     const data = await client.fetch<ProjectDetail | null>(
       projectBySlugQuery,
       { slug },
-      { next: { revalidate: 60, tags: [`project-${slug}`] } }
+      { next: { revalidate: 10, tags: [`project-${slug}`, 'projects'] } }
     );
     if (data) return data;
   } catch (err) {
@@ -72,7 +72,7 @@ export async function getServices(): Promise<ServiceDetail[]> {
   }
   try {
     const data = await client.fetch<ServiceDetail[]>(allServicesQuery, {}, {
-      next: { revalidate: 60, tags: ['services'] },
+      next: { revalidate: 10, tags: ['services'] },
     });
     if (data && data.length > 0) {
       return data;
@@ -91,7 +91,7 @@ export async function getServiceBySlug(slug: string): Promise<ServiceDetail | nu
     const data = await client.fetch<ServiceDetail | null>(
       serviceBySlugQuery,
       { slug },
-      { next: { revalidate: 60, tags: [`service-${slug}`] } }
+      { next: { revalidate: 10, tags: [`service-${slug}`, 'services'] } }
     );
     if (data) return data;
   } catch (err) {
@@ -109,7 +109,7 @@ export async function getLocations(): Promise<LocationDetail[]> {
   }
   try {
     const data = await client.fetch<LocationDetail[]>(allLocationsQuery, {}, {
-      next: { revalidate: 60, tags: ['locations'] },
+      next: { revalidate: 10, tags: ['locations'] },
     });
     if (data && data.length > 0) {
       return data;
@@ -128,7 +128,7 @@ export async function getLocationBySlug(slug: string): Promise<LocationDetail | 
     const data = await client.fetch<LocationDetail | null>(
       locationBySlugQuery,
       { slug },
-      { next: { revalidate: 60, tags: [`location-${slug}`] } }
+      { next: { revalidate: 10, tags: [`location-${slug}`, 'locations'] } }
     );
     if (data) return data;
   } catch (err) {
@@ -146,7 +146,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   }
   try {
     const data = await client.fetch<BlogPost[]>(allPostsQuery, {}, {
-      next: { revalidate: 60, tags: ['posts'] },
+      next: { revalidate: 10, tags: ['posts'] },
     });
     if (data && data.length > 0) {
       return data;
@@ -165,7 +165,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     const data = await client.fetch<BlogPost | null>(
       postBySlugQuery,
       { slug },
-      { next: { revalidate: 60, tags: [`post-${slug}`] } }
+      { next: { revalidate: 10, tags: [`post-${slug}`, 'posts'] } }
     );
     if (data) return data;
   } catch (err) {
