@@ -64,15 +64,15 @@ try {
     throw new Error(`Sitemap generation failed with code ${sitemapResult.status}`);
   }
 
-  // 3. Clean stale Next.js lock if present
-  const nextLock = path.join(rootDir, '.next', 'lock');
-  if (fs.existsSync(nextLock)) {
-    try { fs.unlinkSync(nextLock); } catch (e) {}
+  // 3. Clean stale Next.js cache and lock if present
+  const nextDir = path.join(rootDir, '.next');
+  if (fs.existsSync(nextDir)) {
+    try { fs.rmSync(nextDir, { recursive: true, force: true }); } catch (e) { }
   }
 
-  // Run next build with static export flag
-  console.log('Running Next.js static build export...');
-  const buildResult = spawnSync('npx', ['next', 'build'], {
+  // Run next build with static export flag and webpack
+  console.log('Running Next.js static build export with webpack...');
+  const buildResult = spawnSync('npx', ['next', 'build', '--webpack'], {
     cwd: rootDir,
     stdio: 'inherit',
     shell: true,
