@@ -3,13 +3,22 @@
 import React, { useState, useRef, useCallback } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { SparklesIcon } from "./Icons";
+import { useLiveContent } from "../lib/useLiveContent";
 
 interface ScrollBeforeAfterSectionProps {
   onOpenConsultation: () => void;
 }
 
 export default function ScrollBeforeAfterSection({ onOpenConsultation }: ScrollBeforeAfterSectionProps) {
+  const { beforeAfter } = useLiveContent();
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const beforeImg = beforeAfter?.beforeImage || "/assets/main_images/Before_image.webp";
+  const afterImg = beforeAfter?.afterImage || "/assets/main_images/After-Image.webp";
+  const beforeTxt = beforeAfter?.beforeLabel || "BEFORE: Bare Shell";
+  const afterTxt = beforeAfter?.afterLabel || "AFTER: Parthu Interiors Luxury Execution";
+  const headline = beforeAfter?.headline || "Every Detail Considered. Every Space Transformed.";
+  const subheadline = beforeAfter?.subheadline || "Drag the slider to reveal the precision engineering and craftsmanship behind every Parthu Interiors home.";
 
   // Track scroll position through the tall 250vh section
   const { scrollYProgress } = useScroll({
@@ -153,7 +162,7 @@ export default function ScrollBeforeAfterSection({ onOpenConsultation }: ScrollB
             }}
           >
             <img
-              src="/assets/main_images/Before_image.webp"
+              src={beforeImg}
               alt="Bare Shell Room Before Interior Design"
               style={{
                 width: "100%",
@@ -185,7 +194,7 @@ export default function ScrollBeforeAfterSection({ onOpenConsultation }: ScrollB
               }}
             >
               <img
-                src="/assets/main_images/After-Image.webp"
+                src={afterImg}
                 alt="Luxury Finished Interior After Parthu Interiors"
                 style={{
                   width: "100%",
@@ -215,7 +224,7 @@ export default function ScrollBeforeAfterSection({ onOpenConsultation }: ScrollB
               boxShadow: "none",
             }}
           >
-            AFTER: Parthu Interiors Luxury Execution
+            {afterTxt}
           </span>
 
           <span
@@ -236,7 +245,7 @@ export default function ScrollBeforeAfterSection({ onOpenConsultation }: ScrollB
               border: "1px solid rgba(255,255,255,0.2)",
             }}
           >
-            BEFORE: Bare Shell
+            {beforeTxt}
           </span>
 
           {/* Draggable & Scroll-Driven Divider Handle Line */}

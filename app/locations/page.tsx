@@ -94,8 +94,8 @@ export default function LocationsHubPage() {
                     >
                       <div
                         style={{
-                          background: "transparent",
-                          border: "1px solid rgba(255, 255, 255, 0.12)",
+                          background: "rgba(255, 255, 255, 0.03)",
+                          border: "none",
                           borderRadius: "var(--radius-brand-18)",
                           padding: "32px 28px",
                           height: "100%",
@@ -117,14 +117,14 @@ export default function LocationsHubPage() {
                           </p>
                           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                             {loc.propertyTypes.slice(0, 2).map((pt, idx) => (
-                              <span key={idx} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", color: "#d0d0d0", fontSize: "0.78rem", padding: "4px 10px", borderRadius: "var(--radius-brand-6)" }}>
+                              <span key={idx} style={{ background: "rgba(255,255,255,0.06)", border: "none", color: "#d0d0d0", fontSize: "0.78rem", padding: "4px 10px", borderRadius: "var(--radius-brand-6)" }}>
                                 {pt}
                               </span>
                             ))}
                           </div>
                         </div>
 
-                        <div style={{ marginTop: "24px", paddingTop: "16px", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", gap: "8px", fontSize: "0.85rem", color: "#C1121F", fontWeight: "600" }}>
+                        <div style={{ marginTop: "24px", paddingTop: "16px", borderTop: "none", display: "flex", alignItems: "center", gap: "8px", fontSize: "0.85rem", color: "#C1121F", fontWeight: "600" }}>
                           <span>View {loc.name} Interiors</span>
                           <ChevronRightIcon size={14} color="#C1121F" />
                         </div>

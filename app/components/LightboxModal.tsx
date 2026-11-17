@@ -174,7 +174,7 @@ export default function LightboxModal({
           className="lightbox-close-btn"
           whileHover={{
             scale: 1.04,
-            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            backgroundColor: "rgba(255, 255, 255, 0.12)",
           }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
@@ -186,7 +186,7 @@ export default function LightboxModal({
             padding: "0 18px",
             borderRadius: "var(--radius-pill)",
             background: "rgba(255, 255, 255, 0.1)",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
+            border: "1.5px solid rgba(255, 255, 255, 0.35)",
             color: "#FFFFFF",
             fontSize: "var(--fs-14)",
             fontWeight: "700",
@@ -228,14 +228,15 @@ export default function LightboxModal({
               zIndex: 1000000000,
               width: "48px",
               height: "48px",
-              background: "transparent",
-              border: "none",
+              background: "rgba(0, 0, 0, 0.4)",
+              border: "1.5px solid rgba(255, 255, 255, 0.35)",
+              borderRadius: "50%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               cursor: "pointer",
               boxShadow: "none",
-              transition: "opacity 0.2s ease, transform 0.2s ease",
+              transition: "all 0.2s ease",
             }}
           >
             <ChevronLeftIcon size={28} color="#FFFFFF" />
@@ -263,7 +264,7 @@ export default function LightboxModal({
               borderRadius: "var(--radius-brand-24)",
               overflow: "hidden",
               boxShadow: "0 32px 96px rgba(0, 0, 0, 0.95)",
-              border: "1px solid rgba(255, 255, 255, 0.18)",
+              border: "none",
             }}
           >
             <img
@@ -295,14 +296,15 @@ export default function LightboxModal({
               zIndex: 1000000000,
               width: "48px",
               height: "48px",
-              background: "transparent",
-              border: "none",
+              background: "rgba(0, 0, 0, 0.4)",
+              border: "1.5px solid rgba(255, 255, 255, 0.35)",
+              borderRadius: "50%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               cursor: "pointer",
               boxShadow: "none",
-              transition: "opacity 0.2s ease, transform 0.2s ease",
+              transition: "all 0.2s ease",
             }}
           >
             <ChevronRightIcon size={28} color="#FFFFFF" />

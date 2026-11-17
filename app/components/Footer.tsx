@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 import { locationsData } from "../lib/locationsData";
+import Button from "./arc/button/button";
 import {
   MapPinIcon,
   PhoneIcon,
@@ -93,7 +94,7 @@ export default function Footer() {
         {/* Service Areas We Provide Interiors (SEO Rich Bar) */}
         <div
           style={{
-            borderTop: "1px solid rgba(255, 255, 255, 0.12)",
+            borderTop: "none",
             paddingTop: "24px",
             paddingBottom: "24px",
             marginTop: "40px"
@@ -147,17 +148,27 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom Divider */}
-        <div className="footer-divider" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", paddingTop: "24px", borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
+        <div className="footer-divider" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", paddingTop: "24px", borderTop: "none" }}>
           <p style={{ margin: 0 }}>© 2026 Parthu Interiors. All Rights Reserved.</p>
-          
-          <Link
+
+          <Button
             href="/studio"
-            className="footer-login-btn"
+            variant="secondary"
+            size="sm"
             aria-label="Staff and Admin Login"
+            style={{
+              padding: "6px 14px",
+              fontSize: "0.82rem",
+              background: "rgba(255, 255, 255, 0.05)",
+              color: "rgba(255, 255, 255, 0.85)",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "7px"
+            }}
           >
             <LockIcon size={13} color="var(--brand-primary)" />
             <span>Admin Login</span>
-          </Link>
+          </Button>
 
           <p style={{ fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.85)", margin: 0 }}>
             Made by{" "}

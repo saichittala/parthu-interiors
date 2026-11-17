@@ -189,7 +189,7 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
               </h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginBottom: "36px" }}>
                 {location.propertyTypes.map((pt, idx) => (
-                  <div key={idx} style={{ display: "flex", alignItems: "center", gap: "12px", background: "transparent", padding: "14px 18px", borderRadius: "var(--radius-brand-12)", border: "1px solid rgba(255,255,255,0.12)" }}>
+                  <div key={idx} style={{ display: "flex", alignItems: "center", gap: "12px", background: "rgba(255,255,255,0.03)", padding: "14px 18px", borderRadius: "var(--radius-brand-12)", border: "none" }}>
                     <CheckIcon size={18} color="#C1121F" />
                     <span style={{ fontSize: "0.95rem", color: "#e0e0e0", fontWeight: "500" }}>{pt}</span>
                   </div>
@@ -211,7 +211,7 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
             </div>
 
             {/* Right Column: Key Highlights Box */}
-            <div style={{ background: "transparent", border: "1px solid rgba(255, 255, 255, 0.12)", borderRadius: "var(--radius-brand-24)", padding: "36px 32px" }}>
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "none", borderRadius: "var(--radius-brand-24)", padding: "36px 32px" }}>
               <h3 style={{ fontSize: "1.35rem", fontWeight: "700", color: "#FFFFFF", marginBottom: "24px" }}>
                 Why Parthu Interiors in {location.name}?
               </h3>
@@ -227,7 +227,7 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
                 ))}
               </div>
 
-              <div style={{ marginTop: "32px", paddingTop: "24px", borderTop: "1px solid rgba(255,255,255,0.08)", textAlign: "center" }}>
+              <div style={{ marginTop: "32px", paddingTop: "24px", borderTop: "none", textAlign: "center" }}>
                 <p style={{ fontSize: "0.88rem", color: "#b0b0b0", marginBottom: "18px" }}>
                   Factory-controlled woodwork manufactured at our Kokapet facility.
                 </p>
@@ -267,7 +267,7 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
           <div className="grid-3x2-equal">
             {servicesData.slice(0, 6).map((srv) => (
               <Link key={srv.id} href={`/services/${srv.id}`} style={{ textDecoration: "none" }}>
-                <div style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "var(--radius-brand-18)", padding: "28px 24px", height: "100%", transition: "all 0.3s ease", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <div style={{ background: "rgba(255,255,255,0.03)", border: "none", borderRadius: "var(--radius-brand-18)", padding: "28px 24px", height: "100%", transition: "all 0.3s ease", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                   <div>
                     <h3 style={{ fontSize: "1.15rem", fontWeight: "600", color: "#FFFFFF", marginBottom: "10px", lineHeight: "1.3" }}>
                       {srv.title}
@@ -297,7 +297,7 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
 
             <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
               {location.faqs.map((faq, idx) => (
-                <div key={idx} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "var(--radius-brand-18)", padding: "28px 32px" }}>
+                <div key={idx} style={{ background: "rgba(255,255,255,0.03)", border: "none", borderRadius: "var(--radius-brand-18)", padding: "28px 32px" }}>
                   <h3 style={{ fontSize: "1.15rem", fontWeight: "600", color: "#FFFFFF", marginBottom: "12px" }}>
                     {faq.question}
                   </h3>

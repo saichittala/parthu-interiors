@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { XCloseIcon, WhatsAppIcon, ClockIcon } from "./Icons";
+import { Button } from "./arc/button/button";
 
 interface PricingDeliveryModalProps {
   isOpen: boolean;
@@ -120,7 +121,7 @@ export default function PricingDeliveryModal({
               width: "100%",
               maxWidth: "1040px",
               background: "#0a0a0a",
-              border: "1px solid rgba(255, 255, 255, 0.12)",
+              border: "none",
               borderRadius: "var(--radius-brand-24, 24px)",
               boxShadow: "0 32px 96px rgba(0, 0, 0, 0.95)",
               padding: "36px 32px 32px",
@@ -130,8 +131,10 @@ export default function PricingDeliveryModal({
             }}
           >
             {/* Close Button */}
-            <button
+            <Button
               onClick={onClose}
+              variant="ghost"
+              size="sm"
               aria-label="Close Modal"
               style={{
                 position: "absolute",
@@ -141,17 +144,17 @@ export default function PricingDeliveryModal({
                 height: "40px",
                 borderRadius: "var(--radius-circle)",
                 background: "transparent",
-                border: "1px solid rgba(255, 255, 255, 0.22)",
+                border: "1.5px solid rgba(255, 255, 255, 0.35)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 cursor: "pointer",
-                transition: "all 0.2s ease",
+                padding: 0,
                 zIndex: 10,
               }}
             >
               <XCloseIcon size={20} color="#FFFFFF" />
-            </button>
+            </Button>
 
             {/* Modal Headline */}
             <h2
@@ -179,50 +182,36 @@ export default function PricingDeliveryModal({
                 margin: "0 auto 36px",
                 maxWidth: "380px",
                 background: "rgba(255, 255, 255, 0.04)",
-                border: "1px solid rgba(255, 255, 255, 0.10)",
+                border: "none",
                 borderRadius: "var(--radius-brand-12)",
                 padding: "4px",
                 gap: "4px",
               }}
             >
-              <button
+              <Button
                 type="button"
+                variant={activeTab === "pricing" ? "primary" : "ghost"}
+                size="md"
                 onClick={() => setActiveTab("pricing")}
                 style={{
                   flex: 1,
-                  padding: "10px 18px",
-                  borderRadius: "var(--radius-sm)",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  cursor: "pointer",
-                  transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                  border: activeTab === "pricing" ? "1px solid var(--brand-border, rgba(255, 99, 100, 0.4))" : "1px solid transparent",
-                  background: activeTab === "pricing" ? "rgba(255, 99, 100, 0.18)" : "transparent",
-                  color: activeTab === "pricing" ? "#C1121F" : "rgba(255, 255, 255, 0.65)",
                   textAlign: "center",
                 }}
               >
                 Unbeatable Pricing
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                variant={activeTab === "delivery" ? "primary" : "ghost"}
+                size="md"
                 onClick={() => setActiveTab("delivery")}
                 style={{
                   flex: 1,
-                  padding: "10px 18px",
-                  borderRadius: "var(--radius-sm)",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  cursor: "pointer",
-                  transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                  border: activeTab === "delivery" ? "1px solid var(--brand-border, rgba(255, 99, 100, 0.4))" : "1px solid transparent",
-                  background: activeTab === "delivery" ? "rgba(255, 99, 100, 0.18)" : "transparent",
-                  color: activeTab === "delivery" ? "#C1121F" : "rgba(255, 255, 255, 0.65)",
                   textAlign: "center",
                 }}
               >
                 Fastest Delivery
-              </button>
+              </Button>
             </div>
 
             {/* Tab 1: Unbeatable Pricing View */}
@@ -240,15 +229,15 @@ export default function PricingDeliveryModal({
                     <div
                       key={idx}
                       style={{
-                        background: "transparent",
-                        border: "1px solid rgba(255, 255, 255, 0.12)",
+                        background: "rgba(255, 255, 255, 0.03)",
+                        border: "none",
                         borderRadius: "var(--radius-brand-16)",
                         padding: "24px 20px",
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "space-between",
                         position: "relative",
-                        transition: "transform 0.3s ease, border-color 0.3s ease",
+                        transition: "transform 0.3s ease",
                       }}
                     >
                       <div>
@@ -257,7 +246,7 @@ export default function PricingDeliveryModal({
                           style={{
                             display: "inline-block",
                             background: "rgba(255, 99, 100, 0.15)",
-                            border: "1px solid rgba(255, 99, 100, 0.40)",
+                            border: "none",
                             color: "#C1121F",
                             fontSize: "14px",
                             fontWeight: "700",
@@ -349,36 +338,33 @@ export default function PricingDeliveryModal({
                     flexWrap: "wrap",
                   }}
                 >
-                  {/* ONLY Book Consultation in Solid Brand Color */}
-                  <button
+                  <Button
                     type="button"
                     onClick={() => {
                       onClose();
                       onBookConsultation();
                     }}
-                    className="btn btn-primary btn-lg"
+                    variant="primary"
+                    size="lg"
                     style={{
                       width: "100%",
                       justifyContent: "center",
-                      background: "#C1121F",
-                      color: "#FFFFFF",
-                      fontWeight: "500",
-                      boxShadow: "none",
                     }}
                   >
                     <span>Book Consultation for This Offer</span>
-                  </button>
+                  </Button>
 
-                  <a
+                  <Button
                     href={`https://wa.me/918790905746?text=${encodeURIComponent("Hi Parthu Interiors! 👋 I would like to request a Free Home Interior Planning Session & Estimate.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-whatsapp btn-lg"
-                    style={{ width: "100%", justifyContent: "center", display: "inline-flex", alignItems: "center", gap: "8px" }}
+                    variant="whatsapp"
+                    size="lg"
+                    style={{ width: "100%", justifyContent: "center", gap: "8px", whiteSpace: "nowrap" }}
                   >
                     <WhatsAppIcon size={18} />
-                    <span>Get Instant Quote on WhatsApp</span>
-                  </a>
+                    <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all" }}>Get Instant Quote on WhatsApp</span>
+                  </Button>
                 </div>
               </div>
             )}
@@ -388,8 +374,8 @@ export default function PricingDeliveryModal({
               <div style={{ padding: "10px 0 10px" }}>
                 <div
                   style={{
-                    background: "transparent",
-                    border: "1px solid rgba(255, 255, 255, 0.12)",
+                    background: "rgba(255, 255, 255, 0.03)",
+                    border: "none",
                     borderRadius: "var(--radius-brand-16)",
                     padding: "36px 32px",
                     marginBottom: "32px",
@@ -424,24 +410,20 @@ export default function PricingDeliveryModal({
                     flexWrap: "wrap",
                   }}
                 >
-                  {/* ONLY Book Consultation in Solid Brand Color */}
-                  <button
+                  <Button
                     type="button"
                     onClick={() => {
                       onClose();
                       onBookConsultation();
                     }}
-                    className="btn btn-primary btn-lg"
+                    variant="primary"
+                    size="lg"
                     style={{
                       padding: "14px 32px",
-                      background: "#C1121F",
-                      color: "#FFFFFF",
-                      fontWeight: "500",
-                      boxShadow: "none",
                     }}
                   >
                     <span>Book 45-Day Handover Consultation</span>
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}

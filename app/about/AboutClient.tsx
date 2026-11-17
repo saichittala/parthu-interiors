@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import ConsultationModal from "../components/ConsultationModal";
+import { Button } from "../components/arc/button/button";
 import {
   FactoryIcon,
   SettingsIcon,
@@ -41,13 +42,18 @@ export default function AboutClient() {
                   While traditional interior design firms make generic promises about quality work, Parthu Interiors delivers structured transparency: advance planning, clear material specifications, transparent stage-wise budgeting, and regular site updates to make your dream home journey completely stress-free.
                 </p>
                 <div className="about-hero-actions">
-                  <button onClick={() => setConsultationOpen(true)} className="btn btn-primary btn-lg">
-                    <span>Get a Free Quote</span>
-                  </button>
-                  <a href="tel:+918790905746" className="btn btn-secondary btn-lg" style={{ gap: "8px" }}>
+                  <Button
+                    onClick={() => setConsultationOpen(true)}
+                    variant="primary"
+                    size="lg"
+                    style={{ whiteSpace: "nowrap", flexShrink: 0 }}
+                  >
+                    <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all" }}>Get a Free Quote</span>
+                  </Button>
+                  <Button href="tel:+918790905746" variant="secondary" size="lg" style={{ gap: "8px", whiteSpace: "nowrap", flexShrink: 0 }}>
                     <PhoneIcon size={16} />
-                    <span>Call +91 87909 05746</span>
-                  </a>
+                    <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all" }}>Call +91 87909 05746</span>
+                  </Button>
                 </div>
               </div>
 
@@ -89,15 +95,15 @@ export default function AboutClient() {
                 </p>
 
                 <div className="about-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", marginTop: "24px" }}>
-                  <div style={{ padding: "18px", background: "var(--bg-light)", borderRadius: "var(--radius-brand-18)", border: "1px solid var(--border-light-subtle)" }}>
+                  <div style={{ padding: "18px", background: "var(--bg-light)", borderRadius: "var(--radius-brand-18)", border: "none" }}>
                     <div style={{ fontSize: "var(--fs-28)", fontWeight: "800", color: "var(--text-dark-primary)", marginBottom: "4px" }}>8+ Years</div>
                     <div style={{ fontSize: "var(--fs-14)", fontWeight: "700", color: "var(--text-dark-primary)" }}>Company Experience</div>
                   </div>
-                  <div style={{ padding: "18px", background: "var(--bg-light)", borderRadius: "var(--radius-brand-18)", border: "1px solid var(--border-light-subtle)" }}>
+                  <div style={{ padding: "18px", background: "var(--bg-light)", borderRadius: "var(--radius-brand-18)", border: "none" }}>
                     <div style={{ fontSize: "var(--fs-28)", fontWeight: "800", color: "var(--text-dark-primary)", marginBottom: "4px" }}>Venkatesh</div>
                     <div style={{ fontSize: "var(--fs-14)", fontWeight: "700", color: "var(--text-dark-primary)" }}>CEO &amp; Founder</div>
                   </div>
-                  <div style={{ padding: "18px", background: "var(--bg-light)", borderRadius: "var(--radius-brand-18)", border: "1px solid var(--border-light-subtle)" }}>
+                  <div style={{ padding: "18px", background: "var(--bg-light)", borderRadius: "var(--radius-brand-18)", border: "none" }}>
                     <div style={{ fontSize: "var(--fs-28)", fontWeight: "800", color: "var(--text-dark-primary)", marginBottom: "4px" }}>100+ Homes</div>
                     <div style={{ fontSize: "var(--fs-14)", fontWeight: "700", color: "var(--text-dark-primary)" }}>Turnkey Handover</div>
                   </div>
@@ -188,22 +194,25 @@ export default function AboutClient() {
               Connect with our design team on WhatsApp or request a complimentary Home Interior Planning Session.
             </p>
             <div className="cta-actions" style={{ margin: "0 auto", justifyContent: "center" }}>
-              <button
+              <Button
                 onClick={() => setConsultationOpen(true)}
-                className="btn btn-primary btn-lg"
+                variant="primary"
+                size="lg"
+                style={{ whiteSpace: "nowrap", flexShrink: 0 }}
               >
-                <span>Get a Free Quote</span>
-              </button>
-              <a
+                <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all" }}>Get a Free Quote</span>
+              </Button>
+              <Button
                 href={`https://wa.me/918790905746?text=${encodeURIComponent("Hi Parthu Interiors! 👋 I would like to request a Free Home Interior Planning Session.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-whatsapp btn-lg"
+                variant="whatsapp"
+                size="lg"
                 style={{ gap: "8px" }}
               >
                 <WhatsAppIcon size={18} />
                 <span>WhatsApp</span>
-              </a>
+              </Button>
             </div>
           </div>
         </section>

@@ -1957,10 +1957,28 @@ main {
 }
 
 .nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
   transition: gap var(--duration-smooth) var(--ease-apple);
+}
+
+.nav-quote-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  min-width: max-content !important;
+  word-break: keep-all !important;
+}
+
+.nav-quote-btn *,
+.nav-quote-btn span {
+  white-space: nowrap !important;
+  word-break: keep-all !important;
 }
 
 .site-header .btn {
@@ -2004,8 +2022,8 @@ main {
 
 .mobile-menu-btn {
   display: none;
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
   cursor: pointer;
   padding: 6px;
   color: var(--text-light-primary);
@@ -2014,7 +2032,8 @@ main {
 }
 
 .mobile-menu-btn:hover {
-  background: var(--border-dark-hairline);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.45) !important;
   transform: scale(1.05);
 }
 
@@ -4402,6 +4421,24 @@ main {
 }
 
 @media (max-width: 768px) {
+  .nav-container {
+    gap: 10px !important;
+  }
+
+  .nav-actions {
+    gap: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-quote-btn {
+    padding-inline: 14px !important;
+    font-size: 13px !important;
+    min-height: 36px !important;
+    height: 36px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
   .nav-menu {
     display: none;
   }
@@ -4409,6 +4446,28 @@ main {
   .mobile-menu-btn {
     display: block;
   }
+
+@media (max-width: 420px) {
+  .nav-logo-img {
+    max-height: 34px !important;
+  }
+  .nav-actions {
+    gap: 6px !important;
+  }
+  .nav-quote-btn {
+    padding-inline: 11px !important;
+    font-size: 12px !important;
+    min-height: 34px !important;
+    height: 34px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-quote-btn {
+    padding-inline: 8px !important;
+    font-size: 11px !important;
+  }
+}
 
   .projects-gallery-grid,
   .features-grid,
@@ -5582,4 +5641,250 @@ main {
 
 .blog-card:hover .blog-card-img-box img {
   transform: scale(1.03) !important;
+}
+
+
+/* ==============================================================================
+ *  Executive Dashboard & CRM — WCAG 2.1 AA/AAA Compliant Design System
+ * ============================================================================== */
+
+.dashboard-portal {
+  background-color: #08080A !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-body) !important;
+  min-height: 100vh;
+}
+
+/* Force all headings inside dashboard to pure white, overriding globals.css #292929 */
+.dashboard-portal h1,
+.dashboard-portal h2,
+.dashboard-portal h3,
+.dashboard-portal h4,
+.dashboard-portal h5,
+.dashboard-portal h6,
+.dashboard-heading {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+}
+
+/* High contrast text hierarchy */
+.dashboard-text-primary {
+  color: #FFFFFF !important;
+}
+
+.dashboard-text-body {
+  color: #E4E4E7 !important;
+  line-height: 1.6 !important;
+}
+
+.dashboard-text-muted {
+  color: #D4D4D8 !important;
+  line-height: 1.55 !important;
+}
+
+.dashboard-text-subtle {
+  color: #A1A1AA !important;
+}
+
+/* Surface Cards */
+.dashboard-card {
+  background: #0E0E12 !important;
+  border: none !important;
+  border-radius: 14px !important;
+}
+
+/* Interactive CMS Shortcut Cards */
+.dashboard-shortcut-card {
+  background: #111116 !important;
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 22px !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.dashboard-shortcut-card:hover {
+  background: #181822 !important;
+  border: none !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(193, 18, 31, 0.2) !important;
+}
+
+.dashboard-shortcut-card:focus-visible {
+  outline: 2px solid #C1121F !important;
+  outline-offset: 2px !important;
+}
+
+.dashboard-shortcut-card h4 {
+  color: #FFFFFF !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.dashboard-shortcut-card p {
+  color: #D4D4D8 !important;
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  margin: 0 !important;
+}
+
+/* Interactive Buttons & Tabs */
+.dashboard-tab-btn {
+  padding: 10px 18px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.dashboard-tab-btn:focus-visible {
+  outline: 2px solid #C1121F !important;
+  outline-offset: 2px !important;
+}
+
+.dashboard-tab-active {
+  background: linear-gradient(135deg, #C1121F 0%, #A00E19 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 16px rgba(193, 18, 31, 0.4) !important;
+}
+
+.dashboard-tab-inactive {
+  background: #14141A !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  color: #FFFFFF !important;
+}
+
+.dashboard-tab-inactive:hover {
+  background: #1E1E28 !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Inputs & Form Elements */
+.dashboard-input {
+  background: #111116 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #FFFFFF !important;
+  border-radius: 8px !important;
+  outline: none !important;
+  font-size: 14px !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.dashboard-input::placeholder {
+  color: #A1A1AA !important;
+  opacity: 1 !important;
+}
+
+.dashboard-input:focus {
+  border-color: #C1121F !important;
+  box-shadow: 0 0 0 3px rgba(193, 18, 31, 0.3) !important;
+}
+
+/* ==============================================================================
+   GLOBAL ARCHITECTURAL CONTAINER BORDER RESET
+   Containers strictly have NO borders; Borders are reserved for buttons only.
+   ============================================================================== */
+.container,
+.nav-container,
+.hero-cinematic-container,
+.community-marquee-container,
+.featured-services-slider-container,
+.process-minimal-container,
+.faq-container,
+.before-after-container,
+.services-grid-container,
+.services-gallery-container,
+.dashboard-card,
+.dashboard-shortcut-card,
+.modal-box,
+.who-we-are-showroom-card,
+.who-we-are-factory-card,
+.who-we-are-factory-tag,
+.who-we-are-showroom-tag,
+.featured-service-img-wrapper,
+.project-card-img-wrapper,
+.feature-card,
+.pillar-card,
+.process-circle-badge,
+.cta-form-card,
+.contact-info-card,
+.contact-info-card .icon-wrapper,
+.contact-form-card,
+.contact-whatsapp-box,
+.contact-map-box,
+.differentiator-image-card,
+.differentiator-card-badge--dark,
+.differentiator-card-badge--brand,
+.value-badge-icon,
+.about-hero-img-box,
+.about-philosophy-img-box,
+.hero-slider-counter,
+.hero-cinematic-eyebrow,
+.blog-card,
+.services-main-image-box,
+.service-card-img-box,
+.services-category-card-media-box,
+.portfolio-preview-box,
+.projects-slider-card,
+.featured-service-card,
+.materials-card-clean,
+.timeline-card,
+.pricing-card,
+.spec-box,
+.room-card,
+.location-card,
+.package-card,
+.differentiator-card,
+.stat-box,
+.stats-card,
+.showroom-info-card,
+.testimonial-card,
+.badge-group,
+.featured-icon-brand,
+.faq-item {
+  border: none !important;
+}
+
+/* Explicit button border reinforcement */
+.btn,
+button,
+a.btn,
+.btn-primary,
+.btn-secondary,
+.btn-secondary-gray,
+.btn-secondary-glass,
+.btn-whatsapp,
+.btn-outline {
+  border-width: 1.5px !important;
+  border-style: solid !important;
+}
+
+.btn-primary {
+  border-color: var(--brand-primary-border, #E02435) !important;
+}
+
+.btn-secondary,
+.btn-secondary-gray,
+.btn-secondary-glass {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+[data-theme="light"] .btn-secondary,
+.light-theme .btn-secondary,
+.light-mode .btn-secondary {
+  border-color: #000000 !important;
+}
+
+.btn-whatsapp {
+  border-color: #25D366 !important;
 }

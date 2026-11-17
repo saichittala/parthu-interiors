@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { ArrowRightIcon, HomeIcon, PhoneIcon } from "./components/Icons";
+import { Button } from "./components/arc/button/button";
 
 export const metadata = {
   title: "404 - Page Not Found | Parthu Interiors",
@@ -35,7 +36,7 @@ export default function NotFound() {
               display: "inline-block",
               background: "rgba(193, 18, 31, 0.15)",
               color: "var(--brand-primary, #C1121F)",
-              border: "1px solid rgba(193, 18, 31, 0.3)",
+              border: "none",
               padding: "6px 14px",
               borderRadius: "50px",
               fontSize: "0.85rem",
@@ -81,58 +82,54 @@ export default function NotFound() {
               marginBottom: "48px",
             }}
           >
-            <Link
+            <Button
               href="/"
-              className="btn btn-primary btn-lg"
+              variant="primary"
+              size="lg"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
-                textDecoration: "none",
               }}
             >
               <HomeIcon size={18} />
               <span>Back to Homepage</span>
-            </Link>
+            </Button>
 
-            <Link
+            <Button
               href="/services"
-              className="btn btn-secondary-glass btn-lg"
+              variant="secondary"
+              size="lg"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
-                textDecoration: "none",
-                borderRadius: "50px",
-                padding: "14px 28px",
               }}
             >
               <span>Explore Services</span>
               <ArrowRightIcon size={18} />
-            </Link>
+            </Button>
 
-            <Link
+            <Button
               href="/locations"
-              className="btn btn-secondary-glass btn-lg"
+              variant="secondary"
+              size="lg"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
-                textDecoration: "none",
-                borderRadius: "50px",
-                padding: "14px 28px",
               }}
             >
               <span>Hyderabad Locations</span>
               <ArrowRightIcon size={18} />
-            </Link>
+            </Button>
           </div>
 
           <div
             style={{
               padding: "20px 24px",
               background: "rgba(255, 255, 255, 0.03)",
-              border: "1px solid rgba(255, 255, 255, 0.08)",
+              border: "none",
               borderRadius: "16px",
               display: "inline-flex",
               alignItems: "center",

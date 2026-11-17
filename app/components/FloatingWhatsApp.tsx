@@ -1,9 +1,15 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 import { WhatsAppIcon } from "./Icons";
 
 export default function FloatingWhatsApp() {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/dashboard") || pathname?.startsWith("/studio") || pathname?.startsWith("/admin")) {
+    return null;
+  }
   const waMsg = encodeURIComponent(
     "Hi Parthu Interiors! 👋 I am interested in interior design & turnkey execution for my home in Hyderabad. Please share your consultation & estimate details."
   );

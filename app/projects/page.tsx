@@ -6,6 +6,7 @@ import JsonLd, { defaultOrganizationSchema } from "../components/JsonLd";
 import { projectsData } from "../lib/projectsData";
 import { ChevronRightIcon, MapPinIcon } from "../components/Icons";
 import ImageWithSkeleton from "../components/ImageWithSkeleton";
+import ProjectsList from "./ProjectsList";
 import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
 
 export const metadata = {
@@ -70,27 +71,7 @@ export default function ProjectsPage() {
       {/* Projects Grid */}
       <section style={{ padding: "20px 32px 100px 32px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div className="projects-cards-grid">
-            {projectsData.map((project) => (
-              <Link
-                key={project.id}
-                href={`/projects/${project.id}`}
-                className="project-card-item"
-                style={{ textDecoration: "none" }}
-              >
-                <div className="project-card-img-wrapper">
-                  <ImageWithSkeleton
-                    src={project.mainImage}
-                    alt={`${project.title} - ${project.location} Interior Design by Parthu Interiors`}
-                  />
-                </div>
-                <div className="project-card-white-box">
-                  <h2 className="project-card-title">{project.title}</h2>
-                  <p className="project-card-location">{project.location}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <ProjectsList fallbackProjects={projectsData} />
         </div>
       </section>
 

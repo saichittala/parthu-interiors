@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import ConsultationModal from "../components/ConsultationModal";
+import { Button } from "../components/arc/button/button";
 import ChoiceChips, { ChoiceOption } from "../components/ui/ChoiceChips";
 import {
   submitLeadToGoogleSheet,
@@ -147,15 +148,16 @@ export default function ContactClient() {
                       Share your requirements directly with our team.
                     </div>
                   </div>
-                  <a
+                  <Button
                     href={`https://wa.me/918790905746?text=${encodeURIComponent("Hi Parthu Interiors! 👋 I would like to request a Free Home Interior Planning Session.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-whatsapp btn-sm"
+                    variant="whatsapp"
+                    size="sm"
                   >
                     <WhatsAppIcon size={18} />
                     <span>WhatsApp</span>
-                  </a>
+                  </Button>
                 </div>
               </div>
 
@@ -163,7 +165,7 @@ export default function ContactClient() {
               <div className="contact-form-card">
                 {submitted ? (
                   <div className="form-success-state">
-                    <div className="form-success-icon featured-icon featured-icon-brand" style={{ background: "rgba(37, 211, 102, 0.12)", border: "1px solid rgba(37, 211, 102, 0.25)" }}>
+                    <div className="form-success-icon featured-icon featured-icon-brand" style={{ background: "rgba(37, 211, 102, 0.12)", border: "none" }}>
                       <CheckCircleIcon size={32} color="#25D366" />
                     </div>
                     <h2 className="form-success-title">
@@ -172,23 +174,25 @@ export default function ContactClient() {
                     <p className="form-success-desc">
                       Details saved. Opening WhatsApp chat to share directly with {form.phone || "the client"}...
                     </p>
-                    <a
+                    <Button
                       href={`https://wa.me/${formatWhatsAppNumber(form.phone)}?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...form, phone: form.phone.startsWith("+91") ? form.phone : `+91 ${form.phone}`, propertyType: form.projectType, source: "Contact Page Form" }))}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-whatsapp btn-md"
-                      style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", width: "100%", marginBottom: "12px" }}
+                      variant="whatsapp"
+                      size="md"
+                      style={{ width: "100%", marginBottom: "12px", gap: "8px" }}
                     >
                       <WhatsAppIcon size={18} />
                       <span>Share to {form.phone || "Client"} on WhatsApp</span>
-                    </a>
-                    <button
-                      className="btn btn-secondary btn-md"
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      size="md"
                       style={{ width: "100%" }}
                       onClick={() => setSubmitted(false)}
                     >
                       Send Another Message
-                    </button>
+                    </Button>
                   </div>
                 ) : (
                   <div>
@@ -272,14 +276,16 @@ export default function ContactClient() {
                         />
                       </div>
 
-                      <button
+                      <Button
                         type="submit"
+                        loading={isSubmitting}
                         disabled={isSubmitting}
-                        className="btn btn-primary btn-lg w-full"
-                        style={{ width: "100%" }}
+                        variant="primary"
+                        size="lg"
+                        style={{ width: "100%", justifyContent: "center" }}
                       >
                         <span>{isSubmitting ? "Submitting..." : "Submit Inquiry"}</span>
-                      </button>
+                      </Button>
 
                       <div className="modal-privacy-note">
                         <LockIcon size={14} color="#C1121F" />
@@ -308,8 +314,8 @@ export default function ContactClient() {
 
                 {/* Location & Hours Detail Cards */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "32px" }}>
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: "14px", background: "#FFFFFF", padding: "18px 20px", borderRadius: "var(--radius-brand-18)", border: "1px solid var(--border-light-subtle)", boxShadow: "0 4px 16px rgba(0,0,0,0.02)" }}>
-                    <div className="featured-icon featured-icon-brand" style={{ width: "42px", height: "42px", flexShrink: 0, marginTop: "2px" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "14px", background: "#FFFFFF", padding: "18px 20px", borderRadius: "var(--radius-brand-18)", border: "none", boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}>
+                    <div className="featured-icon featured-icon-brand" style={{ width: "42px", height: "42px", flexShrink: 0, marginTop: "2px", border: "none" }}>
                       <MapPinIcon size={20} color="#000000" />
                     </div>
                     <div>
@@ -322,8 +328,8 @@ export default function ContactClient() {
                     </div>
                   </div>
 
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: "14px", background: "#FFFFFF", padding: "18px 20px", borderRadius: "var(--radius-brand-18)", border: "1px solid var(--border-light-subtle)", boxShadow: "0 4px 16px rgba(0,0,0,0.02)" }}>
-                    <div className="featured-icon featured-icon-brand" style={{ width: "42px", height: "42px", flexShrink: 0, marginTop: "2px" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "14px", background: "#FFFFFF", padding: "18px 20px", borderRadius: "var(--radius-brand-18)", border: "none", boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}>
+                    <div className="featured-icon featured-icon-brand" style={{ width: "42px", height: "42px", flexShrink: 0, marginTop: "2px", border: "none" }}>
                       <ClockIcon size={20} color="#000000" />
                     </div>
                     <div>
@@ -339,24 +345,26 @@ export default function ContactClient() {
 
                 {/* Direct Action Buttons */}
                 <div className="contact-action-btns">
-                  <a
+                  <Button
                     href="https://maps.google.com/?q=Near+Rainbow+Hospital+Hyder+Nagar+Kukatpally+Hyderabad"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-primary btn-md"
-                    style={{ gap: "8px", borderRadius: "var(--radius-pill)" }}
+                    variant="primary"
+                    size="md"
+                    style={{ gap: "8px" }}
                   >
                     <MapPinIcon size={16} />
                     <span>Open in Maps</span>
-                  </a>
-                  <a
+                  </Button>
+                  <Button
                     href="tel:+918790905746"
-                    className="btn btn-secondary btn-md"
-                    style={{ gap: "8px", borderRadius: "var(--radius-pill)" }}
+                    variant="secondary"
+                    size="md"
+                    style={{ gap: "8px" }}
                   >
                     <PhoneIcon size={16} />
                     <span>Call +91 87909 05746</span>
-                  </a>
+                  </Button>
                 </div>
               </div>
 
@@ -428,7 +436,7 @@ export default function ContactClient() {
                       fontSize: "11px",
                       fontWeight: "700",
                       letterSpacing: "0.02em",
-                      border: "1px solid rgba(255, 99, 100, 0.4)",
+                      border: "none",
                       boxShadow: "0 8px 20px rgba(0,0,0,0.4)",
                       marginBottom: "6px",
                       whiteSpace: "nowrap",

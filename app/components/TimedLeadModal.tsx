@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import ReactDOM from "react-dom";
 import ChoiceChips, { ChoiceOption } from "./ui/ChoiceChips";
 import { XCloseIcon, CheckCircleIcon, LockIcon, WhatsAppIcon } from "./Icons";
 import { submitLeadToGoogleSheet, openWhatsAppLeadChat, formatWhatsAppNumber, getLeadWhatsAppMessage } from "../lib/leadSubmission";
+import { Button } from "./arc/button/button";
 
 const PROPERTY_OPTIONS: ChoiceOption[] = [
   { value: "2 BHK Apartment", label: "2 BHK" },
@@ -27,6 +29,7 @@ const TIMELINE_OPTIONS: ChoiceOption[] = [
 ];
 
 export default function TimedLeadModal() {
+  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [showOptionalDetails, setShowOptionalDetails] = useState(false);
@@ -107,7 +110,7 @@ export default function TimedLeadModal() {
     }, 800);
   };
 
-  if (!mounted || !isOpen) return null;
+  if (!mounted || !isOpen || pathname?.startsWith("/dashboard") || pathname?.startsWith("/studio") || pathname?.startsWith("/admin")) return null;
 
   return ReactDOM.createPortal(
     <div className={`modal-backdrop ${isOpen ? "open" : ""}`} onClick={handleClose}>
@@ -118,7 +121,7 @@ export default function TimedLeadModal() {
           maxWidth: "460px",
           padding: "24px 22px",
           background: "#0a0b0d",
-          border: "1px solid rgba(255, 255, 255, 0.14)",
+          border: "none",
           boxShadow: "0 24px 64px rgba(0,0,0,0.95), 0 0 32px rgba(255, 99, 100, 0.18)",
         }}
       >
@@ -135,7 +138,7 @@ export default function TimedLeadModal() {
                 height: "48px",
                 borderRadius: "var(--radius-circle)",
                 background: "rgba(37, 211, 102, 0.12)",
-                border: "1px solid rgba(37, 211, 102, 0.25)",
+                border: "none",
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -151,24 +154,26 @@ export default function TimedLeadModal() {
               Data saved. Opening WhatsApp chat to share directly with {formData.phone || "the client"}...
             </p>
 
-            <a
+            <Button
               href={`https://wa.me/${formatWhatsAppNumber(formData.phone)}?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...formData, source: "Timed Planning Session Modal" }))}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-whatsapp btn-md"
-              style={{ width: "100%", marginBottom: "10px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px" }}
+              variant="whatsapp"
+              size="md"
+              style={{ width: "100%", marginBottom: "10px", gap: "8px" }}
             >
               <WhatsAppIcon size={18} />
               <span>Share to {formData.phone || "Client"} on WhatsApp</span>
-            </a>
+            </Button>
 
-            <button
-              className="btn btn-secondary btn-md"
+            <Button
+              variant="secondary"
+              size="md"
               style={{ width: "100%" }}
               onClick={handleClose}
             >
               Done
-            </button>
+            </Button>
           </div>
         ) : (
           <div>
@@ -280,30 +285,20 @@ export default function TimedLeadModal() {
                 </div>
               )}
 
-              <button
+              <Button
                 type="submit"
+                loading={isSubmitting}
                 disabled={isSubmitting}
+                variant="primary"
+                size="lg"
                 style={{
                   width: "100%",
                   height: "50px",
-                  borderRadius: "var(--radius-pill)",
-                  background: "linear-gradient(135deg, #C1121F 0%, #e55556 100%)",
-                  color: "#FFFFFF",
-                  fontWeight: 700,
                   fontSize: "15.5px",
-                  border: "none",
-                  cursor: "pointer",
-                  marginTop: "0px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
-                  boxShadow: "0 10px 28px rgba(255, 99, 100, 0.35)",
-                  transition: "all 0.2s ease",
                 }}
               >
                 <span>{isSubmitting ? "Submitting Request..." : "Get Estimate on WhatsApp"}</span>
-              </button>
+              </Button>
 
               <div className="modal-privacy-note" style={{ marginTop: "12px", fontSize: "12.5px", color: "rgba(255, 255, 255, 0.65)" }}>
                 <LockIcon size={14} color="#C1121F" />

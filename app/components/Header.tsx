@@ -18,6 +18,7 @@ import {
 import dynamic from "next/dynamic";
 import Logo from "./Logo";
 import { projectsData } from "../lib/projectsData";
+import { Button } from "./arc/button/button";
 
 const ConsultationModal = dynamic(() => import("./ConsultationModal"), { ssr: false });
 
@@ -203,6 +204,10 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
 
   const breadcrumbs = getBreadcrumbs();
 
+  if (pathname?.startsWith("/dashboard") || pathname?.startsWith("/studio") || pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   return (
     <>
       <div className={`header-wrapper ${isScrolled ? "is-scrolled" : ""} ${innerPageClass}`}>
@@ -265,12 +270,20 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
 
               {/* Nav Action CTAs */}
               <div className="nav-actions">
-                <button
+                <Button
                   onClick={handleOpenConsultation}
-                  className="btn btn-primary btn-sm"
+                  variant="primary"
+                  size="sm"
+                  className="nav-quote-btn"
+                  style={{
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                  }}
                 >
-                  <span>Get a Free Quote</span>
-                </button>
+                  <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all", display: "inline-block" }}>
+                    Get a Free Quote
+                  </span>
+                </Button>
 
                 {/* Mobile Hamburger Toggle (Untitled UI Icons) */}
                 <button
@@ -319,7 +332,7 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
                 alignItems: "center",
                 justifyContent: "space-between",
                 paddingBottom: "18px",
-                borderBottom: "1px solid rgba(255, 255, 255, 0.18)",
+                borderBottom: "none",
                 marginBottom: "8px",
               }}
             >
@@ -331,23 +344,24 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
                 />
               </Link>
 
-              {/* Close Button matching Image 2: Plain X icon */}
-              <button
+              {/* Close Button matching Arc UI Button */}
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => setMobileMenuOpen(false)}
                 aria-label="Close Mobile Menu"
                 style={{
-                  background: "transparent",
-                  border: "none",
+                  padding: "6px",
+                  minHeight: "36px",
+                  width: "36px",
+                  borderRadius: "var(--radius-circle)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  cursor: "pointer",
-                  color: "#FFFFFF",
-                  padding: "6px",
                 }}
               >
-                <XCloseIcon size={24} color="#FFFFFF" strokeWidth={2} />
-              </button>
+                <XCloseIcon size={20} color="#FFFFFF" strokeWidth={2} />
+              </Button>
             </div>
 
             {/* Navigation Links matching Image 2 layout with ChevronDownIcon and horizontal divider lines */}
@@ -387,7 +401,7 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
                         color: isActive ? "var(--brand-primary, #C1121F)" : "#FFFFFF",
                         textDecoration: "none",
                         padding: "18px 0",
-                        borderBottom: "1px solid rgba(255, 255, 255, 0.15)",
+                        borderBottom: "none",
                         transition: "color 0.2s ease",
                       }}
                     >
@@ -419,29 +433,25 @@ export default function Header({ onOpenConsultation }: HeaderProps) {
                 flexDirection: "column",
                 gap: "16px",
                 paddingTop: "20px",
-                borderTop: "1px solid rgba(255, 255, 255, 0.12)",
+                borderTop: "none",
               }}
             >
-              <button
+              <Button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   handleOpenConsultation();
                 }}
-                className="btn btn-primary btn-lg"
+                variant="primary"
+                size="lg"
                 style={{
                   width: "100%",
                   justifyContent: "center",
-                  fontSize: "16px",
-                  fontWeight: "500",
-                  padding: "16px",
-                  borderRadius: "14px",
-                  background: "var(--brand-primary, #C1121F)",
-                  color: "#FFFFFF",
-                  boxShadow: "none",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
                 }}
               >
-                <span>Get a Free Quote</span>
-              </button>
+                <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all" }}>Get a Free Quote</span>
+              </Button>
 
               <div
                 style={{

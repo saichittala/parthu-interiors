@@ -51,7 +51,7 @@ export default function BlogListingPage() {
       {/* Hero */}
       <section style={{ padding: "96px 32px 40px 32px", textAlign: "center" }}>
         <div style={{ maxWidth: "880px", margin: "0 auto" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255, 99, 100, 0.12)", color: "#C1121F", border: "1px solid rgba(255, 99, 100, 0.3)", borderRadius: "var(--radius-pill)", padding: "8px 20px", fontSize: "0.85rem", fontWeight: "600", marginBottom: "20px" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255, 99, 100, 0.12)", color: "#C1121F", border: "none", borderRadius: "var(--radius-pill)", padding: "8px 20px", fontSize: "0.85rem", fontWeight: "600", marginBottom: "20px" }}>
             <SparklesIcon size={16} color="#C1121F" />
             <span>DESIGN INSIGHTS &amp; GUIDES</span>
           </div>
@@ -72,7 +72,7 @@ export default function BlogListingPage() {
               const readingTime = getReadingTime(post.content || "");
               return (
                 <Link key={post.id} href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
-                  <article className="blog-card" style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "var(--radius-brand-20)", overflow: "hidden", height: "100%", display: "flex", flexDirection: "column", transition: "all 0.3s ease" }}>
+                  <article className="blog-card" style={{ background: "rgba(255,255,255,0.03)", border: "none", borderRadius: "var(--radius-brand-20)", overflow: "hidden", height: "100%", display: "flex", flexDirection: "column", transition: "all 0.3s ease" }}>
                     <div className="blog-card-img-box" style={{ position: "relative", height: "220px", overflow: "hidden" }}>
                       <img
                         src={post.featuredImage || "/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp"}

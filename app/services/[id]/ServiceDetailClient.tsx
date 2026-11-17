@@ -10,6 +10,7 @@ import { ExpandIcon, ChevronLeftIcon, ChevronRightIcon } from "../../components/
 import CategoryTabs from "../../components/CategoryTabs";
 import { ServiceDetail } from "../../lib/servicesData";
 import { getRoomHeading } from "../../lib/roomHelper";
+import { Button } from "../../components/arc/button/button";
 
 interface ServiceDetailClientProps {
   service: ServiceDetail;
@@ -84,9 +85,10 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
 
                 {/* Left Arrow Button for Inline Switching */}
                 {galleryImages.length > 1 && (
-                  <button
+                  <Button
                     type="button"
                     onClick={handlePrevImage}
+                    variant="ghost"
                     aria-label="Previous Image"
                     style={{
                       position: "absolute",
@@ -98,24 +100,25 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                       height: "44px",
                       borderRadius: "var(--radius-circle)",
                       background: "rgba(0, 0, 0, 0.65)",
-                      border: "1px solid rgba(255, 255, 255, 0.25)",
+                      border: "1.5px solid rgba(255, 255, 255, 0.35)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       cursor: "pointer",
-                      transition: "all 0.2s ease",
+                      padding: 0,
                       backdropFilter: "blur(8px)",
                     }}
                   >
                     <ChevronLeftIcon size={22} color="#FFFFFF" />
-                  </button>
+                  </Button>
                 )}
 
                 {/* Right Arrow Button for Inline Switching */}
                 {galleryImages.length > 1 && (
-                  <button
+                  <Button
                     type="button"
                     onClick={handleNextImage}
+                    variant="ghost"
                     aria-label="Next Image"
                     style={{
                       position: "absolute",
@@ -127,17 +130,17 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                       height: "44px",
                       borderRadius: "var(--radius-circle)",
                       background: "rgba(0, 0, 0, 0.65)",
-                      border: "1px solid rgba(255, 255, 255, 0.25)",
+                      border: "1.5px solid rgba(255, 255, 255, 0.35)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       cursor: "pointer",
-                      transition: "all 0.2s ease",
+                      padding: 0,
                       backdropFilter: "blur(8px)",
                     }}
                   >
                     <ChevronRightIcon size={22} color="#FFFFFF" />
-                  </button>
+                  </Button>
                 )}
               </div>
 
@@ -174,12 +177,14 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
               <p className="services-cta-desc">
                 Get expert guidance and stage-wise material planning<br />for your home with Parthu Interiors.
               </p>
-              <button
+              <Button
                 onClick={() => setConsultationOpen(true)}
-                className="btn btn-primary btn-lg services-cta-btn"
+                variant="primary"
+                size="lg"
+                style={{ whiteSpace: "nowrap", flexShrink: 0 }}
               >
-                <span>Get a Free Quote</span>
-              </button>
+                <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all" }}>Get a Free Quote</span>
+              </Button>
             </div>
           </div>
         </section>

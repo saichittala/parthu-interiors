@@ -42,7 +42,7 @@ export default function PrivacyPage() {
                 padding: "6px 14px",
                 background: "rgba(193, 18, 31, 0.12)",
                 borderRadius: "9999px",
-                border: "1px solid rgba(193, 18, 31, 0.25)",
+                border: "none",
               }}
             >
               Data Protection
@@ -66,7 +66,7 @@ export default function PrivacyPage() {
             </p>
           </div>
 
-          <hr style={{ border: "none", borderTop: "1px solid rgba(255, 255, 255, 0.12)", marginBottom: "56px" }} />
+          <hr style={{ border: "none", height: "1px", background: "rgba(255, 255, 255, 0.08)", marginBottom: "56px" }} />
 
           {/* Body Section Container with Generous Spacing */}
           <div style={{ display: "flex", flexDirection: "column", gap: "56px" }}>
@@ -143,7 +143,7 @@ export default function PrivacyPage() {
                   padding: "24px 28px",
                   background: "rgba(255, 255, 255, 0.04)",
                   borderRadius: "16px",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  border: "none",
                   display: "flex",
                   flexDirection: "column",
                   gap: "8px",

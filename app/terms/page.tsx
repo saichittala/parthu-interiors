@@ -20,7 +20,7 @@ export default function TermsPage() {
 
       <article style={{ padding: "clamp(90px, 11vw, 150px) 24px clamp(80px, 10vw, 120px) 24px" }}>
         <div style={{ maxWidth: "840px", margin: "0 auto" }}>
-          
+
           {/* Header Badge & Title */}
           <div style={{ marginBottom: "64px" }}>
             <span
@@ -35,7 +35,7 @@ export default function TermsPage() {
                 padding: "6px 14px",
                 background: "rgba(193, 18, 31, 0.12)",
                 borderRadius: "9999px",
-                border: "1px solid rgba(193, 18, 31, 0.25)",
+                border: "none",
               }}
             >
               Legal Agreement
@@ -59,7 +59,7 @@ export default function TermsPage() {
             </p>
           </div>
 
-          <hr style={{ border: "none", borderTop: "1px solid rgba(255, 255, 255, 0.12)", marginBottom: "56px" }} />
+          <hr style={{ border: "none", height: "1px", background: "rgba(255, 255, 255, 0.08)", marginBottom: "56px" }} />
 
           {/* Body Section Container with Generous Spacing */}
           <div style={{ display: "flex", flexDirection: "column", gap: "56px" }}>
@@ -139,7 +139,7 @@ export default function TermsPage() {
                   padding: "24px 28px",
                   background: "rgba(255, 255, 255, 0.04)",
                   borderRadius: "16px",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  border: "none",
                   display: "flex",
                   flexDirection: "column",
                   gap: "8px",

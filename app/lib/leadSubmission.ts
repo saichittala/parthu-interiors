@@ -1,3 +1,5 @@
+import { saveLeadToDashboard } from "./leadStore";
+
 // Lead Submission Utility for Google Sheets Integration
 
 // Replace with your published Google Apps Script Webhook URL when ready:
@@ -29,6 +31,13 @@ export async function submitLeadToGoogleSheet(payload: LeadPayload): Promise<boo
     timestamp: new Date().toISOString(),
     source: payload.source || "Website Form",
   };
+
+  // Automatically record lead in dashboard CRM store
+  try {
+    saveLeadToDashboard(data);
+  } catch (storeErr) {
+    console.warn("Could not save to local dashboard store:", storeErr);
+  }
 
   try {
     if (GOOGLE_SCRIPT_WEBHOOK_URL) {

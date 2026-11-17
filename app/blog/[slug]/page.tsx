@@ -7,6 +7,7 @@ import JsonLd, { defaultOrganizationSchema } from "../../components/JsonLd";
 import { getPublishedBlogs, getReadingTime, getRelatedPosts, parseMarkdown, generateTableOfContents } from "../../lib/blog";
 import { ChevronRightIcon, SparklesIcon, PhoneIcon } from "../../components/Icons";
 import { SITE_URL, SITE_NAME } from "../../lib/siteConfig";
+import { Button } from "../../components/arc/button/button";
 
 interface BlogPageProps {
   params: Promise<{ slug: string }>;
@@ -147,7 +148,7 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
       <section style={{ padding: "96px 24px 20px 24px" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "14px", flexWrap: "wrap" }}>
-            <span style={{ background: "rgba(255, 255, 255, 0.12)", color: "#FFFFFF", border: "1px solid rgba(255, 255, 255, 0.2)", borderRadius: "var(--radius-brand-6)", padding: "4px 10px", fontSize: "0.78rem", fontWeight: "600" }}>
+            <span style={{ background: "rgba(255, 255, 255, 0.12)", color: "#FFFFFF", border: "none", borderRadius: "var(--radius-brand-6)", padding: "4px 10px", fontSize: "0.78rem", fontWeight: "600" }}>
               {post.category}
             </span>
             <span style={{ fontSize: "0.82rem", color: "#a0a0a0" }}>
@@ -163,7 +164,7 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
             {post.description}
           </p>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "12px", paddingTop: "14px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", paddingTop: "14px", borderTop: "none" }}>
             <div style={{ width: "38px", height: "38px", borderRadius: "var(--radius-circle)", background: "#C1121F", color: "#FFFFFF", fontWeight: "700", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem" }}>
               PI
             </div>
@@ -183,7 +184,7 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
       {post.featuredImage && (
         <section style={{ padding: "20px 24px" }}>
           <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-            <div style={{ borderRadius: "var(--radius-brand-18)", overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", maxHeight: "440px" }}>
+            <div style={{ borderRadius: "var(--radius-brand-18)", overflow: "hidden", border: "none", maxHeight: "440px" }}>
               <img
                 src={post.featuredImage}
                 alt={post.title}
@@ -200,7 +201,7 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
           
           {/* Table of Contents */}
           {tableOfContents.length > 0 && (
-            <div style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "var(--radius-brand-16)", padding: "20px 24px", marginBottom: "36px" }}>
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "none", borderRadius: "var(--radius-brand-16)", padding: "20px 24px", marginBottom: "36px" }}>
               <h2 style={{ fontSize: "1.1rem", fontWeight: "700", color: "#C1121F", marginBottom: "12px" }}>
                 Table of Contents
               </h2>
@@ -229,13 +230,13 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
 
           {/* Article FAQs */}
           {post.faq && post.faq.length > 0 && (
-            <div style={{ marginTop: "48px", paddingTop: "32px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+            <div style={{ marginTop: "48px", paddingTop: "32px", borderTop: "none" }}>
               <h2 style={{ fontSize: "1.35rem", fontWeight: "700", color: "#FFFFFF", marginBottom: "20px" }}>
                 Frequently Asked Questions
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                 {post.faq.map((f, idx) => (
-                  <div key={idx} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", padding: "18px 20px", borderRadius: "var(--radius-brand-12)" }}>
+                  <div key={idx} style={{ background: "rgba(255,255,255,0.03)", border: "none", padding: "18px 20px", borderRadius: "var(--radius-brand-12)" }}>
                     <h3 style={{ fontSize: "1.05rem", fontWeight: "600", color: "#FFFFFF", marginBottom: "6px" }}>
                       {f.question}
                     </h3>
@@ -249,31 +250,21 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
           )}
 
           {/* Consultation Banner inside Article */}
-          <div style={{ marginTop: "48px", background: "transparent", border: "1px solid rgba(255,99,100,0.3)", borderRadius: "var(--radius-brand-18)", padding: "32px 28px", textAlign: "center" }}>
+          <div style={{ marginTop: "48px", background: "rgba(255,255,255,0.03)", border: "none", borderRadius: "var(--radius-brand-18)", padding: "32px 28px", textAlign: "center" }}>
             <h3 style={{ fontSize: "1.35rem", fontWeight: "700", color: "#FFFFFF", marginBottom: "10px" }}>
               Planning Your Home Interiors in Hyderabad?
             </h3>
             <p style={{ fontSize: "0.95rem", color: "#cccccc", lineHeight: "1.6", maxWidth: "600px", margin: "0 auto 20px auto" }}>
               Speak directly with our senior interior design team for floorplan reviews, material guidance, and transparent budget estimates.
             </p>
-            <Link
+            <Button
               href="/contact"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                background: "#C1121F",
-                color: "#FFFFFF",
-                fontWeight: "700",
-                padding: "12px 28px",
-                borderRadius: "var(--radius-pill)",
-                textDecoration: "none",
-                fontSize: "0.9rem"
-              }}
+              variant="primary"
+              size="lg"
             >
               <span>Schedule Free Consultation</span>
               <ChevronRightIcon size={16} color="#FFFFFF" />
-            </Link>
+            </Button>
           </div>
 
           {/* Related Articles */}
@@ -285,7 +276,7 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "16px" }}>
                 {relatedPosts.map((rel) => (
                   <Link key={rel.id} href={`/blog/${rel.slug}`} style={{ textDecoration: "none" }}>
-                    <div style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "var(--radius-brand-14)", padding: "18px", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                    <div style={{ background: "rgba(255,255,255,0.03)", border: "none", borderRadius: "var(--radius-brand-14)", padding: "18px", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                       <div>
                         <div style={{ fontSize: "0.75rem", color: "#FFFFFF", fontWeight: "600", marginBottom: "4px" }}>{rel.category}</div>
                         <h3 style={{ fontSize: "1rem", fontWeight: "600", color: "#FFFFFF", marginBottom: "6px", lineHeight: "1.3" }}>{rel.title}</h3>

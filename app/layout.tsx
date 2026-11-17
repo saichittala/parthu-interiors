@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import "./components/arc/foundation.css";
 import "./globals.css";
 
 import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "./lib/siteConfig";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
   variable: "--font-plus-jakarta"
 });

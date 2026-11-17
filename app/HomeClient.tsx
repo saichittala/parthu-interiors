@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import Footer from "./components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "./components/JsonLd";
 import ScrollBeforeAfterSection from "./components/ScrollBeforeAfterSection";
+import { Button } from "./components/arc/button/button";
 
 const ConsultationModal = dynamic(() => import("./components/ConsultationModal"), { ssr: false });
 const PricingDeliveryModal = dynamic(() => import("./components/PricingDeliveryModal"), { ssr: false });
@@ -21,6 +22,7 @@ import {
   getLeadWhatsAppMessage,
 } from "./lib/leadSubmission";
 import { projectsData } from "./lib/projectsData";
+import { useLiveContent } from "./lib/useLiveContent";
 import { locationsData } from "./lib/locationsData";
 import { ParallaxScroll, ParallaxImage } from "./components/ui/parallax-scroll";
 import {
@@ -138,6 +140,7 @@ const COMMUNITY_PROJECTS = [
 ];
 
 export default function HomeClient() {
+  const { projects: liveProjects, testimonials: liveTestimonials } = useLiveContent();
   const [consultationOpen, setConsultationOpen] = useState(false);
   const [pricingModalOpen, setPricingModalOpen] = useState(false);
   const [servicesScrollProgress, setServicesScrollProgress] = useState(25);
@@ -414,46 +417,46 @@ export default function HomeClient() {
 
               {/* Slider Navigation Controls (Right Aligned Arrows) */}
               <div className="hero-slider-controls" style={{ display: "flex", gap: "12px", alignItems: "center", flexShrink: 0 }}>
-                <button
+                <Button
                   onClick={prevHeroSlide}
-                  className="hero-slider-btn"
+                  variant="ghost"
                   aria-label="Previous Slide"
                   style={{
                     width: "52px",
                     height: "52px",
                     borderRadius: "var(--radius-circle)",
                     background: "rgba(0, 0, 0, 0.6)",
-                    border: "1px solid rgba(255, 255, 255, 0.25)",
+                    border: "1.5px solid rgba(255, 255, 255, 0.35)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     cursor: "pointer",
                     backdropFilter: "blur(8px)",
-                    transition: "all 0.2s ease"
+                    padding: 0
                   }}
                 >
                   <ChevronLeftIcon size={22} color="#FFFFFF" />
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={nextHeroSlide}
-                  className="hero-slider-btn"
+                  variant="ghost"
                   aria-label="Next Slide"
                   style={{
                     width: "52px",
                     height: "52px",
                     borderRadius: "var(--radius-circle)",
                     background: "rgba(0, 0, 0, 0.6)",
-                    border: "1px solid rgba(255, 255, 255, 0.25)",
+                    border: "1.5px solid rgba(255, 255, 255, 0.35)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     cursor: "pointer",
                     backdropFilter: "blur(8px)",
-                    transition: "all 0.2s ease"
+                    padding: 0
                   }}
                 >
                   <ChevronRightIcon size={22} color="#FFFFFF" />
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -538,13 +541,14 @@ export default function HomeClient() {
 
                 {/* Minimalist Action Button */}
                 <div className="cta-actions">
-                  <Link
+                  <Button
                     href="/about"
-                    className="btn btn-secondary-glass btn-md"
-                    style={{ borderRadius: "var(--radius-pill)", border: "1px solid rgba(255, 255, 255, 0.25)", padding: "12px 26px" }}
+                    variant="secondary"
+                    size="md"
+                    style={{ padding: "12px 26px" }}
                   >
                     <span>About Us ↗</span>
-                  </Link>
+                  </Button>
                 </div>
               </div>
 
@@ -560,7 +564,7 @@ export default function HomeClient() {
                     background: "rgba(18, 18, 18, 0.85)",
                     backdropFilter: "blur(16px)",
                     WebkitBackdropFilter: "blur(16px)",
-                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    border: "none",
                     borderRadius: "var(--radius-brand-16)",
                     padding: "12px 18px",
                     display: "flex",
@@ -590,7 +594,7 @@ export default function HomeClient() {
                 </div>
 
                 {/* Overlaid Finished Showroom / Residence Card */}
-                <div className="who-we-are-showroom-card" style={{ borderRadius: "var(--radius-brand-20)", boxShadow: "0 20px 50px rgba(255, 99, 100, 0.2)", border: "1px solid rgba(255, 255, 255, 0.15)" }}>
+                <div className="who-we-are-showroom-card" style={{ borderRadius: "var(--radius-brand-20)", boxShadow: "0 20px 50px rgba(255, 99, 100, 0.2)", border: "none" }}>
                   <ParallaxImage
                     src="/assets/main_images/bedroom-interior-design-minimal-aesthetic-3d-rendered.webp"
                     alt="Parthu Interiors Completed Project"
@@ -682,12 +686,14 @@ export default function HomeClient() {
               <div className="why-parthu-banner-text">
                 Complete Customized Residential Interior Solutions in Hyderabad
               </div>
-              <button
+              <Button
                 onClick={() => setConsultationOpen(true)}
-                className="btn btn-primary btn-md"
+                variant="primary"
+                size="md"
+                style={{ whiteSpace: "nowrap", flexShrink: 0 }}
               >
-                <span>Get a Free Quote</span>
-              </button>
+                <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all" }}>Get a Free Quote</span>
+              </Button>
             </div>
           </div>
         </section>
@@ -701,20 +707,26 @@ export default function HomeClient() {
               <div className="featured-services-top-bar">
                 <h2 className="featured-services-heading">Featured Services</h2>
                 <div className="featured-services-nav-btns">
-                  <button
+                  <Button
                     onClick={scrollServicesLeft}
+                    variant="ghost"
+                    size="sm"
                     className="featured-services-nav-btn"
                     aria-label="Previous Services"
+                    style={{ width: "42px", height: "42px", padding: 0 }}
                   >
                     <ChevronLeftIcon size={20} />
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={scrollServicesRight}
+                    variant="ghost"
+                    size="sm"
                     className="featured-services-nav-btn"
                     aria-label="Next Services"
+                    style={{ width: "42px", height: "42px", padding: 0 }}
                   >
                     <ChevronRightIcon size={20} />
-                  </button>
+                  </Button>
                 </div>
               </div>
 
@@ -772,7 +784,10 @@ export default function HomeClient() {
 
               {/* Projects Grid */}
               <div className="projects-cards-grid">
-                {(showAllProjects ? projectsData : projectsData.slice(0, 4)).map((project) => (
+                {((showAllProjects
+                  ? (liveProjects.length > 0 ? liveProjects : projectsData)
+                  : (liveProjects.length > 0 ? liveProjects : projectsData).slice(0, 4)
+                )).map((project) => (
                   <Link
                     key={project.id}
                     href={`/projects/${project.id}`}
@@ -791,15 +806,16 @@ export default function HomeClient() {
               </div>
 
               {/* View All Projects / Show Less Button */}
-              {projectsData.length > 4 && (
+              {(liveProjects.length > 0 ? liveProjects : projectsData).length > 4 && (
                 <div className="projects-cta-wrap">
-                  <button
+                  <Button
                     type="button"
                     onClick={() => setShowAllProjects(!showAllProjects)}
-                    className="btn btn-secondary btn-lg"
+                    variant="secondary"
+                    size="lg"
                   >
                     {showAllProjects ? "Show Less Projects" : "View All Projects"}
-                  </button>
+                  </Button>
                 </div>
               )}
             </ScrollBlurFadeIn>
@@ -923,74 +939,58 @@ export default function HomeClient() {
               </div>
 
               <div className="testimonials-grid">
-                <div className="testimonial-card">
-                  <div>
-                    <div className="testimonial-stars-row">
-                      {[...Array(5)].map((_, i) => (
-                        <StarIcon key={i} size={18} color="var(--brand-primary-lightmode, #C1121F)" />
-                      ))}
+                {(liveTestimonials.length > 0 ? liveTestimonials : [
+                  {
+                    clientName: "Srinivas & Swapna",
+                    community: "My Home Bhooja, HITEC City, Hyderabad",
+                    reviewTitle: "A Smooth and Professional Experience",
+                    reviewText: "Parthu Interiors understood our requirements clearly and provided customised solutions for our home at My Home Bhooja. The overall design, 3D planning, and execution experience was smooth and professional.",
+                    initials: "SS",
+                    rating: 5
+                  },
+                  {
+                    clientName: "Karthik & Priyanka",
+                    community: "Lansum Etania, Gachibowli, Hyderabad",
+                    reviewTitle: "Beautiful and Functional Design",
+                    reviewText: "We wanted an interior that looked modern but was also practical for everyday use. The team at Parthu Interiors helped us achieve a beautiful and functional home at Lansum Etania.",
+                    initials: "KP",
+                    rating: 5
+                  },
+                  {
+                    clientName: "Venkat Rao & Family",
+                    community: "Jayabheri Silicon County, Hyderabad",
+                    reviewTitle: "Attention to Every Detail",
+                    reviewText: "From design discussions to the final execution, the team paid attention to our requirements and helped us create a space that feels truly personalised and luxurious.",
+                    initials: "VR",
+                    rating: 5
+                  }
+                ]).map((t, idx) => {
+                  const initials = t.initials || t.clientName.split(" ").map((w: string) => w[0]).filter(Boolean).slice(0, 2).join("").toUpperCase();
+                  return (
+                    <div className="testimonial-card" key={idx}>
+                      <div>
+                        <div className="testimonial-stars-row">
+                          {[...Array(t.rating || 5)].map((_, i) => (
+                            <StarIcon key={i} size={18} color="var(--brand-primary-lightmode, #C1121F)" />
+                          ))}
+                        </div>
+                        <h3 style={{ fontSize: "1.1rem", fontWeight: "700", marginTop: "10px", marginBottom: "8px", color: "var(--text-dark-primary)" }}>
+                          “{t.reviewTitle}”
+                        </h3>
+                        <p className="testimonial-text">
+                          “{t.reviewText}”
+                        </p>
+                      </div>
+                      <div className="testimonial-author-block">
+                        <div className="testimonial-avatar-circle" style={{ backgroundColor: "var(--brand-primary-lightmode, #C1121F)", color: "#FFFFFF" }}>{initials}</div>
+                        <div>
+                          <div className="testimonial-author-name">{t.clientName}</div>
+                          <div className="testimonial-author-role">{t.community}</div>
+                        </div>
+                      </div>
                     </div>
-                    <h3 style={{ fontSize: "1.1rem", fontWeight: "700", marginTop: "10px", marginBottom: "8px", color: "var(--text-dark-primary)" }}>
-                      “A Smooth and Professional Experience”
-                    </h3>
-                    <p className="testimonial-text">
-                      “Parthu Interiors understood our requirements clearly and provided customised solutions for our home at My Home Bhooja. The overall design, 3D planning, and execution experience was smooth and professional.”
-                    </p>
-                  </div>
-                  <div className="testimonial-author-block">
-                    <div className="testimonial-avatar-circle" style={{ backgroundColor: "var(--brand-primary-lightmode, #C1121F)", color: "#FFFFFF" }}>SS</div>
-                    <div>
-                      <div className="testimonial-author-name">Srinivas &amp; Swapna</div>
-                      <div className="testimonial-author-role">My Home Bhooja, HITEC City, Hyderabad</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="testimonial-card">
-                  <div>
-                    <div className="testimonial-stars-row">
-                      {[...Array(5)].map((_, i) => (
-                        <StarIcon key={i} size={18} color="var(--brand-primary-lightmode, #C1121F)" />
-                      ))}
-                    </div>
-                    <h3 style={{ fontSize: "1.1rem", fontWeight: "700", marginTop: "10px", marginBottom: "8px", color: "var(--text-dark-primary)" }}>
-                      “Beautiful and Functional Design”
-                    </h3>
-                    <p className="testimonial-text">
-                      “We wanted an interior that looked modern but was also practical for everyday use. The team at Parthu Interiors helped us achieve a beautiful and functional home at Lansum Etania.”
-                    </p>
-                  </div>
-                  <div className="testimonial-author-block">
-                    <div className="testimonial-avatar-circle" style={{ backgroundColor: "var(--brand-primary-lightmode, #C1121F)", color: "#FFFFFF" }}>KP</div>
-                    <div>
-                      <div className="testimonial-author-name">Karthik &amp; Priyanka</div>
-                      <div className="testimonial-author-role">Lansum Etania, Gachibowli, Hyderabad</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="testimonial-card">
-                  <div>
-                    <div className="testimonial-stars-row">
-                      {[...Array(5)].map((_, i) => (
-                        <StarIcon key={i} size={18} color="var(--brand-primary-lightmode, #C1121F)" />
-                      ))}
-                    </div>
-                    <h3 style={{ fontSize: "1.1rem", fontWeight: "700", marginTop: "10px", marginBottom: "8px", color: "var(--text-dark-primary)" }}>
-                      “Attention to Every Detail”
-                    </h3>
-                    <p className="testimonial-text">
-                      “From design discussions to the final execution, the team paid attention to our requirements and helped us create a space that feels truly personalised and luxurious.”
-                    </p>
-                  </div>
-                  <div className="testimonial-author-block">
-                    <div className="testimonial-avatar-circle" style={{ backgroundColor: "var(--brand-primary-lightmode, #C1121F)", color: "#FFFFFF" }}>VR</div>
-                    <div>
-                      <div className="testimonial-author-name">Venkat Rao &amp; Family</div>
-                      <div className="testimonial-author-role">Jayabheri Silicon County, Hyderabad</div>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </ScrollBlurFadeIn>
           </div>
@@ -1257,21 +1257,23 @@ export default function HomeClient() {
                 </p>
 
                 <div className="cta-actions">
-                  <button
+                  <Button
                     onClick={() => setConsultationOpen(true)}
-                    className="btn btn-primary btn-lg"
+                    variant="primary"
+                    size="lg"
                   >
                     <span>Request a Consultation</span>
-                  </button>
-                  <a
+                  </Button>
+                  <Button
                     href={`https://wa.me/918790905746?text=${encodeURIComponent("Hi PARTHU INTERIORS! 👋 I would like to request a Free Home Interior Planning Session.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-whatsapp btn-lg"
+                    variant="whatsapp"
+                    size="lg"
                   >
                     <WhatsAppIcon size={18} />
                     <span>WhatsApp</span>
-                  </a>
+                  </Button>
                 </div>
               </div>
 
@@ -1286,7 +1288,7 @@ export default function HomeClient() {
 
                 {homeFormSubmitted ? (
                   <div className="form-success-state">
-                    <div className="form-success-icon featured-icon featured-icon-brand" style={{ background: "rgba(37, 211, 102, 0.12)", border: "1px solid rgba(37, 211, 102, 0.25)" }}>
+                    <div className="form-success-icon featured-icon featured-icon-brand" style={{ background: "rgba(37, 211, 102, 0.12)", border: "none" }}>
                       <CheckCircleIcon size={28} color="#25D366" />
                     </div>
                     <h4 className="form-success-title">
@@ -1295,19 +1297,20 @@ export default function HomeClient() {
                     <p className="form-success-desc">
                       Opening WhatsApp chat to share details with {homeForm.phone || "the client"}...
                     </p>
-                    <a
+                    <Button
                       href={`https://wa.me/${formatWhatsAppNumber(homeForm.phone)}?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...homeForm, phone: homeForm.phone.startsWith("+91") ? homeForm.phone : `+91 ${homeForm.phone}`, source: "Homepage Inline Consultation Form" }))}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-whatsapp btn-sm"
+                      variant="whatsapp"
+                      size="sm"
                       style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px", width: "100%", marginBottom: "10px" }}
                     >
                       <WhatsAppIcon size={16} />
                       <span>Share to {homeForm.phone || "Client"} on WhatsApp</span>
-                    </a>
-                    <button className="btn btn-secondary btn-sm" style={{ width: "100%" }} onClick={() => setHomeFormSubmitted(false)}>
+                    </Button>
+                    <Button variant="secondary" size="sm" style={{ width: "100%" }} onClick={() => setHomeFormSubmitted(false)}>
                       Book Another
-                    </button>
+                    </Button>
                   </div>
                 ) : (
                   <form
@@ -1389,14 +1392,16 @@ export default function HomeClient() {
                       variant="dark"
                     />
 
-                    <button
+                    <Button
                       type="submit"
                       disabled={homeFormSubmitting}
-                      className="btn btn-primary btn-lg"
+                      loading={homeFormSubmitting}
+                      variant="primary"
+                      size="lg"
                       style={{ width: "100%", marginTop: "8px" }}
                     >
                       <span>{homeFormSubmitting ? "Submitting..." : "Get Consultation on WhatsApp"}</span>
-                    </button>
+                    </Button>
                   </form>
                 )}
               </div>

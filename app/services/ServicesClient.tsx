@@ -5,6 +5,7 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import ConsultationModal from "../components/ConsultationModal";
 import ImageWithSkeleton from "../components/ImageWithSkeleton";
+import { Button } from "../components/arc/button/button";
 
 export default function ServicesClient() {
   const [consultationOpen, setConsultationOpen] = useState(false);
@@ -103,12 +104,14 @@ export default function ServicesClient() {
             <p className="services-cta-desc">
               Get expert guidance, material specs, and stage-wise budget planning<br />for your space with Parthu Interiors.
             </p>
-            <button
+            <Button
               onClick={() => setConsultationOpen(true)}
-              className="btn btn-primary btn-lg services-cta-btn"
+              variant="primary"
+              size="lg"
+              style={{ whiteSpace: "nowrap", flexShrink: 0 }}
             >
-              <span>Get a Free Quote</span>
-            </button>
+              <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all" }}>Get a Free Quote</span>
+            </Button>
           </div>
         </section>
       </main>

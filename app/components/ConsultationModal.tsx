@@ -10,6 +10,7 @@ import {
 } from "./Icons";
 import ChoiceChips, { ChoiceOption } from "./ui/ChoiceChips";
 import { submitLeadToGoogleSheet, openWhatsAppLeadChat, formatWhatsAppNumber, getLeadWhatsAppMessage } from "../lib/leadSubmission";
+import { Button } from "./arc/button/button";
 
 const PROPERTY_TYPES: ChoiceOption[] = [
   { value: "2 BHK Apartment", label: "2 BHK" },
@@ -114,7 +115,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
           maxWidth: "460px",
           padding: "24px 22px",
           background: "#0a0b0d",
-          border: "1px solid rgba(255, 255, 255, 0.14)",
+          border: "none",
           boxShadow: "0 24px 64px rgba(0,0,0,0.95), 0 0 32px rgba(255, 99, 100, 0.08)",
         }}
       >
@@ -131,7 +132,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 height: "48px",
                 borderRadius: "var(--radius-circle)",
                 background: "rgba(37, 211, 102, 0.12)",
-                border: "1px solid rgba(37, 211, 102, 0.25)",
+                border: "none",
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -147,24 +148,26 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
               Data saved. Opening WhatsApp chat to share directly with {formData.phone || "the client"}...
             </p>
 
-            <a
+            <Button
               href={`https://wa.me/${formatWhatsAppNumber(formData.phone)}?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...formData, source: "Book Consultation Modal" }))}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-whatsapp btn-md"
-              style={{ width: "100%", marginBottom: "10px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px" }}
+              variant="whatsapp"
+              size="md"
+              style={{ width: "100%", marginBottom: "10px", gap: "8px" }}
             >
               <WhatsAppIcon size={18} />
               <span>Share to {formData.phone || "Client"} on WhatsApp</span>
-            </a>
+            </Button>
 
-            <button
-              className="btn btn-secondary btn-md"
+            <Button
+              variant="secondary"
+              size="md"
               style={{ width: "100%" }}
               onClick={onClose}
             >
               Close Window
-            </button>
+            </Button>
           </div>
         ) : (
           <div>
@@ -276,30 +279,23 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 </div>
               )}
 
-              <button
+              <Button
                 type="submit"
+                loading={isSubmitting}
                 disabled={isSubmitting}
+                variant="primary"
+                size="lg"
                 style={{
                   width: "100%",
                   height: "50px",
-                  borderRadius: "var(--radius-pill)",
-                  background: "linear-gradient(135deg, #C1121F 0%, #e55556 100%)",
-                  color: "#FFFFFF",
-                  fontWeight: 700,
                   fontSize: "15.5px",
-                  border: "none",
-                  cursor: "pointer",
-                  marginTop: "0px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
-                  boxShadow: "0 10px 28px rgba(255, 99, 100, 0.35)",
-                  transition: "all 0.2s ease",
+                  whiteSpace: "nowrap",
                 }}
               >
-                <span>{isSubmitting ? "Submitting..." : "Get Quote on WhatsApp"}</span>
-              </button>
+                <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all" }}>
+                  {isSubmitting ? "Submitting..." : "Get Quote on WhatsApp"}
+                </span>
+              </Button>
 
               <div className="modal-privacy-note" style={{ marginTop: "12px", fontSize: "12.5px", color: "rgba(255, 255, 255, 0.65)" }}>
                 <LockIcon size={14} color="#C1121F" />
