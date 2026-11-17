@@ -2,6 +2,7 @@ User-Agent: *
 Allow: /
 Disallow: /private/
 Disallow: /api/
+Disallow: /studio/
 
 User-Agent: GPTBot
 User-Agent: OAI-SearchBot
@@ -9,6 +10,7 @@ User-Agent: ChatGPT-User
 Allow: /
 Disallow: /private/
 Disallow: /api/
+Disallow: /studio/
 
 User-Agent: PerplexityBot
 User-Agent: ClaudeBot
@@ -20,6 +22,7 @@ User-Agent: Applebot
 Allow: /
 Disallow: /private/
 Disallow: /api/
+Disallow: /studio/
 
 Host: https://parthuinteriors.in
 Sitemap: https://parthuinteriors.in/sitemap.xml
