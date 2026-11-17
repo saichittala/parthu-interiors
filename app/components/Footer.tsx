@@ -6,7 +6,8 @@ import {
   MapPinIcon,
   PhoneIcon,
   MailIcon,
-  SparklesIcon
+  SparklesIcon,
+  LockIcon
 } from "./Icons";
 
 export default function Footer() {
@@ -40,6 +41,7 @@ export default function Footer() {
               <li><Link href="/contact">Contact Us</Link></li>
               <li><Link href="/terms">Terms &amp; Conditions</Link></li>
               <li><Link href="/privacy">Privacy Policy</Link></li>
+              <li><Link href="/studio">Admin Login</Link></li>
             </ul>
           </div>
 
@@ -147,6 +149,16 @@ export default function Footer() {
         {/* Footer Bottom Divider */}
         <div className="footer-divider" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", paddingTop: "24px", borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
           <p style={{ margin: 0 }}>© 2026 Parthu Interiors. All Rights Reserved.</p>
+          
+          <Link
+            href="/studio"
+            className="footer-login-btn"
+            aria-label="Staff and Admin Login"
+          >
+            <LockIcon size={13} color="var(--brand-primary)" />
+            <span>Admin Login</span>
+          </Link>
+
           <p style={{ fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.85)", margin: 0 }}>
             Made by{" "}
             <a

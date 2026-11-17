@@ -11,17 +11,17 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/private/', '/api/'],
+        disallow: ['/private/', '/api/', '/studio/'],
       },
       {
         userAgent: ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User'],
         allow: '/',
-        disallow: ['/private/', '/api/'],
+        disallow: ['/private/', '/api/', '/studio/'],
       },
       {
         userAgent: ['PerplexityBot', 'ClaudeBot', 'anthropic-ai', 'Googlebot', 'Google-Extended', 'Bingbot', 'Applebot'],
         allow: '/',
-        disallow: ['/private/', '/api/'],
+        disallow: ['/private/', '/api/', '/studio/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

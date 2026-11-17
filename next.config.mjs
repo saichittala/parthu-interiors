@@ -23,7 +23,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "fonts.googleapis.com",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
     ],
+  },
+  compiler: {
+    styledComponents: true,
   },
   transpilePackages: [],
   ...(!isStaticExport && {

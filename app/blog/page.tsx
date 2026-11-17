@@ -1,5 +1,5 @@
 import React from "react";
-import Metadata from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import JsonLd, { defaultOrganizationSchema } from "../components/JsonLd";
@@ -7,7 +7,7 @@ import { getPublishedBlogs, getReadingTime } from "../lib/blog";
 import { ChevronRightIcon, SparklesIcon } from "../components/Icons";
 import { SITE_URL, SITE_NAME } from "../lib/siteConfig";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Hyderabad Interior Design Guides & Articles | Parthu Interiors",
   description: "Expert interior design guides for Hyderabad homeowners. Cost breakdowns, modular kitchen guides, material selection tips, space planning & villa design trends.",
   alternates: {

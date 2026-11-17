@@ -51,6 +51,11 @@ export function getPublishedBlogs(): BlogPost[] {
   return getBlogsFromDB().filter((b) => b.status === "Published");
 }
 
+export function getBlogBySlug(slug: string): BlogPost | null {
+  const blogs = getBlogsFromDB();
+  return blogs.find((b) => b.slug === slug || b.id === slug) || null;
+}
+
 export function getReadingTime(text: string): string {
   const wordsPerMinute = 200;
   const noOfWords = text.split(/\s+/).length;

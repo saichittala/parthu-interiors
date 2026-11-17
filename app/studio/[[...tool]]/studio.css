@@ -1,0 +1,100 @@
+/* ==============================================================================
+   PARTHU INTERIORS — UNSLOP STUDIO DESIGN SYSTEM
+   Editorial Luxury & Architectural Studio CMS Styles
+   ============================================================================== */
+
+:root {
+  --studio-bg: #080809;
+  --studio-card: #111215;
+  --studio-border: rgba(255, 255, 255, 0.08);
+  --studio-crimson: #C1121F;
+}
+
+/* Force dark canvas across all Studio panes */
+html, body {
+  background-color: var(--studio-bg) !important;
+  color: #EDEDEE !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Minimalist Unslop Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080809;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}
+
+/* Studio Header & Pane Dividers */
+[data-ui="Pane"] {
+  background-color: #0B0C0E !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+[data-ui="PaneHeader"] {
+  background-color: #080809 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Crisp 1px Cards & Form Containers */
+[data-ui="Card"] {
+  border-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Subtle Crimson Focus Ring for Inputs */
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: rgba(193, 18, 31, 0.6) !important;
+  box-shadow: 0 0 0 1px rgba(193, 18, 31, 0.35) !important;
+}
+
+/* Clean Document List Item Hover */
+[data-as="button"][data-ui="MenuItem"]:hover,
+[data-as="a"][data-ui="MenuItem"]:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Refined Published Badge */
+[data-ui="Badge"][data-tone="positive"] {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  color: #10B981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* Refined Draft / Caution Badge */
+[data-ui="Badge"][data-tone="caution"] {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  color: #F59E0B !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* Refined Primary Action Button */
+[data-ui="Button"][data-tone="primary"] {
+  background-color: #C1121F !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  font-weight: 600 !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-ui="Button"][data-tone="primary"]:hover {
+  background-color: #9E0E19 !important;
+  box-shadow: 0 4px 14px rgba(193, 18, 31, 0.35) !important;
+}

@@ -670,5 +670,94 @@ export const locationsData: LocationDetail[] = [
     ],
     featuredImage: "/assets/main_images/luxury-modern-european-design-cafe-interior-downtown-with-colorful-furniture-3d-rendering.webp",
     nearbyAreas: ["Miyapur", "Chanda Nagar", "Beeramguda", "Patancheru", "Kukatpally"]
+  },
+  {
+    slug: "nizampet",
+    name: "Nizampet",
+    zone: "West Hyderabad",
+    metaTitle: "Interior Designers in Nizampet Hyderabad | Parthu Interiors",
+    metaDescription: "Specialized home interior design in Nizampet, Hyderabad. Custom BWP marine plywood modular kitchens, wardrobes & turnkey execution with 10-year warranty.",
+    heroHeadline: "Contemporary Interiors for Nizampet Homes.",
+    heroSubheadline: "Factory-controlled modular woodwork & turnkey interior execution in Nizampet.",
+    intro: "Nizampet has grown into a major residential corridor neighboring KPHB and Kukatpally, known for its spacious gated communities and modern apartment complexes. Homes in Nizampet require intelligent spatial planning that accommodates work-from-home lifestyles, high-volume kitchen storage, and durable moisture-proof cabinetry. Parthu Interiors provides turnkey residential interior design tailored for Nizampet homeowners, combining off-site precision factory production with zero on-site mess.",
+    propertyTypes: ["2BHK & 3BHK Gated Apartments", "Standalone Builder Floors", "Duplex Homes"],
+    keyHighlights: [
+      "Factory-finished modular woodwork from our nearby Kokapet facility",
+      "100% Boiling Water Proof (BWP) Marine Plywood construction",
+      "Anti-fingerprint acrylic and textured laminates",
+      "Dedicated site supervisor and 45-day handover"
+    ],
+    localDesignConsiderations: [
+      "Designing multi-functional guest-cum-study bedrooms for IT professionals commuting to HITEC City and Financial District.",
+      "Moisture-resistant cabinetry finishes engineered to withstand local seasonal humidity variations around Nizampet lake precincts."
+    ],
+    faqs: [
+      {
+        question: "How much does a 2BHK or 3BHK interior cost in Nizampet?",
+        answer: "Turnkey interiors in Nizampet typically range between ₹4.8 Lakhs to ₹12 Lakhs depending on the woodwork scope, modular kitchen specifications, and ceiling designs."
+      },
+      {
+        question: "Can we visit an ongoing site in Nizampet or KPHB?",
+        answer: "Yes, we regularly arrange private site walkthroughs in Nizampet, KPHB, and Kukatpally so you can inspect material quality and edge-banding precision firsthand."
+      }
+    ],
+    featuredImage: "/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
+    nearbyAreas: ["KPHB", "Kukatpally", "Bachupally", "Pragathi Nagar", "Miyapur"]
+  },
+  {
+    slug: "pragathi-nagar",
+    name: "Pragathi Nagar",
+    zone: "West Hyderabad",
+    metaTitle: "Home Interior Designers in Pragathi Nagar Hyderabad | Parthu Interiors",
+    metaDescription: "Turnkey residential interior design & factory-finished woodwork in Pragathi Nagar, Hyderabad. Premium modular kitchens, wardrobes & false ceiling with 10-year warranty.",
+    heroHeadline: "Smart, Elegant Interiors in Pragathi Nagar.",
+    heroSubheadline: "Bespoke space planning and precision modular furniture for Pragathi Nagar apartments.",
+    intro: "Pragathi Nagar is one of West Hyderabad's most active and family-friendly residential neighborhoods, situated adjacent to KPHB Colony and JNTU. Characterized by high-density modern apartments and independent builder floors, homes here benefit greatly from space-maximizing cabinetry, concealed storage, and bright ambient lighting. Parthu Interiors designs and executes turnkey interiors in Pragathi Nagar with 100% BWP Marine Plywood and German hardware.",
+    propertyTypes: ["2BHK & 3BHK Apartments", "Independent Residential Floors", "Gated Community Flats"],
+    keyHighlights: [
+      "Space-optimized modular kitchens with Hafele & Blum soft-close fittings",
+      "Floor-to-ceiling wardrobes with integrated lofts and vanity units",
+      "Off-site manufacturing ensuring 45-day dust-free installation"
+    ],
+    localDesignConsiderations: [
+      "Maximizing usable carpet area in compact 2BHK and 3BHK layouts through pocket sliding doors, sleek TV consoles, and hidden storage benches.",
+      "Using warm neutral color palettes and reflective glass shutters to amplify natural daylight."
+    ],
+    faqs: [
+      {
+        question: "Does Parthu Interiors execute turnkey interiors in Pragathi Nagar?",
+        answer: "Yes, Parthu Interiors provides complete turnkey interior execution in Pragathi Nagar, covering spatial design, factory woodwork, false ceiling, electricals, and painting."
+      }
+    ],
+    featuredImage: "/assets/main_images/luxury-modern-european-design-cafe-interior-downtown-with-colorful-furniture-3d-rendering.webp",
+    nearbyAreas: ["KPHB", "Kukatpally", "Nizampet", "Bachupally", "JNTU"]
+  },
+  {
+    slug: "moosapet",
+    name: "Moosapet",
+    zone: "West Hyderabad",
+    metaTitle: "Turnkey Interior Designers in Moosapet Hyderabad | Parthu Interiors",
+    metaDescription: "Expert residential interior designers in Moosapet, Hyderabad. Complete home interiors, modular kitchens & custom wardrobes with factory-finished execution.",
+    heroHeadline: "Thoughtfully Engineered Interiors in Moosapet.",
+    heroSubheadline: "Turnkey residential interior design connecting Kukatpally and Central Hyderabad.",
+    intro: "Moosapet serves as a strategic residential bridge between Kukatpally, Bharat Nagar, and Sanathnagar. With emerging luxury high-rises and redeveloped residential enclaves, homeowners in Moosapet seek sophisticated interior aesthetics with long-lasting structural durability. Parthu Interiors delivers turnkey interior solutions with 85% off-site factory fabrication, ensuring clean, on-time handovers.",
+    propertyTypes: ["2BHK & 3BHK High-Rise Apartments", "Builder Floors", "Gated Communities"],
+    keyHighlights: [
+      "Direct factory execution from Kokapet manufacturing unit",
+      "100% Boiling Water Proof (BWP) Marine Plywood with 10-year warranty",
+      "Transparent itemized pricing with zero surprise costs"
+    ],
+    localDesignConsiderations: [
+      "Acoustic wall paneling to buffer urban ambient sounds along major transit corridors.",
+      "Compact L-shaped and parallel modular kitchen designs optimized for daily Indian cooking."
+    ],
+    faqs: [
+      {
+        question: "How long does home interior execution take in Moosapet?",
+        answer: "Our standard turnaround is 40 to 45 days from 3D design freeze, with modular cabinetry pre-manufactured at our factory and assembled on-site in 10-14 days."
+      }
+    ],
+    featuredImage: "/assets/main_images/luxury-interior-exterior-design-collection-highend-architectural-home-decor-concepts-feat.webp",
+    nearbyAreas: ["Kukatpally", "Bharat Nagar", "Sanathnagar", "Balanagar", "KPHB"]
   }
 ];
