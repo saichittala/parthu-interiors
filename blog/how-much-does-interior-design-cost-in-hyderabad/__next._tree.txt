@@ -1,9 +1,9 @@
 :HL["/_next/static/media/636a5ac981f94f8b-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/css/a2f534eaebd1bc6b.css","style"]
-:HL["/_next/static/css/2c21f1eb2065bae2.css","style"]
+:HL["/_next/static/css/48a1bb79643243e3.css","style"]
 :HL["/_next/static/css/42da1a1c59782ac9.css","style"]
-:HL["/_next/static/css/be0255d0c01136ad.css","style"]
+:HL["/_next/static/css/fba0553fd38fae22.css","style"]
 :HL["/_next/static/css/7e679feb9565f871.css","style"]
 :HL["/assets/logo.png","image"]
 :HL["https://cdn.sanity.io/images/o2o9ouqt/production/fca24a2f0afdb55c378baa17a528bd889e618d92-3150x2100.webp","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"blog","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"how-much-does-interior-design-cost-in-hyderabad","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"p520SES-BfMr9B9XjLXu2"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"blog","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"how-much-does-interior-design-cost-in-hyderabad","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"3G2xyPNw5L-jbiLPr9Umi"}
