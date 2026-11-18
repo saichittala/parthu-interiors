@@ -151,11 +151,11 @@ export default function TimedLeadModal() {
               Request Received!
             </h3>
             <p className="modal-body-text" style={{ fontSize: "13px", marginBottom: "16px", color: "rgba(255, 255, 255, 0.75)" }}>
-              Data saved. Opening WhatsApp chat to share directly with {formData.phone || "the client"}...
+              Data saved. Opening WhatsApp to connect directly with Parthu Interiors (+91 87909 05746)...
             </p>
 
             <Button
-              href={`https://wa.me/${formatWhatsAppNumber(formData.phone)}?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...formData, source: "Timed Planning Session Modal" }))}`}
+              href={`https://wa.me/918790905746?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...formData, source: "Timed Planning Session Modal" }))}`}
               target="_blank"
               rel="noopener noreferrer"
               variant="whatsapp"
@@ -163,7 +163,7 @@ export default function TimedLeadModal() {
               style={{ width: "100%", marginBottom: "10px", gap: "8px" }}
             >
               <WhatsAppIcon size={18} />
-              <span>Share to {formData.phone || "Client"} on WhatsApp</span>
+              <span>Chat with Parthu Interiors on WhatsApp</span>
             </Button>
 
             <Button

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "kokapet-gated-villa-interior",
+    "scope": "Full Turnkey Interior Design & Execution",
+    "title": "3BHK Gated Villa Interior in Kokapet",
+    "concept": "Designed for an executive family in Kokapet, this 5,400 sq. ft. villa seamlessly blends modern architectural minimalism with warm natural textures.",
+    "location": "Kokapet, Hyderabad",
+    "mainImage": "/assets/main_images/luxury-modern-european-design-cafe-interior-downtown-with-colorful-furniture-3d-rendering.webp",
+    "materials": [
+      "100% BWP Marine Plywood",
+      "Anti-Fingerprint Acrylic",
+      "Book-Matched Botticino Italian Marble"
+    ],
+    "designStyle": "Warm Contemporary Minimalist",
+    "keyFeatures": [
+      "Double-height living room TV console",
+      "German modular kitchen with island breakfast counter"
+    ],
+    "projectType": "Luxury Villa",
+    "completionYear": "2026"
+  },
+  {
+    "id": "financial-district-3bhk-apartment",
+    "scope": "End-to-End Modular Woodwork, False Ceiling & Lighting",
+    "title": "Executive 3BHK Residence in Financial District",
+    "concept": "A 2,450 sq. ft. contemporary apartment interior tailored for tech executives requiring clean geometry and integrated workspace cabinetry.",
+    "location": "Financial District, Nanakramguda",
+    "mainImage": "/assets/main_images/luxury-living-room-with-classic-white-sofa-sofa-interior-design.webp",
+    "materials": [
+      "IS 710 Marine Grade Plywood",
+      "Anti-Scratch Matte Acrylic",
+      "Fluted Charcoal Acoustic Panelling"
+    ],
+    "designStyle": "Modern Japandi / Scandinavian Warmth",
+    "keyFeatures": [
+      "Acoustic-lined study cabin with glass sliding door",
+      "Zero-maintenance quartz kitchen countertop"
+    ],
+    "projectType": "3 BHK Apartment",
+    "completionYear": "2026"
+  },
+  {
+    "id": "jubilee-hills-luxury-residence",
+    "scope": "Turnkey Bespoke Architecture & Custom Furniture",
+    "title": "Architectural Villa in Jubilee Hills",
+    "concept": "Spanning 7,200 sq. ft., this palatial family residence highlights high-end natural teak woodwork, brushed gold accents, and bespoke ceiling design.",
+    "location": "Jubilee Hills, Hyderabad",
+    "mainImage": "/assets/main_images/luxury-interior-design-private-apartment-contemporary-dining-room.webp",
+    "materials": [
+      "Burma Teak Wood",
+      "Calacatta Gold Italian Marble",
+      "High-Gloss PU Lacquer Shutters"
+    ],
+    "designStyle": "Neo-Classical Contemporary Luxury",
+    "keyFeatures": [
+      "Private home theater with Dolby Atmos acoustic framing",
+      "Master suite walk-in wardrobe with island jewelry chest"
+    ],
+    "projectType": "Luxury Villa",
+    "completionYear": "2025"
+  },
+  {
+    "id": "gachibowli-modular-kitchen-suite",
+    "scope": "Turnkey Kitchen Civil, Plumbing & Precision Cabinetry",
+    "title": "German Precision Modular Kitchen in Gachibowli",
+    "concept": "Engineered with anti-fingerprint acrylic and Blum motorized servo-drive lift-up wall cabinets for effortless functionality.",
+    "location": "Gachibowli (Lansum Etania)",
+    "mainImage": "/assets/main_images/luxury-interior-exterior-design-collection-highend-architectural-home-decor-concepts-feat.webp",
+    "materials": [
+      "100% Calibrated BWP Marine Ply Carcass",
+      "KalingaStone Calacatta Quartz Counter",
+      "Blum Aventos HK-S Lift Systems"
+    ],
+    "designStyle": "Sleek Minimalist Monochrome",
+    "keyFeatures": [
+      "Concealed appliance garage with roll-up tambour door",
+      "Corner magic carousel organizer with soft-closing dampeners"
+    ],
+    "projectType": "Modular Kitchen Suite",
+    "completionYear": "2026"
+  }
+]

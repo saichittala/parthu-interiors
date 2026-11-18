@@ -59,20 +59,18 @@ export async function submitLeadToGoogleSheet(payload: LeadPayload): Promise<boo
   }
 }
 
+export const BUSINESS_WHATSAPP_NUMBER = "918790905746";
+
 export function formatWhatsAppNumber(phone?: string): string {
-  if (!phone) return "918790905746";
+  if (!phone) return BUSINESS_WHATSAPP_NUMBER;
   const digits = phone.replace(/\D/g, "");
   if (digits.length === 10) return `91${digits}`;
   if (digits.length === 11 && digits.startsWith("0")) return `91${digits.slice(1)}`;
   if (digits.length >= 11) return digits;
-  return digits || "918790905746";
+  return digits || BUSINESS_WHATSAPP_NUMBER;
 }
 
 export function getLeadWhatsAppMessage(payload: Partial<LeadPayload>): string {
-  const greeting = payload.name && payload.name !== "Client" && payload.name !== "Valued Client"
-    ? `Hi ${payload.name}! 👋`
-    : `Hi! 👋`;
-
   const details = [
     payload.name ? `*Name:* ${payload.name}` : null,
     payload.phone ? `*Phone:* ${payload.phone}` : null,
@@ -84,11 +82,11 @@ export function getLeadWhatsAppMessage(payload: Partial<LeadPayload>): string {
     payload.message ? `*Notes:* ${payload.message}` : null,
   ].filter(Boolean).join("\n");
 
-  return `${greeting}\nThank you for choosing *Parthu Interiors*! Here are the details of your home interior planning consultation:\n\n${details}\n\nOur senior interior designer will connect with you to review your floorplan and schedule your site visit.\n\n*Parthu Interiors Hyderabad*\n📞 +91 87909 05746\n🌐 https://www.parthuinteriors.in`;
+  return `Hi Parthu Interiors! 👋 I would like to request a Home Interior Planning Consultation.\n\nHere are my project details:\n${details}\n\nPlease connect with me to review my floorplan and discuss my project.`;
 }
 
 export function openWhatsAppLeadChat(payload: LeadPayload, targetPhone?: string) {
-  const targetNumber = formatWhatsAppNumber(targetPhone || payload.phone);
+  const targetNumber = formatWhatsAppNumber(targetPhone || BUSINESS_WHATSAPP_NUMBER);
   const text = encodeURIComponent(getLeadWhatsAppMessage(payload));
   window.open(`https://wa.me/${targetNumber}?text=${text}`, "_blank");
 }

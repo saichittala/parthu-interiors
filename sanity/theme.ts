@@ -1,35 +1,39 @@
 import { buildLegacyTheme } from 'sanity';
 
+/**
+ * Apple Design System & Unslop Pro Studio Theme
+ * Tiered elevation, high-contrast typography, and refined Apple crimson accents.
+ */
 export const unslopTheme = buildLegacyTheme({
-  /* Base theme colors */
-  '--black': '#080809',
+  /* Base theme colors - Apple Dark Tiered Palette */
+  '--black': '#121215',
   '--white': '#FFFFFF',
 
-  '--gray': '#71717A',
-  '--gray-base': '#27272A',
+  '--gray': '#9CA3AF',
+  '--gray-base': '#374151',
 
-  '--component-bg': '#111215',
-  '--component-text-color': '#EDEDEE',
+  '--component-bg': '#1E1E24',
+  '--component-text-color': '#F3F4F6',
 
-  /* Brand */
-  '--brand-primary': '#C1121F',
+  /* Brand - Apple Refined Crimson */
+  '--brand-primary': '#E11D48',
 
   // Default button
-  '--default-button-color': '#71717A',
-  '--default-button-primary-color': '#C1121F',
-  '--default-button-success-color': '#10B981',
-  '--default-button-warning-color': '#F59E0B',
-  '--default-button-danger-color': '#C1121F',
+  '--default-button-color': '#9CA3AF',
+  '--default-button-primary-color': '#E11D48',
+  '--default-button-success-color': '#34D399',
+  '--default-button-warning-color': '#FBBF24',
+  '--default-button-danger-color': '#F87171',
 
   /* State */
-  '--state-info-color': '#C1121F',
-  '--state-success-color': '#10B981',
-  '--state-warning-color': '#F59E0B',
-  '--state-danger-color': '#C1121F',
+  '--state-info-color': '#E11D48',
+  '--state-success-color': '#34D399',
+  '--state-warning-color': '#FBBF24',
+  '--state-danger-color': '#F87171',
 
   /* Navbar */
-  '--main-navigation-color': '#080809',
+  '--main-navigation-color': '#16161A',
   '--main-navigation-color--inverted': '#FFFFFF',
 
-  '--focus-color': '#C1121F',
+  '--focus-color': '#E11D48',
 });

@@ -87,43 +87,51 @@ export const projectType = defineType({
       name: 'mainImage',
       title: 'Hero Cover Image',
       type: 'image',
-      options: { hotspot: true },
+      options: {
+        hotspot: true,
+        storeOriginalFilename: true,
+      },
       fields: [
         defineField({
           name: 'alt',
           title: 'Alt Text (SEO & Accessibility)',
           type: 'string',
           description: 'Descriptive text describing the room, style, and location.',
-          validation: (rule) => rule.required(),
+          initialValue: 'Luxury residential interior in Hyderabad by Parthu Interiors',
         }),
       ],
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'gallery',
-      title: 'All Project Photographs (Full Showcase)',
+      title: 'Project Image Gallery (Upload & Drag to Reorder)',
       type: 'array',
-      description: 'High-resolution photographs of this completed residence.',
+      options: {
+        layout: 'grid',
+      },
+      description: 'Drag & drop multiple high-resolution photographs. Reorder easily in the visual grid.',
       of: [
         {
           type: 'image',
-          options: { hotspot: true },
+          options: {
+            hotspot: true,
+            storeOriginalFilename: true,
+          },
           fields: [
             defineField({
               name: 'alt',
-              title: 'Alt Text',
+              title: 'Alt Text (Optional)',
               type: 'string',
-              validation: (rule) => rule.required(),
+              initialValue: 'Custom interior execution by Parthu Interiors',
             }),
             defineField({
               name: 'caption',
-              title: 'Caption / Feature Note',
+              title: 'Caption / Feature Note (Optional)',
               type: 'string',
             }),
           ],
         },
       ],
-      validation: (rule) => rule.min(1).error('At least one gallery image is required.'),
     }),
     defineField({
       name: 'roomGalleries',

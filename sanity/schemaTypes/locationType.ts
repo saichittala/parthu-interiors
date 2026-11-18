@@ -77,13 +77,13 @@ export const locationType = defineType({
       name: 'featuredImage',
       title: 'Location Cover Image',
       type: 'image',
-      options: { hotspot: true },
+      options: { hotspot: true, storeOriginalFilename: true },
       fields: [
         defineField({
           name: 'alt',
           title: 'Alt Text',
           type: 'string',
-          validation: (rule) => rule.required(),
+          initialValue: 'Parthu Interiors residential design in Hyderabad',
         }),
       ],
       validation: (rule) => rule.required(),

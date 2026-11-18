@@ -1035,18 +1035,9 @@ export default function HomeClient({ initialProjects = [] }: HomeClientProps = {
         </section>
 
         {/* =================================================================
-            10. FAQ ACCORDION
+            10. FAQ SECTION (@uiarc/faq-section)
             ================================================================= */}
-        <section className="section-py">
-          <div className="container">
-            <div className="section-header">
-
-              <h2 className="display-md">Got Questions? We Have Answers.</h2>
-            </div>
-
-            <FaqAccordion />
-          </div>
-        </section>
+        <FaqAccordion />
 
         {/* =================================================================
             10A. HYDERABAD LOCATIONS SHOWCASE (INTERNAL LINKING & SEO EQUITY)
@@ -1300,10 +1291,10 @@ export default function HomeClient({ initialProjects = [] }: HomeClientProps = {
                       Consultation Requested!
                     </h4>
                     <p className="form-success-desc">
-                      Opening WhatsApp chat to share details with {homeForm.phone || "the client"}...
+                      Opening WhatsApp to connect directly with Parthu Interiors (+91 87909 05746)...
                     </p>
                     <Button
-                      href={`https://wa.me/${formatWhatsAppNumber(homeForm.phone)}?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...homeForm, phone: homeForm.phone.startsWith("+91") ? homeForm.phone : `+91 ${homeForm.phone}`, source: "Homepage Inline Consultation Form" }))}`}
+                      href={`https://wa.me/918790905746?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...homeForm, phone: homeForm.phone.startsWith("+91") ? homeForm.phone : `+91 ${homeForm.phone}`, source: "Homepage Inline Consultation Form" }))}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       variant="whatsapp"
@@ -1311,7 +1302,7 @@ export default function HomeClient({ initialProjects = [] }: HomeClientProps = {
                       style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px", width: "100%", marginBottom: "10px" }}
                     >
                       <WhatsAppIcon size={16} />
-                      <span>Share to {homeForm.phone || "Client"} on WhatsApp</span>
+                      <span>Chat with Parthu Interiors on WhatsApp</span>
                     </Button>
                     <Button variant="secondary" size="sm" style={{ width: "100%" }} onClick={() => setHomeFormSubmitted(false)}>
                       Book Another

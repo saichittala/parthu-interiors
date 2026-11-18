@@ -34,13 +34,13 @@ export const postType = defineType({
       name: 'featuredImage',
       title: 'Featured Hero Image',
       type: 'image',
-      options: { hotspot: true },
+      options: { hotspot: true, storeOriginalFilename: true },
       fields: [
         defineField({
           name: 'alt',
           title: 'Alt Text (SEO & Accessibility)',
           type: 'string',
-          validation: (rule) => rule.required(),
+          initialValue: 'Parthu Interiors editorial design guide',
         }),
         defineField({
           name: 'caption',

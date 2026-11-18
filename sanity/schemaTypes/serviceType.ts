@@ -54,13 +54,13 @@ export const serviceType = defineType({
       name: 'mainImage',
       title: 'Primary Service Cover Image',
       type: 'image',
-      options: { hotspot: true },
+      options: { hotspot: true, storeOriginalFilename: true },
       fields: [
         defineField({
           name: 'alt',
           title: 'Alt Text',
           type: 'string',
-          validation: (rule) => rule.required(),
+          initialValue: 'Interior design services in Hyderabad by Parthu Interiors',
         }),
       ],
       validation: (rule) => rule.required(),
@@ -69,16 +69,17 @@ export const serviceType = defineType({
       name: 'gallery',
       title: 'Service Showcase Gallery',
       type: 'array',
+      options: { layout: 'grid' },
       of: [
         {
           type: 'image',
-          options: { hotspot: true },
+          options: { hotspot: true, storeOriginalFilename: true },
           fields: [
             defineField({
               name: 'alt',
               title: 'Alt Text',
               type: 'string',
-              validation: (rule) => rule.required(),
+              initialValue: 'Parthu Interiors service showcase',
             }),
           ],
         },

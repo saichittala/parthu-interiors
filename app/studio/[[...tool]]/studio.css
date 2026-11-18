@@ -1,100 +1,433 @@
 /* ==============================================================================
-   PARTHU INTERIORS — UNSLOP STUDIO DESIGN SYSTEM
-   Editorial Luxury & Architectural Studio CMS Styles
+   PARTHU INTERIORS — APPLE PRO STUDIO DESIGN SYSTEM (UNSLOP)
+   Translucent Materials, Tiered Dark Canvas, High Contrast & High-UX Media Tools
    ============================================================================== */
 
 :root {
-  --studio-bg: #080809;
-  --studio-card: #111215;
+  /* Apple Pro Dark Canvas Palette */
+  --studio-canvas: #121215;
+  --studio-sidebar: #17171B;
+  --studio-list-pane: #1C1C21;
+  --studio-editor-pane: #222228;
+  --studio-card: #282830;
+  --studio-card-elevated: #2E2E38;
+  --studio-popover-bg: #24242C;
+  
+  /* Hairline Dividers & Glass Highlights */
   --studio-border: rgba(255, 255, 255, 0.08);
-  --studio-crimson: #C1121F;
+  --studio-border-hover: rgba(255, 255, 255, 0.16);
+  --studio-border-light: rgba(255, 255, 255, 0.12);
+  --studio-highlight-top: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  /* High Contrast Typography */
+  --studio-text-primary: #FFFFFF;
+  --studio-text-secondary: #E5E7EB;
+  --studio-text-muted: #9CA3AF;
+  --studio-text-subtle: #6B7280;
+
+  /* Apple Crimson Accent & Selection */
+  --studio-accent: #E11D48;
+  --studio-accent-hover: #BE123C;
+  --studio-accent-tint: rgba(225, 29, 72, 0.14);
+  --studio-accent-border: rgba(225, 29, 72, 0.38);
+  --studio-accent-glow: 0 0 0 3px rgba(225, 29, 72, 0.25);
 }
 
-/* Force dark canvas across all Studio panes */
-html, body {
-  background-color: var(--studio-bg) !important;
-  color: #EDEDEE !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Base Viewport & Font Architecture */
+html, body, [data-ui="StudioLayout"] {
+  background-color: var(--studio-canvas) !important;
+  color: var(--studio-text-primary) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", -apple-system-subheadline, system-ui, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
 }
 
-/* Minimalist Unslop Scrollbars */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
+/* ==============================================================================
+   PREVENT OVERLAPPING: OPAQUE MENUS, DIALOGS, POPOVERS & PORTALS
+   ============================================================================== */
 
-::-webkit-scrollbar-track {
-  background: #080809;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #27272A;
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3F3F46;
-}
-
-/* Studio Header & Pane Dividers */
-[data-ui="Pane"] {
-  background-color: #0B0C0E !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.07) !important;
-}
-
-[data-ui="PaneHeader"] {
-  background-color: #080809 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
-}
-
-/* Crisp 1px Cards & Form Containers */
-[data-ui="Card"] {
-  border-color: rgba(255, 255, 255, 0.07) !important;
-}
-
-/* Subtle Crimson Focus Ring for Inputs */
-input:focus, textarea:focus, select:focus {
-  outline: none !important;
-  border-color: rgba(193, 18, 31, 0.6) !important;
-  box-shadow: 0 0 0 1px rgba(193, 18, 31, 0.35) !important;
-}
-
-/* Clean Document List Item Hover */
-[data-as="button"][data-ui="MenuItem"]:hover,
-[data-as="a"][data-ui="MenuItem"]:hover {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-}
-
-/* Refined Published Badge */
-[data-ui="Badge"][data-tone="positive"] {
-  background-color: rgba(16, 185, 129, 0.12) !important;
-  color: #10B981 !important;
-  border: 1px solid rgba(16, 185, 129, 0.3) !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.03em !important;
-}
-
-/* Refined Draft / Caution Badge */
-[data-ui="Badge"][data-tone="caution"] {
-  background-color: rgba(245, 158, 11, 0.12) !important;
-  color: #F59E0B !important;
-  border: 1px solid rgba(245, 158, 11, 0.3) !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.03em !important;
-}
-
-/* Refined Primary Action Button */
-[data-ui="Button"][data-tone="primary"] {
-  background-color: #C1121F !important;
+/* Ensure all Dropdowns, Modals, Popovers, and Media Pickers have solid Apple dark surface */
+[data-ui="Popover"] [data-ui="Card"],
+[data-ui="Dialog"] [data-ui="Card"],
+[data-ui="Menu"],
+[data-ui="Menu"] [data-ui="Card"],
+[data-ui="Tooltip"] [data-ui="Card"],
+[role="dialog"],
+[role="dialog"] [data-ui="Card"],
+[role="menu"],
+[role="menu"] [data-ui="Card"],
+[data-portal="default"] [data-ui="Card"],
+[data-portal="default"] [data-ui="Menu"],
+[data-portal="default"] [data-ui="Popover"],
+[data-ui="Select"] [data-ui="Card"] {
+  background-color: var(--studio-popover-bg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  border-radius: 12px !important;
   color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Menu Items inside Dropdowns */
+[role="menuitem"],
+[data-ui="MenuItem"] {
+  color: var(--studio-text-secondary) !important;
+  border-radius: 6px !important;
+}
+
+[role="menuitem"]:hover,
+[data-ui="MenuItem"]:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+}
+
+/* ==============================================================================
+   APPLE TRANSLUCENT MATERIALS & PANE HIERARCHY
+   ============================================================================== */
+
+/* Primary Studio Root Container */
+[data-ui="PaneContainer"] {
+  background-color: var(--studio-canvas) !important;
+  height: 100% !important;
+}
+
+/* Pane Backgrounds and Dividing Borders */
+[data-ui="Pane"] {
+  background-color: var(--studio-editor-pane) !important;
+  border-right: 1px solid var(--studio-border) !important;
+}
+
+/* Sidebar / First Pane */
+[data-ui="Pane"]:first-of-type {
+  background-color: var(--studio-sidebar) !important;
+}
+
+/* Translucent Glass Pane Headers */
+[data-ui="PaneHeader"] {
+  background: rgba(24, 24, 28, 0.88) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-bottom: 1px solid var(--studio-border) !important;
+  box-shadow: var(--studio-highlight-top) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 20 !important;
+}
+
+/* Sticky Document Action Bar / Pane Footer (Publish / Save Buttons) */
+[data-ui="PaneFooter"] {
+  background: rgba(24, 24, 28, 0.95) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 30 !important;
+  padding: 10px 16px !important;
+}
+
+/* Top Studio Navigation Bar Glass (48px Unified Height) */
+[data-ui="Navbar"] {
+  background: rgba(18, 18, 22, 0.94) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-bottom: 1px solid var(--studio-border) !important;
+  box-shadow: var(--studio-highlight-top) !important;
+  height: 48px !important;
+}
+
+/* ==============================================================================
+   REFINED APPLE SELECTION (NO BLINDING SOLID CRIMSON RECTANGLE)
+   ============================================================================== */
+
+/* Selected / Active List Item & Menu Items */
+[data-ui="MenuItem"][data-selected],
+[data-as="button"][data-selected],
+[data-as="a"][data-selected],
+[data-selected="true"],
+[aria-selected="true"],
+[data-ui="PaneItem"][data-selected] {
+  background: var(--studio-accent-tint) !important;
+  border: 1px solid var(--studio-accent-border) !important;
+  border-left: 3px solid var(--studio-accent) !important;
+  border-radius: 8px !important;
+  color: #FFFFFF !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Text inside Selected Items */
+[data-selected] [data-ui="Text"],
+[data-selected] span,
+[data-selected="true"] [data-ui="Text"],
+[aria-selected="true"] [data-ui="Text"] {
+  color: #FFFFFF !important;
   font-weight: 600 !important;
+}
+
+/* Icon inside Selected Items */
+[data-selected] svg,
+[data-selected="true"] svg,
+[aria-selected="true"] svg {
+  color: #FB7185 !important;
+  fill: currentColor !important;
+}
+
+/* Unselected Hover States (Sleek Apple Highlight) */
+[data-ui="MenuItem"]:not([data-selected]):hover,
+[data-as="button"]:not([data-selected]):hover,
+[data-as="a"]:not([data-selected]):hover,
+[data-ui="PaneItem"]:not([data-selected]):hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 8px !important;
+  transition: background-color 0.12s ease !important;
+}
+
+/* Interactive Press Feedback (Apple Fluid Interfaces §1) */
+[data-ui="MenuItem"]:active,
+[data-as="button"]:active,
+[data-ui="Button"]:active {
+  transform: scale(0.985);
+  transition: transform 80ms ease-out !important;
+}
+
+/* ==============================================================================
+   HIGH CONTRAST TYPOGRAPHY & HEADINGS
+   ============================================================================== */
+
+/* Pane Titles */
+[data-ui="PaneHeader"] h2,
+[data-ui="PaneHeader"] [data-ui="Heading"] {
+  color: var(--studio-text-primary) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em !important;
+}
+
+/* List Item Labels */
+[data-ui="MenuItem"] [data-ui="Text"],
+[data-ui="PaneItem"] [data-ui="Text"] {
+  color: var(--studio-text-secondary) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+/* Metadata, Subtitles & Secondary Notes */
+[data-ui="Text"][data-muted="true"],
+[data-ui="Text"][data-size="0"],
+[data-ui="Text"][data-size="1"],
+[data-ui="PaneItem"] [data-ui="Text"]:nth-child(2) {
+  color: var(--studio-text-muted) !important;
+  font-size: 12px !important;
+}
+
+/* Empty State Contrast Boost */
+[data-ui="PaneContent"] p,
+[data-ui="PaneContent"] [data-ui="Text"] {
+  color: var(--studio-text-muted) !important;
+}
+
+/* ==============================================================================
+   SEARCH BARS & FORM CONTROLS
+   ============================================================================== */
+
+/* Search Inputs */
+input[type="search"],
+input[placeholder*="Search"],
+[data-ui="TextInput"] input,
+[data-ui="SearchInput"] input {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid var(--studio-border-light) !important;
+  border-radius: 8px !important;
+  color: #FFFFFF !important;
+  font-size: 13px !important;
+  padding: 8px 12px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35) !important;
+  transition: all 0.15s ease !important;
+}
+
+input[type="search"]::placeholder,
+input[placeholder*="Search"]::placeholder,
+[data-ui="TextInput"] input::placeholder {
+  color: var(--studio-text-subtle) !important;
+}
+
+input[type="search"]:focus,
+input[placeholder*="Search"]:focus,
+[data-ui="TextInput"] input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: var(--studio-accent) !important;
+  box-shadow: var(--studio-accent-glow), inset 0 1px 2px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ==============================================================================
+   EASY IMAGE UPLOADING & MEDIA DROPZONE UX
+   ============================================================================== */
+
+/* Image Input Dropzone */
+[data-ui="ImageInput"],
+[data-ui="FileInput"] {
+  border: 1.5px dashed rgba(255, 255, 255, 0.22) !important;
+  border-radius: 12px !important;
+  background-color: rgba(255, 255, 255, 0.02) !important;
+  padding: 16px !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-[data-ui="Button"][data-tone="primary"]:hover {
-  background-color: #9E0E19 !important;
-  box-shadow: 0 4px 14px rgba(193, 18, 31, 0.35) !important;
+[data-ui="ImageInput"]:hover,
+[data-ui="FileInput"]:hover {
+  border-color: rgba(225, 29, 72, 0.5) !important;
+  background-color: rgba(225, 29, 72, 0.04) !important;
+}
+
+/* Active Drag & Drop Hover State */
+[data-ui="ImageInput"][data-drag-over="true"],
+[data-ui="FileInput"][data-drag-over="true"],
+[data-dragover="true"],
+div[data-drop-zone="true"] {
+  border-color: #E11D48 !important;
+  background-color: rgba(225, 29, 72, 0.14) !important;
+  box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.25) !important;
+  transform: scale(1.005);
+}
+
+/* Image Thumbnails & Grid Previews */
+[data-ui="ImageInput"] img,
+[data-ui="Card"] img,
+[data-ui="Preview"] img {
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Gallery Grid Layout Thumbnails */
+[data-ui="Grid"] > div > [data-ui="Card"] {
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  overflow: hidden !important;
+  transition: transform 0.15s ease, border-color 0.15s ease !important;
+}
+
+[data-ui="Grid"] > div > [data-ui="Card"]:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(225, 29, 72, 0.4) !important;
+}
+
+/* ==============================================================================
+   APPLE BUTTONS & BADGES
+   ============================================================================== */
+
+/* Primary Action Button (Publish / Create / Confirm) */
+[data-ui="Button"][data-tone="primary"],
+button[data-tone="primary"] {
+  background: linear-gradient(180deg, #E11D48 0%, #BE123C 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: -0.01em !important;
+  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-ui="Button"][data-tone="primary"]:hover,
+button[data-tone="primary"]:hover {
+  background: linear-gradient(180deg, #F43F5E 0%, #E11D48 100%) !important;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Secondary / Default Button */
+[data-ui="Button"][data-tone="default"],
+[data-ui="Button"][data-mode="ghost"],
+button[data-tone="default"] {
+  background: rgba(255, 255, 255, 0.07) !important;
+  color: var(--studio-text-secondary) !important;
+  border: 1px solid var(--studio-border-light) !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.15s ease !important;
+}
+
+[data-ui="Button"][data-tone="default"]:hover,
+[data-ui="Button"][data-mode="ghost"]:hover {
+  background: rgba(255, 255, 255, 0.13) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Apple System Badges */
+[data-ui="Badge"][data-tone="positive"] {
+  background-color: rgba(52, 211, 153, 0.14) !important;
+  color: #34D399 !important;
+  border: 1px solid rgba(52, 211, 153, 0.32) !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.02em !important;
+  border-radius: 9999px !important;
+  padding: 2px 8px !important;
+}
+
+[data-ui="Badge"][data-tone="caution"] {
+  background-color: rgba(251, 191, 36, 0.14) !important;
+  color: #FBBF24 !important;
+  border: 1px solid rgba(251, 191, 36, 0.32) !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.02em !important;
+  border-radius: 9999px !important;
+  padding: 2px 8px !important;
+}
+
+[data-ui="Badge"][data-tone="critical"] {
+  background-color: rgba(248, 113, 113, 0.14) !important;
+  color: #F87171 !important;
+  border: 1px solid rgba(248, 113, 113, 0.32) !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  border-radius: 9999px !important;
+  padding: 2px 8px !important;
+}
+
+/* ==============================================================================
+   APPLE MINIMALIST SCROLLBARS
+   ============================================================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  border: 1px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ==============================================================================
+   ACCESSIBILITY & REDUCED MOTION (APPLE DESIGN §14)
+   ============================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

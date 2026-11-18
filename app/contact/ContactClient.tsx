@@ -172,10 +172,10 @@ export default function ContactClient() {
                       Inquiry Submitted!
                     </h2>
                     <p className="form-success-desc">
-                      Details saved. Opening WhatsApp chat to share directly with {form.phone || "the client"}...
+                      Details saved. Opening WhatsApp to connect directly with Parthu Interiors (+91 87909 05746)...
                     </p>
                     <Button
-                      href={`https://wa.me/${formatWhatsAppNumber(form.phone)}?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...form, phone: form.phone.startsWith("+91") ? form.phone : `+91 ${form.phone}`, propertyType: form.projectType, source: "Contact Page Form" }))}`}
+                      href={`https://wa.me/918790905746?text=${encodeURIComponent(getLeadWhatsAppMessage({ ...form, phone: form.phone.startsWith("+91") ? form.phone : `+91 ${form.phone}`, propertyType: form.projectType, source: "Contact Page Form" }))}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       variant="whatsapp"
@@ -183,7 +183,7 @@ export default function ContactClient() {
                       style={{ width: "100%", marginBottom: "12px", gap: "8px" }}
                     >
                       <WhatsAppIcon size={18} />
-                      <span>Share to {form.phone || "Client"} on WhatsApp</span>
+                      <span>Chat with Parthu Interiors on WhatsApp</span>
                     </Button>
                     <Button
                       variant="secondary"

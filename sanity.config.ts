@@ -1,11 +1,11 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
+import { media } from 'sanity-plugin-media';
 import { schemaTypes } from './sanity/schemaTypes';
 import { projectId, dataset, apiVersion } from './sanity/env';
 import { unslopTheme } from './sanity/theme';
 import { StudioLogo } from './sanity/components/StudioLogo';
-import { StudioNavbar } from './sanity/components/StudioNavbar';
 
 export default defineConfig({
   basePath: '/studio',
@@ -20,7 +20,6 @@ export default defineConfig({
   studio: {
     components: {
       logo: StudioLogo,
-      navbar: StudioNavbar,
     },
   },
 
@@ -100,6 +99,7 @@ export default defineConfig({
               ),
           ]),
     }),
+    media(),
     visionTool({ defaultApiVersion: apiVersion }),
   ],
 

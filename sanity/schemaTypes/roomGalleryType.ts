@@ -41,28 +41,32 @@ export const roomGalleryType = defineType({
       name: 'images',
       title: 'Room Photographs',
       type: 'array',
+      options: {
+        layout: 'grid',
+      },
+      description: 'Upload photographs for this room. Drag thumbnails to reorder.',
       of: [
         {
           type: 'image',
-          options: { hotspot: true },
+          options: {
+            hotspot: true,
+            storeOriginalFilename: true,
+          },
           fields: [
             defineField({
               name: 'alt',
-              title: 'Alternative Text (Crucial for Image SEO & Accessibility)',
+              title: 'Alternative Text',
               type: 'string',
-              description: 'e.g., "Fluted teak wood TV unit with warm ambient LED strip lighting in Kokapet villa"',
-              validation: (rule) => rule.required(),
+              initialValue: 'Interior craftsmanship by Parthu Interiors',
             }),
             defineField({
               name: 'caption',
               title: 'Caption / Material Highlight',
               type: 'string',
-              description: 'e.g., "Book-matched Italian marble with integrated magnetic track light"',
             }),
           ],
         },
       ],
-      validation: (rule) => rule.min(1).error('At least one photograph is required for a room gallery.'),
     }),
   ],
   preview: {

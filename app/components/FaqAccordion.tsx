@@ -1,86 +1,82 @@
 "use client";
 
-import React, { useState } from "react";
-import { PlusIcon } from "./Icons";
+import React from "react";
+import {
+  FaqSection,
+  type FaqItem,
+  type FaqSectionProps,
+} from "./arc/blocks/faq-section/faq-section";
 
-interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-const faqs: FaqItem[] = [
+export const parthuFaqs: FaqItem[] = [
   {
-    question: "Which locations do you serve?",
+    id: "locations-served",
+    question: "Which locations do you serve in Hyderabad?",
     answer:
-      "Parthu Interiors primarily serves Hyderabad and surrounding areas. Please contact us to discuss your project location.",
+      "Parthu Interiors primarily serves Hyderabad and surrounding premium neighborhoods, including Gachibowli, Financial District, Kokapet, Kondapur, Madhapur, Jubilee Hills, Banjara Hills, Nallagandla, Tellapur, and Miyapur. Contact us to discuss your project location.",
+    category: "Locations",
   },
   {
-    question: "Do you provide complete home interiors?",
+    id: "turnkey-services",
+    question: "Do you provide complete turnkey home interiors?",
     answer:
-      "Yes. We provide end-to-end interior design and execution services, including design, planning, furniture, kitchens, wardrobes, ceilings, lighting and other interior requirements.",
+      "Yes. We provide complete end-to-end interior design and execution services—including 2D/3D space planning, factory-finished modular woodwork, designer kitchens, wardrobes, false ceilings, electricals, decorative lighting, and final turnkey handover.",
+    category: "Services",
   },
   {
-    question: "Do you undertake 2BHK and 3BHK projects?",
+    id: "apartment-villa-types",
+    question: "Do you undertake 2BHK, 3BHK, and luxury villa projects?",
     answer:
-      "Yes. We specialise in 2BHK, 3BHK, apartments, villas and other residential interior projects.",
+      "Yes. We specialize in 2BHK and 3BHK residential apartments, luxury duplexes, penthouses, and gated community villas across Hyderabad.",
+    category: "Services",
   },
   {
-    question: "Do you provide customised designs?",
+    id: "custom-designs",
+    question: "Do you provide 100% customised designs?",
     answer:
-      "Yes. Every design is developed according to the client’s requirements, available space, lifestyle and design preferences.",
+      "Yes. Every design is custom engineered for your specific floor plan, family lifestyle, storage requirements, and aesthetic preferences. You receive photorealistic 3D visualizations before execution begins.",
+    category: "Design",
   },
   {
-    question: "What materials do you use?",
+    id: "materials-hardware",
+    question: "What materials and hardware brands do you use?",
     answer:
-      "Material selection depends on the specific project and client requirements. We work with premium-quality materials, including Plywood and HDHMR, along with suitable hardware and finishes.",
+      "We build exclusively with certified Boiling Water Proof (BWP) Plywood and HDHMR with anti-bubble factory press lamination. Hardware is sourced directly from global leaders including Hettich, Hafele, and Blum, backed by up to a 10-year material warranty.",
+    category: "Materials",
   },
   {
-    question: "How can I start my interior project?",
+    id: "project-timeline",
+    question: "What is your typical project execution timeline?",
     answer:
-      "You can contact us to schedule an initial consultation. Our team will understand your requirements and guide you through the next steps.",
+      "Our standard handover timeline is 45 working days from final 3D design approval and material sign-off, backed by milestone tracking and dedicated site project managers.",
+    category: "Timeline",
+  },
+  {
+    id: "getting-started",
+    question: "How can I start my interior project with Parthu Interiors?",
+    answer:
+      "You can schedule a free consultation with our senior designers. We will review your floor plan, understand your design preferences and budget, and provide a transparent, detailed estimate.",
+    category: "General",
   },
 ];
 
-export default function FaqAccordion() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggleIndex = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
+export default function FaqAccordion(props: Partial<FaqSectionProps>) {
   return (
-    <div className="faq-container">
-      {faqs.map((faq, index) => {
-        const isOpen = openIndex === index;
-        return (
-          <div key={index} className={`faq-item ${isOpen ? "active" : ""}`}>
-            <button
-              className="faq-button"
-              onClick={() => toggleIndex(index)}
-              aria-expanded={isOpen}
-            >
-              <span className="faq-question-text">{faq.question}</span>
-              <span
-                className="faq-icon-circle"
-                style={{
-                  transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
-                  transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-                <PlusIcon size={20} color="var(--icon-primary)" strokeWidth={1.5} />
-              </span>
-            </button>
-            <div className="faq-answer-wrapper">
-              <div className="faq-answer-inner">
-                <p>{faq.answer}</p>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+    <FaqSection
+      id="faq"
+      title="Got Questions? We Have Answers."
+      description="Everything you need to know about our interior design process, materials, timelines, and turnkey execution in Hyderabad."
+      items={parthuFaqs}
+      contact={{
+        label: "Still have a question?",
+        description: "Chat directly with our Hyderabad design consultants.",
+        href: `https://wa.me/918790905746?text=${encodeURIComponent(
+          "Hi PARTHU INTERIORS! 👋 I have a question regarding interior design and execution for my home."
+        )}`,
+      }}
+      {...props}
+    />
   );
 }
+
+export { FaqSection };
+export type { FaqItem, FaqSectionProps };
